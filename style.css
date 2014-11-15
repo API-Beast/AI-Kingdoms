@@ -1,0 +1,260 @@
+div
+{
+	box-sizing: border-box;
+}
+
+body
+{
+	background: url("Assets/ui.jpg");
+	margin: 0;
+}
+
+div#sidebar
+{
+	position: absolute;
+	left:     0px;
+	top:      0px;
+	bottom:   0px;
+	width:    400px;
+	border-image: url("Assets/goldborder.png") 5 5 4 stretch;
+	border-top:    0px;
+	border-left:   0px;
+	border-bottom: 0px; 
+	border-right:  5px;
+	border-style: solid;
+}
+
+div#sidebar-content
+{
+	/*max-height: 500px;*/
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding:    10px;
+}
+
+#sidebar .info
+{
+	border-radius: 5px;
+	margin: 3px;
+	background: white;
+}
+
+#playfield
+{
+	position:   absolute;
+	left :      400px;
+	right:      0px;
+	bottom:     0px;
+	top:        0px;
+	overflow:   auto;
+}
+
+.title
+{
+	font-size: 140%;
+	font-family: 'Lobster', sans-serif;
+}
+
+.subtitle
+{
+	font-family: 'Lobster', sans-serif;
+}
+
+.tag, .double-tag > span
+{
+	min-width: 160px;
+	max-width: 160px;
+	padding: 2px;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.tag, .double-tag
+{
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 5px;
+	margin: 2px;
+}
+
+.double-tag
+{
+	max-width: 325px;
+}
+
+.section
+{
+	margin-top: 10px;
+}
+
+.objectLink
+{
+	font-weight: bold;
+}
+
+.objectLink.unimportant
+{
+	font-weight: normal;
+	font-style:  italic;
+}
+
+.objectLink.faction
+{
+}
+
+.symbol
+{
+	display: inline-block;
+}
+
+a .symbol, span .symbol
+{
+	margin-top: 2px;
+	margin-left: 5px;
+}
+
+.symbol+.symbol
+{
+	margin-left: 0px;
+}
+
+.symbol.female
+{
+  background: url("Assets/symbols.png") 0px 0px;
+  width: 14px;
+  height: 17px;
+}
+
+.symbol.male
+{
+  background: url("Assets/symbols.png") -14px 0px;
+  width: 16px;
+  height: 17px;
+}
+
+.symbol.dead
+{
+  background: url("Assets/symbols.png") -30px 0px;
+  width: 14px;
+  height: 17px;
+}
+
+.symbol.city
+{
+  background: url("Assets/symbols.png") -101px 0px;
+  width: 15px;
+  height: 17px;
+}
+
+.symbol.Soldier
+{
+	background: url("Assets/symbols.png") -44px 0px;
+	width: 14px;
+	height: 17px;
+}
+
+.symbol.Commander
+{
+	background: url("Assets/symbols.png") -58px 0px;
+	width: 14px;
+	height: 17px;
+}
+
+.symbol.General
+{
+	background: url("Assets/symbols.png") -86px 0px;
+	width: 14px;
+	height: 17px;
+}
+
+.symbol.Strength
+{
+	background: url("Assets/stats.png") 0px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Tactic
+{
+	background: url("Assets/stats.png") -32px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Charisma
+{
+	background: url("Assets/stats.png") -64px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Intrigue
+{
+	background: url("Assets/stats.png") -96px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Willpower
+{
+	background: url("Assets/stats.png") -128px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.section
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 360px;
+}
+
+.section.ribbon
+{
+	background: rgb(210, 40, 30);
+	box-shadow: 1px 1px 8px;
+	box-sizing: content-box;
+	margin-left: -10px;
+	margin-right: -30px;
+	margin-bottom: 30px;
+	width: 370px;
+	padding: 10px;
+	padding-left: 20px;
+}
+
+.section.ribbon.city
+{
+	background: rgb(30, 140, 40);
+}
+
+.stats
+{
+	width: 260px;
+	background: rgba(0, 0, 0, 0.9);
+	border-image: url("Assets/goldborder.png") 5 5 4 stretch;
+	border-style: solid;
+}
+
+.stats tr:first-child td
+{
+	background: rgb(160, 160, 160);
+}
+
+.stats tr:not(:first-child) td
+{
+	background: rgb(90, 90, 90);
+}
+
+.stats td
+{
+	text-align: center;
+	font-weight:  bold;
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	padding: 0;
+	margin: 0;
+}
+
+#controls
+{
+	display: none;
+}
