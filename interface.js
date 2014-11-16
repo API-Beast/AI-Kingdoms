@@ -6,14 +6,18 @@ var Ui = {
 
 function UpdateSize()
 {
-	var sidebar = document.getElementById("sidebar-content");
-	sidebar.style["max-height"] = window.innerHeight+"px";
+	var elements = document.querySelectorAll("#sidebar section");
+	for (var i = 0; i < elements.length; i++)
+		elements[i].style["height"] = window.innerHeight-20+"px";
+	var objinfo = document.getElementById("object-info");
+	objinfo.style["height"] = window.innerHeight-30+"px";
 }
 
 function DisplayObject(obj)
 {
 	Ui.ShowObject = true;
 	Ui.CurrentObject = obj;
+	SetActiveTab(document.getElementById("object-info-tab"));
 	UpdateUI();
 	history.pushState(Ui, null);
 }
@@ -128,9 +132,24 @@ function OnClick(click)
 		DisplayObject(city);
 }
 
+function SetActiveTab(tab)
+{
+	var parent = tab.parentNode;
+	var elements = parent.querySelectorAll("section");
+	for(var i = 0; i < elements.length; i++)
+	{
+		elements[i].className = "";
+	}
+	tab.className = "active-tab";
+}
+
 function InitUI()
 {
-	var controls = document.getElementById("controls");
+	var elements = document.querySelectorAll(".tabbed section h2 a");
+	for (var i = 0; i < elements.length; i++)
+		elements[i].addEventListener("click", SetActiveTab.bind(undefined, elements[i].parentNode.parentNode));
+
+	/*var controls = document.getElementById("controls");
 	controls.innerHTML = "";
 
 	var symbol = CreateSymbol("Strength");
@@ -139,7 +158,7 @@ function InitUI()
 
 	var symbol = CreateSymbol("Tactic");
 	symbol.addEventListener('click', SetMapMode.bind(undefined, 'factions'));
-	controls.appendChild(symbol);
+	controls.appendChild(symbol);*/
 
 	var map = document.getElementById("map");
 	map.addEventListener("click", OnClick);
@@ -147,8 +166,8 @@ function InitUI()
 
 function UpdateUI()
 {
-	var sidebar = document.getElementById("sidebar-content");
-	sidebar.innerHTML = "";
+	var objinfo = document.getElementById("object-info");
+	objinfo.innerHTML = "";
 	if(Ui.ShowObject)
 	{
 		var obj = Ui.CurrentObject;
@@ -171,7 +190,7 @@ function UpdateUI()
 			title.innerHTML = obj.Name;
 		title.className = "title";
 		section.appendChild(title);
-		sidebar.appendChild(section);
+		objinfo.appendChild(section);
 
 		if(isCharacter)
 		{
@@ -189,12 +208,12 @@ function UpdateUI()
 			misc.className = "section misc";
 			misc.appendChild(CreateDoubleTag("Home", obj.Home));
 			misc.appendChild(CreateDoubleTag("Faction", obj.Faction));
-			sidebar.appendChild(misc);
+			objinfo.appendChild(misc);
 
 
 			var statsTable = HtmlTableFromArray([[CreateSymbol("Strength"), CreateSymbol("Tactic"), CreateSymbol("Charisma"), CreateSymbol("Intrigue"), CreateSymbol("Willpower")], obj.Stats]);
 			statsTable.className = "section stats";
-			sidebar.appendChild(statsTable);
+			objinfo.appendChild(statsTable);
 
 			var traits = document.createElement('div');
 			traits.className = "section traits";
@@ -203,7 +222,7 @@ function UpdateUI()
 				var trait = obj.Traits[i];
 				traits.appendChild(CreateTag(trait));
 			};
-			sidebar.appendChild(traits);
+			objinfo.appendChild(traits);
 
 			var relations = document.createElement('div');
 			relations.className = "section relations";
@@ -212,7 +231,7 @@ function UpdateUI()
 				var rel = obj.Relations[i];
 				relations.appendChild(CreateDoubleTag(rel[0], rel[1]));
 			};
-			sidebar.appendChild(relations);
+			objinfo.appendChild(relations);
 		}
 		else if(isCity)
 		{
@@ -227,7 +246,7 @@ function UpdateUI()
 				population.appendChild(div);
 			}
 			);
-			sidebar.appendChild(population);
+			objinfo.appendChild(population);
 		}
 
 	}
@@ -268,6 +287,6 @@ function UpdateUI()
 			if(!faction.ParentFaction)
 				ul.appendChild(CreateListFor(faction));
 		});
-		sidebar.appendChild(ul);
+		objinfo.appendChild(ul);
 	}
 }

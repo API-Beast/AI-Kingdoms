@@ -1,5 +1,7 @@
 <head>
+	<title>AI-Kingdoms</title>
 	<link rel="stylesheet" type="text/css" href="style.css"\>
+	<link rel="stylesheet" type="text/css" href="tabs.css"\>
 	<script src="functions.js"></script>
 	<script src="backend.js"></script>
 	<script src="ai-kingdoms.js"></script>
@@ -9,14 +11,19 @@
 	<script src="start.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="Ui/_styles.css" media="screen">
 </head>
 <body>
-	<div id="sidebar">
-		<div id="sidebar-content">
-		</div>
-		<div id="controls">
-		</div>
+	<div id="sidebar" class="tabbed">
+		<section id="about-game" class="active-tab">
+			<h2><a>About</a></h2>
+			<p>This is a Work-In-Progress. It is generating a world, but not simulating it yet.</p>
+			<p>Written in Javascript, CSS and HTML5.</p>
+			<div class="action"><a href="https://github.com/API-Beast/AI-Kingdoms">Fork me on GitHub</a></div>
+		</section>
+		<section id="object-info-tab">
+			<h2><a>Info</a></h2>
+			<div id="object-info"></div>
+		</section>
 	</div>
 	<div id="playfield">
 		<canvas id="map"></canvas>

@@ -1,0 +1,65 @@
+.tabbed
+{
+	position: relative;
+}
+
+.tabbed section
+{
+	position: absolute;
+	top: 20px;
+	z-index: 10;
+	background: url("Assets/ui.jpg");
+}
+
+.tabbed section h2
+{
+	position: absolute;
+	top: -22px;
+	left: 0px;
+	width: 100px;
+	height: 20px;
+	background: black;
+	margin: 0;
+	z-index: 10;
+	padding-left: 5px;
+	box-sizing: border-box;
+}
+
+.tabbed section h2 a
+{
+	font-size: 16px;
+	font-weight: normal;
+	text-decoration: none;
+	color: white;
+	text-align: center;
+	width: 90;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.tabbed section:nth-child(2) h2
+{
+  left: 100px;
+  z-index: 9;
+}
+
+.tabbed section:nth-child(3) h2
+{
+  left: 200px;
+  z-index: 8;
+}
+
+.tabbed section.active-tab
+{
+	z-index: 11;
+}
+
+.tabbed section.active-tab h2
+{
+	background: white;
+}
+
+.tabbed section.active-tab h2 a
+{
+	color: black;
+}
