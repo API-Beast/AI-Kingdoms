@@ -114,6 +114,11 @@ body
 	font-weight: bold;
 }
 
+a.objectLink
+{
+	cursor: pointer;
+}
+
 .objectLink.unimportant
 {
 	font-weight: normal;
@@ -122,6 +127,14 @@ body
 
 .objectLink.faction
 {
+	text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,
+	             #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
+}
+
+.objectLink.faction.dark
+{
+	text-shadow: #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px,
+	             #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px;
 }
 
 .symbol

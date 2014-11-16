@@ -91,6 +91,12 @@ function ClrInterpolate(p1, p2, factor)
 	return [Math.floor(p1[0] * (1.0-factor) + p2[0] * factor), Math.floor(p1[1] * (1.0-factor) + p2[1] * factor), Math.floor(p1[2] * (1.0-factor) + p2[2] * factor)];
 }
 
+function ColorIsDark(clr)
+{
+	var brightness = (0.2126*clr[0] + 0.7152*clr[1] + 0.0722*clr[2]);
+	return brightness < 80;
+}
+
 function AngleToVec2(angle)
 {
 	return {X: Math.sin(angle), Y: Math.cos(angle)};

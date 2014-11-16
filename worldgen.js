@@ -12,6 +12,7 @@ function GeneratePlace()
 		X   : RandInt(50, GameState.MapSizeX-50),
 		Y   : RandInt(50, GameState.MapSizeY-50),
 		Size: 10,
+		Type: "city",
 		Population: []
 	};
 }
@@ -92,13 +93,14 @@ function GeneratePoliticalLandscape()
 			Family      : family,
 			Color       : SecondaryColors.popRandom(),
 			Armies      : [],
-			Center      : city,
+			Capital      : city,
 			TownTexture : null,
 			Cities      : [],
 			SubFactions   : [],
 			ParentFaction : null
 		};
 		family.Faction = faction;
+		city.Type = "capital";
 		GameState.Factions.push(faction); 
 	}
 
@@ -107,7 +109,7 @@ function GeneratePoliticalLandscape()
 	{
 		var distances = GameState.Factions.map(function(faction)
 		{
-			return [faction, Distance(faction.Center, city)];
+			return [faction, Distance(faction.Capital, city)];
 		});
 		city.Faction = distances.sort(function(a, b){ return a[1]-b[1]; })[0][0];
 		city.Faction.Cities.push(city);
@@ -126,7 +128,7 @@ function GeneratePoliticalLandscape()
 	{
 		var distances = bigFactions.map(function(faction)
 		{
-			return [faction, Distance(faction.Center, smallFaction.Center)];
+			return [faction, Distance(faction.Capital, smallFaction.Capital)];
 		});
 		smallFaction.ParentFaction = distances.sort(function(a, b){ return a[1]-b[1]; })[0][0];
 		smallFaction.ParentFaction.SubFactions.push(smallFaction);

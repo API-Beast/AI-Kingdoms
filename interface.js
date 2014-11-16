@@ -13,12 +13,24 @@ function UpdateSize()
 	objinfo.style["height"] = window.innerHeight-30+"px";
 }
 
-function DisplayObject(obj)
+function DisplayObject(obj, noScroll)
 {
 	Ui.ShowObject = true;
 	Ui.CurrentObject = obj;
 	SetActiveTab(document.getElementById("object-info-tab"));
 	UpdateUI();
+	
+	if(!noScroll)
+	{
+		if(obj.hasOwnProperty("X"))
+		{
+			var w = playfield.clientWidth;
+			var h = playfield.clientHeight;
+			playfield.scrollLeft = obj.X - w/2;
+			playfield.scrollTop  = obj.Y - h/2;
+		}
+	}
+
 	history.pushState(Ui, null);
 }
 
@@ -48,7 +60,7 @@ function CreateLinkFor(obj)
 		element = document.createElement('a');
 		element.className = "objectLink";
 
-		var onClick = DisplayObject.bind(undefined, obj);
+		var onClick = DisplayObject.bind(undefined, obj, false);
 		element.addEventListener('click', onClick);
 	}
 	else
@@ -74,6 +86,8 @@ function CreateLinkFor(obj)
 	{
 		element.style.color = "rgb("+obj.Color[0]+", "+obj.Color[1]+", "+obj.Color[2]+")";
 		element.className += " faction"; 
+		if(ColorIsDark(obj.Color))
+			element.className += " dark"; 
 	}
 	
 	return element;
@@ -84,7 +98,7 @@ function CreateTag(obj)
 	var div = document.createElement('div');
 	div.className = 'tag';
 	if(typeof(obj) == 'object')
-		dic.appendChild(CreateLinkFor(obj));
+		div.appendChild(CreateLinkFor(obj));
 	else
 		div.innerHTML = obj;
 	return div;
@@ -127,9 +141,8 @@ function OnClick(click)
 	pos = Vec2Add(pos, Vec2Neg(mapPos));
 	pos = Vec2Add(pos, scrollPos);
 	var city = ProximityTestPointPoint(pos, GameState.Map.Cities, 50);
-	console.log(pos);
 	if(city)
-		DisplayObject(city);
+		DisplayObject(city, true);
 }
 
 function SetActiveTab(tab)
@@ -173,15 +186,23 @@ function UpdateUI()
 		var obj = Ui.CurrentObject;
 		var isCharacter = obj.hasOwnProperty("Gender");
 		var isCity = obj.hasOwnProperty("Population");
+		var isFaction = obj.hasOwnProperty("Cities");
 
 		var faction = null;
-		faction = obj.Faction;
-		while(Ui.MapMode == "realms" && faction.ParentFaction)
-			faction = faction.ParentFaction;
+		if(isFaction)
+		{
+			faction = obj;
+		}
+		else
+		{
+			faction = obj.Faction;
+			while(Ui.MapMode == "realms" && faction.ParentFaction)
+				faction = faction.ParentFaction;
+		}
 
-		var section = document.createElement('div');
-		section.className = "section ribbon";
-		section.style.backgroundColor = "rgb("+faction.Color[0]+", "+faction.Color[1]+", "+faction.Color[2]+")";
+		var ribbon = document.createElement('div');
+		ribbon.className = "section ribbon";
+		ribbon.style.backgroundColor = "rgb("+faction.Color[0]+", "+faction.Color[1]+", "+faction.Color[2]+")";
 
 		var title = document.createElement('div');
 		if(isCharacter)
@@ -189,8 +210,18 @@ function UpdateUI()
 		else
 			title.innerHTML = obj.Name;
 		title.className = "title";
-		section.appendChild(title);
-		objinfo.appendChild(section);
+		ribbon.appendChild(title);
+		objinfo.appendChild(ribbon);
+
+		var misc = document.createElement('div');
+		misc.className = "section misc";
+		if(obj.Home)          misc.appendChild(CreateDoubleTag("Home",          obj.Home));
+		if(obj.Faction)       misc.appendChild(CreateDoubleTag("Faction",       obj.Faction));
+		if(obj.ParentFaction) misc.appendChild(CreateDoubleTag("Controlled by", obj.ParentFaction));
+		if(obj.Capital)       misc.appendChild(CreateDoubleTag("Capital",       obj.Capital));
+		if(obj.Leader)        misc.appendChild(CreateDoubleTag("Leader",        obj.Leader));
+		if(obj.Governor)      misc.appendChild(CreateDoubleTag("Governor",      obj.Governor));
+		objinfo.appendChild(misc);
 
 		if(isCharacter)
 		{
@@ -202,14 +233,7 @@ function UpdateUI()
 				subtitle.appendChild(CreateSymbol("dead"));
 			subtitle.appendChild(CreateSymbol(obj.Gender));
 
-			section.appendChild(subtitle);
-
-			var misc = document.createElement('div');
-			misc.className = "section misc";
-			misc.appendChild(CreateDoubleTag("Home", obj.Home));
-			misc.appendChild(CreateDoubleTag("Faction", obj.Faction));
-			objinfo.appendChild(misc);
-
+			ribbon.appendChild(subtitle);
 
 			var statsTable = HtmlTableFromArray([[CreateSymbol("Strength"), CreateSymbol("Tactic"), CreateSymbol("Charisma"), CreateSymbol("Intrigue"), CreateSymbol("Willpower")], obj.Stats]);
 			statsTable.className = "section stats";
@@ -240,53 +264,37 @@ function UpdateUI()
 			obj.Population.map(
 			function(person){
 				if(!(person.Alive)) return;
-				var div = document.createElement('div');
-				div.className = 'tag';
-				div.appendChild(CreateLinkFor(person));
-				population.appendChild(div);
+				population.appendChild(CreateTag(person));
 			}
 			);
 			objinfo.appendChild(population);
+		}
+		else if(isFaction)
+		{
+			var subs = document.createElement('div');
+			subs.className = "section subs";
+			obj.SubFactions.map(function(faction){ subs.appendChild(CreateTag(faction)); });
+			objinfo.appendChild(subs);
+
+			var members = document.createElement('div');
+			members.className = "section members";
+			GameState.Characters.map(
+			function(person){
+				if(!(person.Alive)) return;
+				if(person.Faction != obj) return;
+				members.appendChild(CreateTag(person));
+			}
+			);
+			objinfo.appendChild(members);
 		}
 
 	}
 	else
 	{
-		var ul = document.createElement("ul");
-		var CreateListFor = function(fac)
-		{
-			var id = "listFaction" + fac.Name;
-			var container = document.createElement("li");
-			var label     = document.createElement("label");
-			label.innerHTML = fac.Name;
-			label.htmlFor   = id;
-			var input     = document.createElement("input");
-			input.type = "checkbox";
-			input.id   = id;
-			var list = document.createElement("ul");
-			GameState.Characters.map(function(person){
-				if(!person.Alive) return;
-				if(person.Faction == fac)
-				{
-					var item = document.createElement("li");
-					item.appendChild(CreateLinkFor(person));
-					list.appendChild(item);
-				}
-			});
-			fac.SubFactions.map(function(subfaction){
-				list.appendChild(CreateListFor(subfaction));
-			});
-			container.appendChild(label);
-			container.appendChild(input);
-			container.appendChild(list);
-			return container;
-		};
-
 		GameState.Factions.map(function(faction)
 		{
 			if(!faction.ParentFaction)
-				ul.appendChild(CreateListFor(faction));
+				objinfo.appendChild(CreateTag(faction));
 		});
-		objinfo.appendChild(ul);
 	}
 }

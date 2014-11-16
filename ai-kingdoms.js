@@ -129,7 +129,13 @@ function GameLoop()
 			if(true)
 			{
 				ctx.fillStyle   = 'rgb('+faction.Color[0]+', '+faction.Color[1]+', '+faction.Color[2]+')';
-				ctx.strokeStyle = "black";
+				if(ColorIsDark(faction.Color))
+				{
+					ctx.strokeStyle = "white";
+					ctx.shadowColor = "black";
+				}
+				else
+					ctx.strokeStyle = "black";
 				ctx.lineWidth   = 3;
 				ctx.strokeText(struct.Name, struct.X, struct.Y+20);
 
@@ -142,7 +148,16 @@ function GameLoop()
 			ctx.restore();
 		}
 	};
-	GameState.Map.Cities  .map(drawStructure.bind(undefined, {X: 98, Y: 0, W: 87, H: 53}));
+	GameState.Map.Cities.map
+	(
+		function(city)
+		{
+			if(city.Type == "city")
+				drawStructure({X: 45, Y: 0, W: 53, H: 53}, city);
+			else if(city.Type == "capital")
+				drawStructure({X: 98, Y: 0, W: 87, H: 53}, city);
+		}
+	);
 	GameState.Map.Villages.map(drawStructure.bind(undefined, {X:  0, Y: 0, W: 48, H: 53}));
 
 	var radius = Math.min(canvas.width, canvas.height)/2;
