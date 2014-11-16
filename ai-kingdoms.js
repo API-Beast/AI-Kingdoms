@@ -125,6 +125,19 @@ function GameLoop()
 			ctx.shadowBlur    = 2;
 			ctx.shadowColor   = "white";
 			ctx.shadowOffsetY = 1;
+
+			if(true)
+			{
+				ctx.fillStyle   = 'rgb('+faction.Color[0]+', '+faction.Color[1]+', '+faction.Color[2]+')';
+				ctx.strokeStyle = "black";
+				ctx.lineWidth   = 3;
+				ctx.strokeText(struct.Name, struct.X, struct.Y+20);
+
+				ctx.shadowBlur = null;
+				ctx.shadowOffsetY = null;
+				ctx.shadowColor = null;
+			}
+
 			ctx.fillText(struct.Name, struct.X, struct.Y+20);
 			ctx.restore();
 		}

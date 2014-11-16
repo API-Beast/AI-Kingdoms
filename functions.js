@@ -274,21 +274,30 @@ function HtmlTableFromArray(array)
 	return table;
 };
 
+var NeedsRecolorFallback = false;
 function RecolorImage(img, color)
 {
-	var buffer = document.createElement('canvas');
-	buffer.width  = img.width;
-	buffer.height = img.height;
-	var ctx = buffer.getContext('2d');
-	ctx.drawImage(img, 0, 0);
-	var pixels = ctx.getImageData(0, 0, buffer.width, buffer.height);
-  var d = pixels.data;
-  for(var i=0; i<d.length; i+=4)
-  {
-    d[i+0] = d[i+0] * (color[0] / 255.0);
-    d[i+1] = d[i+1] * (color[1] / 255.0);
-    d[i+2] = d[i+2] * (color[2] / 255.0);
+	try
+	{
+		var buffer = document.createElement('canvas');
+		buffer.width  = img.width;
+		buffer.height = img.height;
+		var ctx = buffer.getContext('2d');
+		ctx.drawImage(img, 0, 0);
+		var pixels = ctx.getImageData(0, 0, buffer.width, buffer.height);
+	  var d = pixels.data;
+	  for(var i=0; i<d.length; i+=4)
+	  {
+	    d[i+0] = d[i+0] * (color[0] / 255.0);
+	    d[i+1] = d[i+1] * (color[1] / 255.0);
+	    d[i+2] = d[i+2] * (color[2] / 255.0);
+	  }
+	  ctx.putImageData(pixels, 0, 0);
   }
-  ctx.putImageData(pixels, 0, 0);
+  catch(e)
+  {
+  	NeedsRecolorFallback = true;
+  	return img;
+  }
 	return buffer;
 }
