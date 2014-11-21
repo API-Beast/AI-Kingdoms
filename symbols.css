@@ -1,0 +1,113 @@
+.symbol
+{
+	display: inline-block;
+}
+
+a .symbol, span .symbol
+{
+	margin-top: 2px;
+	margin-left: 5px;
+}
+
+.symbol+.symbol
+{
+	margin-left: 0px;
+}
+
+.symbol.female
+{
+  background: url("Assets/symbols.png") 0px 0px;
+  width: 16px;
+  height: 16px;
+}
+
+.symbol.male
+{
+  background: url("Assets/symbols.png") -16px 0px;
+  width: 16px;
+  height: 16px;
+}
+
+.symbol.city
+{
+  background: url("Assets/symbols.png") -32px 0px;
+  width: 16px;
+  height: 16px;
+}
+
+.symbol.dead
+{
+  background: url("Assets/symbols.png") -48px 0px;
+  width: 16px;
+  height: 16px;
+}
+
+.symbol.Soldier
+{
+	background: url("Assets/symbols.png") 0px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.Commander
+{
+	background: url("Assets/symbols.png") -16px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.General
+{
+	background: url("Assets/symbols.png") -32px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.MinorLeader
+{
+	background: url("Assets/symbols.png") -64px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.MajorLeader
+{
+	background: url("Assets/symbols.png") -80px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.Strength
+{
+	background: url("Assets/stats.png") 0px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Tactic
+{
+	background: url("Assets/stats.png") -32px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Charisma
+{
+	background: url("Assets/stats.png") -64px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Intrigue
+{
+	background: url("Assets/stats.png") -96px 0px;
+	width: 32px;
+	height: 32px;
+}
+
+.symbol.Willpower
+{
+	background: url("Assets/stats.png") -128px 0px;
+	width: 32px;
+	height: 32px;
+}
