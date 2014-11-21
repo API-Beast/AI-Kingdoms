@@ -1,3 +1,5 @@
+"use strict";
+
 var GameState =
 	{ 
 		MapSizeX: 2000, MapSizeY: 1500,
@@ -7,26 +9,12 @@ var GameState =
 		Factions: [],
 	  Families: [],
 	};
-var Sprites = {Mountain:[], Forest:[]};
 
 function GameInit()
 {
 	LoadImage("Assets/background.jpg", "BG");
 	LoadImage("Assets/playerStructures.png", "Cities");
 	LoadImage("Assets/mapElements.png", "Terrain");
-
-	Sprites.Mountain.push({X: 158, Y: 166, W: 200, H: 140, Type: "Mountain"});
-	//Sprites.Mountain.push({X:  31, Y: 306, W: 200, H: 170, Type: "Mountain"});
-	Sprites.Mountain.push({X:  27, Y: 313, W: 200, H: 165, Type: "Mountain"});
-	Sprites.Mountain.push({X: 414, Y: 290, W: 125, H: 193, Type: "Mountain"});
-	Sprites.Mountain.push({X: 230, Y: 310, W: 183, H: 155, Type: "Mountain"});
-	Sprites.Mountain.push({X:  41, Y: 502, W: 170, H: 160, Type: "Mountain"});
-	Sprites.Mountain.push({X: 282, Y: 683, W: 290, H:  85, Type: "Mountain"});
-
-	Sprites.Forest.push({X: 579, Y: 631, W: 100, H: 100, Type: "Forest"});
-	Sprites.Forest.push({X: 682, Y: 631, W: 100, H: 100, Type: "Forest"});
-	Sprites.Forest.push({X: 784, Y: 631, W: 100, H: 100, Type: "Forest"});
-	Sprites.Forest.push({X: 883, Y: 631, W: 100, H: 100, Type: "Forest"});
 }
 
 function GameStart()
@@ -40,16 +28,19 @@ function GameStart()
 
   GenerateWorld();
 
-	var gen1 = GenerateBaseGeneration(150);
+	var gen1 = GenerateBaseGeneration(20);
+	GameState.Characters = gen1;
+	GeneratePoliticalLandscape();
+	AssignHome();
+
 	var gen2 = GenerateOffspring(gen1);
 	var gen3 = GenerateOffspring(gen2);
 	var gen4 = GenerateOffspring(gen3);
 	var allChars = GameState.Characters.concat(gen1, gen2, gen3, gen4);
-	GameState.Characters          = allChars.filter(function(person){ return  person.hasOwnProperty("Traits"); });
-	GameState.SecondaryCharacters = allChars.filter(function(person){ return !person.hasOwnProperty("Traits"); });
+	GameState.Characters = allChars;
+	/*GameState.Characters          = allChars.filter(function(person){ return  person.hasOwnProperty("Traits"); });
+	GameState.SecondaryCharacters = allChars.filter(function(person){ return !person.hasOwnProperty("Traits"); });*/
 
-	GeneratePoliticalLandscape();
-	AssignHome();
 	AssignFaction();
 
 	InitUI();
@@ -57,6 +48,7 @@ function GameStart()
 	history.pushState(null, null);
 
 	GameRedraw();
+	setInterval(GameRedraw, 5000);
 }
 
 function GameRedraw()

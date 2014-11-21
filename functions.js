@@ -1,3 +1,5 @@
+"use strict";
+
 function RandInt(min, max)
 {
   return Math.floor(Math.random() * ((max+1) - min)) + min;
@@ -233,7 +235,18 @@ Array.prototype.randomElement = function()
 
 Array.prototype.popRandom = function()
 {
-	return this.splice(Math.floor(Math.random() * this.length), 1)[0];
+	var index = Math.floor(Math.random() * this.length);
+	var element = this[index];
+	this[index] = this[this.length-1];
+	this.pop();
+	return element;
+};
+
+Array.prototype.removeElement = function(ele)
+{
+	var index = this.indexOf(ele);
+	this[index] = this[this.length-1];
+	this.pop();
 };
 
 Array.prototype.removeDuplicates = function()

@@ -1,3 +1,5 @@
+"use strict";
+
 document.onreadystatechange = function ()
 {
   var state = document.readyState

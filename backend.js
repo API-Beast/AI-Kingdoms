@@ -1,5 +1,8 @@
-ImagesToLoad = 0;
-Assets = {};
+"use strict";
+
+var ImagesToLoad = 0;
+var Assets = {};
+
 function LoadImage(src, key)
 {
 	ImagesToLoad += 1;

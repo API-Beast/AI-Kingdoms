@@ -1,3 +1,5 @@
+"use strict";
+
 var Ui = {
 	ShowObject      : false,
 	CurrentObject   : null,
@@ -31,7 +33,13 @@ function DisplayObject(obj, noScroll)
 		}
 	}
 
-	history.pushState(Ui, null);
+	try
+	{
+		history.pushState(Ui, null);
+	}
+	catch(e)
+	{
+	}
 }
 
 function SetMapMode(mode)
@@ -74,7 +82,7 @@ function CreateLinkFor(obj)
 	else
 		element.innerHTML = obj.Name;
 
-	if(isCharacter && !obj.Alive)
+	if(isCharacter && !obj.IsAlive)
 		element.appendChild(CreateSymbol("dead"));
 	element.appendChild(CreateSymbol(obj.Gender));
 	if(obj.Rank)
@@ -226,10 +234,10 @@ function UpdateUI()
 		if(isCharacter)
 		{
 			var subtitle = document.createElement('span');
-			subtitle.innerHTML = obj.Rank+', '+obj.Age;
+			subtitle.innerHTML = obj.Rank.Name+', '+obj.Age;
 			subtitle.className = "subtitle";
 
-			if(!obj.Alive)
+			if(!obj.IsAlive)
 				subtitle.appendChild(CreateSymbol("dead"));
 			subtitle.appendChild(CreateSymbol(obj.Gender));
 
@@ -263,7 +271,7 @@ function UpdateUI()
 			population.className = "section population";
 			obj.Population.map(
 			function(person){
-				if(!(person.Alive)) return;
+				if(!(person.IsAlive)) return;
 				population.appendChild(CreateTag(person));
 			}
 			);
@@ -276,11 +284,20 @@ function UpdateUI()
 			obj.SubFactions.map(function(faction){ subs.appendChild(CreateTag(faction)); });
 			objinfo.appendChild(subs);
 
+			var cities = document.createElement('div');
+			cities.className = "section cities";
+			obj.Cities.map(
+			function(city){
+				cities.appendChild(CreateTag(city));
+			}
+			);
+			objinfo.appendChild(cities);
+
 			var members = document.createElement('div');
 			members.className = "section members";
 			GameState.Characters.map(
 			function(person){
-				if(!(person.Alive)) return;
+				if(!(person.IsAlive)) return;
 				if(person.Faction != obj) return;
 				members.appendChild(CreateTag(person));
 			}
