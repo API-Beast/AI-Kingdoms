@@ -77,6 +77,34 @@ a .symbol, span .symbol
 	height: 16px;
 }
 
+.symbol.level-1
+{
+	background: url("Assets/symbols.png") -0px -32px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.level-2
+{
+	background: url("Assets/symbols.png") -16px -32px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.level-3
+{
+	background: url("Assets/symbols.png") -32px -32px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.level-4
+{
+	background: url("Assets/symbols.png") -48px -32px;
+	width: 16px;
+	height: 16px;
+}
+
 .symbol.Strength
 {
 	background: url("Assets/stats.png") 0px 0px;

@@ -63,7 +63,7 @@ function CreateLinkFor(obj)
 	var isCity = obj.hasOwnProperty("Population");
 	var isFaction = obj.hasOwnProperty("Cities");
 	// Character
-	if((isCharacter && obj.hasOwnProperty("Traits")) || !isCharacter)
+	if((isCharacter && obj.isRelevant()) || !isCharacter)
 	{
 		element = document.createElement('a');
 		element.className = "objectLink";
@@ -86,7 +86,7 @@ function CreateLinkFor(obj)
 		element.appendChild(CreateSymbol("dead"));
 	element.appendChild(CreateSymbol(obj.Gender));
 	if(obj.Rank)
-		element.appendChild(CreateSymbol(obj.Rank));
+		element.appendChild(CreateSymbol(obj.Rank.Name));
 	if(isCity)
 		element.appendChild(CreateSymbol("city"));
 
@@ -106,7 +106,15 @@ function CreateTag(obj)
 	var div = document.createElement('div');
 	div.className = 'tag';
 	if(typeof(obj) == 'object')
-		div.appendChild(CreateLinkFor(obj));
+	{
+		if(obj instanceof City || obj instanceof Faction || obj instanceof Character)
+			div.appendChild(CreateLinkFor(obj));
+		else
+		{
+			div.innerHTML = obj.Name;
+			div.appendChild(CreateSymbol("level-"+Math.floor(obj.Level)));
+		}
+	}
 	else
 		div.innerHTML = obj;
 	return div;
@@ -255,6 +263,15 @@ function UpdateUI()
 				traits.appendChild(CreateTag(trait));
 			};
 			objinfo.appendChild(traits);
+
+			var skills = document.createElement('div');
+			skills.className = "section skills";
+			for(var i = 0; i < obj.Skills.length; i++)
+			{
+				var skill = obj.Skills[i];
+				skills.appendChild(CreateTag(skill));
+			};
+			objinfo.appendChild(skills);
 
 			var relations = document.createElement('div');
 			relations.className = "section relations";
