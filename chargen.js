@@ -42,8 +42,8 @@ function GenerateBaseGeneration(numPeople)
 		person.Relations.push(["Father", father]);
 		person.Relations.push(["Mother", mother]);
 
-		result.push(father);
-		result.push(mother);
+		//result.push(father);
+		//result.push(mother);
 		result.push(person);
 	};
 	return result;
@@ -56,11 +56,171 @@ function GiveBaseAttributes(person)
 	person.Affinity[person.MainStat] += RandInt(1, 2);
 
 	person.Stats = person.Affinity;
+	person.Development = 0;
 }
 
-function AgeCharacter(person, years)
+function DevelopCharacter(person, minState, maxState)
 {
-	GiveBaseAttributes(person);
+	var talented = person.hasTrait("Talented");
+	var distributeSkills = function(skills)
+	{
+		var i = 1;
+		if(talented)
+			i = RandInt(1, Math.min(skills.length-1, 3));
+		while(i)
+		{
+			var skill = skills.popRandom();
+			var maxLevel = 1;
+			if(typeof(skill) === "object")
+			{
+				maxLevel = skill[1];
+				skill = skill[0];
+			}
+			if(person.trainSkill(skill, 1, maxLevel))
+				i -= 1;
+		}
+	};
+	if(person.Development <  minState) return;
+	if(person.Development >= maxState) return;
+	switch(person.Development)
+	{
+		case 0: // Child
+			GiveBaseAttributes(person);
+			var choice = person.makeChoice("Development", ["Play", "Study"]);
+			switch(choice)
+			{
+				case "Play":
+					person.Stats[STRENGTH] += 1;
+					person.Stats[CHARISMA] += 1;
+					break;
+				case "Study":
+					person.Stats[TACTIC]    += 1;
+					person.Stats[WILLPOWER] += 1;
+					break;
+			}
+			if(Math.random() < 0.1)
+			{
+				person.Traits.push("Talented");
+				talented = true;
+			}
+			person.Development = 1;
+			if(person.Development >= maxState) break;
+		case 1: // Teenager
+			if(person.Age < 12) break;
+			var choice = person.makeChoice("Development", ["Sparring", "Socialize", "Study Tactics", "Study Politics", "Help with Work"]);
+			switch(choice)
+			{
+				case "Sparring":
+					person.Stats[STRENGTH]  += 2;
+					person.Stats[CHARISMA]  -= 1;
+					person.Stats[WILLPOWER] += 1;
+					distributeSkills(["Sword-Combat", "Spear-Combat", "Archery"]);
+					if(Math.random() < 0.25)
+						person.giveTrait("Bold");
+					if(Math.random() < 0.10)
+						person.giveTrait("Cruel");
+					if(Math.random() < 0.25 && person.Stats[WILLPOWER] > 3)
+						person.giveTrait("Fierce");
+					break;
+				case "Socialize":
+					person.Stats[STRENGTH] -= 1;
+					person.Stats[CHARISMA] += 2;
+					person.Stats[RandInt(0, 4)] += 1;
+					distributeSkills(["Educated", "Street Smarts"]);
+					if(Math.random() < 0.25)
+						person.giveTrait("Affectionate");
+					break;
+				case "Study Tactics":
+					person.Stats[TACTIC]    += 1;
+					person.Stats[WILLPOWER] += 1;
+					distributeSkills(["Assault Tactics", "Siege Tactics", "Terrain Knowledge"]);
+					if(Math.random() < 0.25)
+						person.giveTrait("Cold Hearted");
+					break;
+				case "Study Politics":
+					person.Stats[INTRIGUE]  += 2;
+					person.Stats[CHARISMA]  += 1;
+					person.Stats[WILLPOWER] -= 1;
+					distributeSkills(["Educated", "Negotiation", "Public Speaking"]);
+					if(Math.random() < 0.15)
+						person.giveTrait("Cowardice");
+					if(Math.random() < 0.15)
+						person.giveTrait("Manipulative");
+					break;
+				case "Help with Work":
+					person.Stats[STRENGTH]      += 1;
+					person.Stats[RandInt(0, 4)] += 1;
+					person.Stats[RandInt(0, 4)] += 1;
+					distributeSkills(["Practical", "Diligent", "Construction", "Negotiation"]);
+					if(Math.random() < 0.15)
+						person.giveTrait("Humble");
+					break;
+			}
+			person.Development = 2;
+			if(person.Development >= maxState) break;
+		case 2: // Young adult
+			if(person.Age < 16) break;
+			var choices =  ["Study"];
+			if(person.Rank.Name == "Commoner")
+				choices.push("Enlist");
+			var choice = person.makeChoice("Development", choices);
+			switch(choice)
+			{
+				case "Enlist":
+					person.Rank = { Name: "Soldier", Faction: person.Home.getFaction(), Score: -1 };
+					person.Stats[STRENGTH] += 1;
+					person.Stats[TACTIC]   += 1;
+					distributeSkills([["Sword-Combat", 2], ["Spear-Combat", 2], ["Archery", 2]]);
+					break;
+				case "Study":
+					person.Stats[TACTIC]   += 1;
+					person.Stats[INTRIGUE] += 1;
+					person.Stats[CHARISMA] += 1;
+					distributeSkills([["Terrain Knowledge", 2], ["Educated", 2]]);
+					break;
+			}
+			person.Development = 3;
+			if(person.Development >= maxState) break;
+		case 3: // Adult
+			if(person.Age < 24) break;
+			// No choice here
+			switch(person.Rank)
+			{
+				case "General":
+				case "Commander":
+				case "Soldier":
+
+					break;
+				case "Leader":
+				case "Chancellor":
+				case "Advisor":
+
+					break;
+				case "Politican":
+				case "Trader":
+					break;
+				default:
+				case "Commoner":
+					// Nothing at all
+					break; 
+			}
+			person.Development = 4;
+			if(person.Development >= maxState) break;
+		case 4: // Middle aged
+			if(person.Age < 36) break;
+			// No choice here either
+			switch(person.Rank)
+			{
+				
+			}
+			person.Development = 5;
+			if(person.Development >= maxState) break;
+		case 5: // Old man
+			if(person.Age < 50) break;
+			// TODO
+			person.Development = 6;
+			if(person.Development >= maxState) break;
+	}
 }
 
 function FindPartner(person, people, list)
@@ -99,7 +259,7 @@ function GenerateOffspring(generation)
 		if(parent.hasRelation("Spouse")) continue;
 
 		var amountChildren = RandInt(0, 2);
-		var partners = [FindPartner(parent, generation, result)];
+		var partners = [FindPartner(parent, generation)];
 
 		partners.forEach(function(spouse, index)
 		{
@@ -141,7 +301,7 @@ function GenerateOffspring(generation)
 			else
 				child.setHome(parent.Home);
 
-			AgeCharacter(child, child.Age);
+			//DevelopCharacter(child, 0, 5);
 			result.push(child);
 
 			if(Math.random() < 0.8)

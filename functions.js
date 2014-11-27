@@ -320,3 +320,13 @@ function RecolorImage(img, color)
   }
 	return buffer;
 }
+
+function TypeCheck(args, types)
+{
+	for(var i = 0; i < types.length; i++)
+	{
+		if(types[i] != "any")
+		if(typeof(args[i]) != types[i])
+			throw new TypeError("Argument "+i+": Got "+typeof(args[i])+" but expected "+types[i]);
+	}
+}

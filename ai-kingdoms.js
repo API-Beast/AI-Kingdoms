@@ -28,7 +28,7 @@ function GameStart()
 
   GenerateWorld();
 
-	var gen1 = GenerateBaseGeneration(20);
+	var gen1 = GenerateBaseGeneration(200);
 	GameState.Characters = gen1;
 	GeneratePoliticalLandscape();
 	AssignHome();
@@ -38,6 +38,10 @@ function GameStart()
 	var gen4 = GenerateOffspring(gen3);
 	var allChars = GameState.Characters.concat(gen1, gen2, gen3, gen4);
 	GameState.Characters = allChars;
+	allChars.forEach(function(person, index)
+	{
+		DevelopCharacter(person);
+	});
 	/*GameState.Characters          = allChars.filter(function(person){ return  person.hasOwnProperty("Traits"); });
 	GameState.SecondaryCharacters = allChars.filter(function(person){ return !person.hasOwnProperty("Traits"); });*/
 

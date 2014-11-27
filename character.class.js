@@ -9,15 +9,17 @@ var Character = function()
 	this.FatherFamily = null;
 	this.MotherFamily = null;
 	this.Age          = 0;
+	this.Development  = 0;
 	this.Health       = RandBellCurve(40, 80);
 	this.IsAlive      = true;
 	this.Stats        = [0, 0, 0, 0, 0];
-	this.Traits       = []; // {Name: "", Level: 0}
-	this.IsComplete   = false;
+	this.Skills       = []; // {Name: "", Level: 0}
+	this.Traits       = [];
 	this.Score        = -1;
+	this.Scores       = { Rank: -1, Prestige: 0, Heritage: 0, Relations: 0};
 	this.Feats        = []; // {Description: "", Score: 0}
 
-	this.Rank         = { Name: "Commoner", Faction: null, Score: 0 };
+	this.Rank         = { Name: "Commoner", Faction: null, Score: -1 };
 	this.MinorRanks   = []; // {Name: "", Faction: null, Score: 0}
 
 	this.Relations      = []; // {Type: "", Subject: null}
@@ -28,6 +30,7 @@ var Character = function()
 
 Character.CreateToken = function(familyA, familyB, age, gender)
 {
+	TypeCheck(arguments, ["object", "object", "number", "string"]);
 	var person = new Character();
 	if(gender === "male")
 		person.Name = RandomMaleName();
@@ -45,36 +48,45 @@ Character.CreateToken = function(familyA, familyB, age, gender)
 
 Character.prototype.isRelevant = function()
 {
-	return this.isComplete && this.Score > -1;
+	return this.Development != 0;
 };
 
 Character.prototype.calculateScore = function()
 {
-	this.Score  = -1; // A score less than 0 means "completly irrelevant"
-	this.Score += this.Rank.Score;
+	 // A score less than 0 means "completly irrelevant"
+	this.Scores.Rank = this.Rank.Score;
+
+	this.Scores.Prestige = 0;
 	this.Feats.forEach(function(feat, index)
 	{
-		this.score += feat.Score;
+		this.Scores.Prestige += feat.Score;
 	});
-	if(!this.IsAlive)
+
+	// Add scores from minor ranks
+	this.MinorRanks.forEach(function(rank, index)
 	{
-		; // A dead man is only recognized for his primary rank and his feats, but not for his relations.
-	}
-	else
+		this.Score.Prestige += rank.Score;
+	});
+	// Being related to influential people raises the score somewhat
+	this.Relations.forEach(function(relation, index)
 	{
-		// Add scores from minor ranks
-		this.MinorRanks.forEach(function(rank, index)
+		if(["Father", "Brother", "Mother", "Sister"].contains(relation.Type))
 		{
-			this.Score += rank.Score;
-		});
-		// Being related to influential people raises the score somewhat
-		this.Relations.forEach(function(relation, index)
-		{
-			if(["Father", "Brother", "Mother", "Sister"].contains(relation.Type))
-				this.Score += Math.floor(relation.Subject.Score / 4);
-			else
-				this.Score += Math.floor(relation.Subject.Score / 8);
-		});
+			this.Scores.Heritage += Math.floor(relation.Subject.Score / 4);
+			if(relation.Subject.Rank.Name === "Leader" && relation.Subject.Faction === this.Home.Faction)
+				this.Scores.Heritage += 6;
+		}
+		else
+			this.Scores.Relations += Math.floor(relation.Subject.Score / 8); // Round down to avoid feedback loop
+	});
+
+	this.Score = 0;
+	this.Score += this.Scores.Rank;
+	this.Score += this.Scores.Prestige;
+	if(this.IsAlive) // Don't add Heritage and Relation scores to dead characters to avoid score inflation.
+	{
+		this.Score += this.Scores.Heritage;
+		this.Score += this.Scores.Relations;
 	}
 };
 
@@ -97,7 +109,7 @@ Character.prototype.getRelations = function(type)
 	var findPersonAndAppend = function(element)
 	{
 		if(element.Type === type)
-			result.push(element.subject);
+			result.push(element.Subject);
 	};
 	this.     Relations.forEach(findPersonAndAppend);
 	this.MinorRelations.forEach(findPersonAndAppend);
@@ -120,6 +132,7 @@ Character.prototype.hasRelation = function(type)
 
 Character.prototype.addRelation = function(type, subject)
 {
+	TypeCheck(arguments, ["string", "object"]);
 	var relationList = this.Relations;
 	if(["Respects", "Hates"].contains(type))
 		relationList = this.MinorRelations;
@@ -143,18 +156,69 @@ Character.prototype.addRelation = function(type, subject)
 
 Character.prototype.hasTrait = function(name)
 {
-	for(var i = 0; i < this.Traits.length; i++)
+	return this.Traits.contains(name);
+};
+
+Character.prototype.giveTrait = function(name)
+{
+	if(!this.hasTrait(name))
+		this.Traits.push(name);
+}
+
+Character.prototype.getSkill = function(name)
+{
+	for(var i = 0; i < this.Skills.length; i++)
 	{
-		if(this.Traits[i].Name === name)
-			return this.Traits[i].Level || 1;
+		if(this.Skills[i].Name === name)
+			return this.Skills[i];
 	}
-	return false;
+	return null;
+}
+
+Character.prototype.giveSkill = function(name, level)
+{
+	TypeCheck(arguments, ["string", "number"]);
+	for(var i = 0; i < this.Skills.length; i++)
+	{
+		var skill = this.Skills[i];
+		if(skill.Name === name)
+		{
+			skill.Level = Math.max(level, skill.Level);
+			return skill;
+		}
+	}
+	var skill = {Name: name, Level: level};
+	this.Skills.push(skill);
+	return skill;
+}
+
+Character.prototype.trainSkill = function(name, amount, maxLevel)
+{
+	TypeCheck(arguments, ["string", "number", "number"]);
+	for(var i = 0; i < this.Skills.length; i++)
+	{
+		var skill = this.Skills[i];
+		if(skill.Name === name)
+		{
+			skill.Level = Math.min(skill.Level+amount, Math.max(maxLevel, skill.Level));
+			return skill;
+		}
+	}
+	var skill = {Name: name, Level: amount};
+	this.Skills.push(skill);
+	return skill;
 }
 
 Character.prototype.setHome = function(newHome)
 {
+	TypeCheck(arguments, ["object"]);
 	if(this.Home)
 		this.Home.Population.removeElement(this);
 	this.Home = newHome;
 	newHome.Population.push(this);
+}
+
+Character.prototype.makeChoice = function(area, choices)
+{
+	return choices.randomElement();
 }
