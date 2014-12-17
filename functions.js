@@ -271,6 +271,19 @@ Array.prototype.min = function( array ){
     return Math.min.apply( Math, array );
 };
 
+Array.prototype.mapMetadata = function(f, property)
+{
+	this.forEach(function(o){ o[property] = f.apply(this, [o].concat(arguments)); });
+	return this;
+};
+
+Array.prototype.reduceTo = function(items, check)
+{
+	var that = this.filter(check);
+	that.length = Math.min(that.length, items);
+	return that;
+};
+
 function HtmlTableFromArray(array)
 {
 	var table = document.createElement('table');

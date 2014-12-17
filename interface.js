@@ -312,10 +312,10 @@ function UpdateUI()
 
 			var members = document.createElement('div');
 			members.className = "section members";
-			GameState.Characters.map(
+			GameState.Characters.forEach(
 			function(person){
 				if(!(person.IsAlive)) return;
-				if(person.Faction != obj) return;
+				if(person.Rank.Faction != obj) return;
 				members.appendChild(CreateTag(person));
 			}
 			);

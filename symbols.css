@@ -70,12 +70,27 @@ a .symbol, span .symbol
 	height: 16px;
 }
 
-.symbol.MajorLeader
+.symbol.Leader
 {
 	background: url("Assets/symbols.png") -80px -16px;
 	width: 16px;
 	height: 16px;
 }
+
+.symbol.Governor, .symbol.Advisor
+{
+	background: url("Assets/symbols.png") -96px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.Chancellor
+{
+	background: url("Assets/symbols.png") -112px -16px;
+	width: 16px;
+	height: 16px;
+}
+
 
 .symbol.level-1
 {

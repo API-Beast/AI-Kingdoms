@@ -19,7 +19,7 @@ var Character = function()
 	this.Scores       = { Rank: -1, Prestige: 0, Heritage: 0, Relations: 0};
 	this.Feats        = []; // {Description: "", Score: 0}
 
-	this.Rank         = { Name: "Commoner", Faction: null, Score: -1 };
+	this.Rank         = new Rank("Commoner", null);
 	this.MinorRanks   = []; // {Name: "", Faction: null, Score: 0}
 
 	this.Relations      = []; // {Type: "", Subject: null}
@@ -221,4 +221,21 @@ Character.prototype.setHome = function(newHome)
 Character.prototype.makeChoice = function(area, choices)
 {
 	return choices.randomElement();
+}
+
+Character.prototype.isPartOfFaction = function(of)
+{
+	if(this.Home)
+	{
+		var faction = this.Home.Faction;
+		while(true)
+		{
+			if(faction == of)
+				return true;
+			if(!faction.ParentFaction)
+				return false;
+			faction = faction.ParentFaction;
+		}
+	}
+	return false;
 }

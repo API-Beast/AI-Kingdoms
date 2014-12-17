@@ -127,6 +127,28 @@ function GeneratePoliticalLandscape()
 	});
 }
 
+function DistributeRanks()
+{
+	GameState.Factions.forEach(
+	function(faction)
+	{
+		faction.Ranks.forEach(
+		function(rank)
+		{
+			//rank.cleanUp();
+			var i = rank.Openings - rank.Assigned.length;
+			if(i < 1)
+				return;
+			var population = GameState.Characters;
+			population = population.filter(rank.canApply.bind(rank));
+			population = population.mapMetadata(rank.calcScore.bind(rank), "_rscore");
+			population = population.sort(function(a, b){ return a._rscore - b._rscore; });
+			population.length = i;
+			rank.assignTo(population);
+		})
+	});
+}
+
 function AssignHome()
 {
 	for(var i = 0; i < GameState.Characters.length; i++)

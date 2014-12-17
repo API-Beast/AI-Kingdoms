@@ -28,22 +28,29 @@ function GameStart()
 
   GenerateWorld();
 
+  var genGeneration = function(oldGen)
+  {
+  	var newGen = GenerateOffspring(oldGen);
+  	GameState.Characters = GameState.Characters.concat(newGen);
+	  newGen.forEach(function(person, index)
+		{
+			DevelopCharacter(person, 0, 3);
+		});
+  	DistributeRanks();
+ 	  newGen.forEach(function(person, index)
+		{
+			DevelopCharacter(person);
+		});
+  	return newGen;
+  };
+
 	var gen1 = GenerateBaseGeneration(200);
 	GameState.Characters = gen1;
 	GeneratePoliticalLandscape();
 	AssignHome();
-
-	var gen2 = GenerateOffspring(gen1);
-	var gen3 = GenerateOffspring(gen2);
-	var gen4 = GenerateOffspring(gen3);
-	var allChars = GameState.Characters.concat(gen1, gen2, gen3, gen4);
-	GameState.Characters = allChars;
-	allChars.forEach(function(person, index)
-	{
-		DevelopCharacter(person);
-	});
-	/*GameState.Characters          = allChars.filter(function(person){ return  person.hasOwnProperty("Traits"); });
-	GameState.SecondaryCharacters = allChars.filter(function(person){ return !person.hasOwnProperty("Traits"); });*/
+  var gen2 = genGeneration(gen1);
+  var gen3 = genGeneration(gen2);
+  var gen4 = genGeneration(gen3);
 
 	AssignFaction();
 
