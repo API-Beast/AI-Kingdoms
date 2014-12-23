@@ -103,7 +103,7 @@ function DevelopCharacter(person, minState, maxState)
 		switch(person.Rank.Name)
 		{
 			case "General":
-				distributeSkillsByTag(["Fighter", "Tactican"], 4);
+				distributeSkillsByTag(["Fighter", "Tactican", "Personality"], 4);
 				person.Stats[STRENGTH] += RandInt(0, 2);
 				person.Stats[TACTIC]   += RandInt(0, 2);
 				break;
@@ -118,12 +118,12 @@ function DevelopCharacter(person, minState, maxState)
 				person.Stats[TACTIC]   += RandInt(0, 2);
 				break;
 			case "Leader":
-				distributeSkillsByTag("Politican", 4);
+				distributeSkillsByTag(["Politican", "Personality"], 4);
 				person.Stats[INTRIGUE] += RandInt(0, 2);
 				person.Stats[CHARISMA] += RandInt(0, 2);
 				break;
 			case "Chancellor":
-				distributeSkillsByTag("Politican", 4);
+				distributeSkillsByTag(["Politican", "Personality"], 4);
 				person.Stats[INTRIGUE] += RandInt(0, 2);
 				person.Stats[CHARISMA] += RandInt(0, 2);
 				break;

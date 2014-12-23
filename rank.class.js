@@ -49,6 +49,15 @@ Rank.prototype.calcScore = function(person)
 		if(person.Scores.hasOwnProperty(key) && this.Scoring.hasOwnProperty(key))
 			score += person.Scores[key] * this.Scoring[key];
 	}
+	if(this.SkillModifier)
+	{
+		this.SkillModifier.forEach(function(e)
+		{
+			var s = person.getSkill(e[0]);
+			if(s)
+				score += s.Level * e[1];
+		});
+	}
 	return score;
 };
 
