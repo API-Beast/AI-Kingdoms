@@ -58,6 +58,14 @@ Rank.prototype.calcScore = function(person)
 				score += s.Level * e[1];
 		});
 	}
+	if(this.TraitModifier)
+	{
+		this.TraitModifier.forEach(function(e)
+		{
+			if(person.hasTrait(e[0]))
+				score += e[1];
+		});
+	}
 	return score;
 };
 
