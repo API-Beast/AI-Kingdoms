@@ -1,4 +1,4 @@
-All abillities have 4 Levels, 4 is “Legendary”, 1 is “Basic”
+All abillities have 4 Levels, 4 is “Legendary”, 1 is “Basic”. Level 2 is twice as strong as Level 1, Level 3 twice as strong as Level 2, etc.
 
 Tactican
 ========
@@ -49,15 +49,16 @@ Politican
 	- Requires 6 Intrigue.
 - **Foreign Customs**: Improved chances during encounters with foreign characters.
 	- Requires 6 Charisma and Scholar 1.
-- **Seductive**: Character can seduce characters of the opposite gender. Cost depends on level.
+- **Seduction**: Character can seduce characters of the opposite gender. Cost depends on level.
   - Requires 6 Charisma.
 
 Personality
 ===========
-- **Inspiration**: Chance of special events that raise the moral of allied troops or local population.
-- **Intimidation**: Chance of special events that lower the moral of opposing troops or local population.
+- **Inspiration**: Chance of special events that raise the moral of allied troops or local population. +X Charisma.
+- **Intimidation**: Chance of special events that lower the moral of opposing troops or local population. +X Charisma.
 
 General
 =======
 - **Street Smarts**: More respect from other characters with the same trait.
 - **Scholar**: More respect from other characters with the same trait.
+- **Socializer**: Increased chance to make friends.
