@@ -1,11 +1,5 @@
 "use strict";
 
-var STRENGTH  = 0;
-var TACTIC    = 1;
-var CHARISMA  = 2;
-var INTRIGUE  = 3;
-var WILLPOWER = 4;
-
 GameState.Families = [];
 
 var FamilyNames = ["Li","Wang","Zhang","Liu","Chen","Yang","Zhao","Huang",
@@ -49,25 +43,22 @@ function GenerateBaseGeneration(numPeople)
 	return result;
 }
 
-function GiveBaseAttributes(person)
+function GiveBaseBaseAttributes(person)
 {
-	person.MainStat = [STRENGTH, TACTIC, CHARISMA, INTRIGUE, WILLPOWER].randomElement();
-	person.Affinity = [RandInt(-1, 1), RandInt(-1, 1), RandInt(-1, 1), RandInt(-1, 1), RandInt(-1, 1)];
-	person.Affinity[person.MainStat] += RandInt(1, 2);
-
 	person.Stats = person.Affinity;
 	person.Development = 0;
 }
 
 function DevelopCharacter(person, minState, maxState)
 {
-	var talented = person.hasTrait("Talented");
+	var talented = person.hasTrait("Talented") + person.hasTrait("Genius")*2;
+	var incapable = person.hasTrait("Incapable");
+	var atr = person.BaseAttributes;
+
 	var distributeSkills = function(skills)
 	{
-		var i = 1;
-		if(talented)
-			i = RandInt(1, Math.min(skills.length-1, 3));
-		var onlyTrain = person.Skills.length > 3;
+		var i = 2 + talented - incapable;
+		var onlyTrain = person.Skills.length > (3 + talented - incapable);
 		skills = skills.filter(function(skill)
 		{ 
 			var s = person.getSkill(skill[0]);
@@ -91,10 +82,13 @@ function DevelopCharacter(person, minState, maxState)
 	var distributeSkillsByTag = function(tags, maxLevel)
 	{
 		var skills;
+		// Depends on the attributes so recalculate them.
+		person.calcAttributes();
 		if(typeof tags === 'object')
 			skills = SkillsArray.filter(function(skill){ return skill.Tags.some(function(t){ return tags.contains(t); }); });
 		else
 			skills = SkillsArray.filter(function(skill){ return skill.Tags.contains(tags); });
+		skills = skills.filter(function(skill){ return skill.preReqFulfilled(person); });
 		skills = skills.map(function(skill){ return [skill.Name, maxLevel]; });
 		distributeSkills(skills);
 	};
@@ -103,39 +97,39 @@ function DevelopCharacter(person, minState, maxState)
 		switch(person.Rank.Name)
 		{
 			case "General":
-				distributeSkillsByTag(["Fighter", "Tactican", "Personality"], 4);
-				person.Stats[STRENGTH] += RandInt(0, 2);
-				person.Stats[TACTIC]   += RandInt(0, 2);
+				distributeSkillsByTag(["Fighter", "Tactican", "Personality"], 5);
+				atr.Strength += RandInt(0, 2);
+				atr.Tactic   += RandInt(0, 2);
 				break;
 			case "Commander":
-				distributeSkillsByTag(["Fighter", "Tactican"], 3);
-				person.Stats[STRENGTH] += RandInt(0, 2);
-				person.Stats[TACTIC]   += RandInt(0, 2);
+				distributeSkillsByTag(["Fighter", "Tactican"], 4);
+				atr.Strength += RandInt(0, 2);
+				atr.Tactic   += RandInt(0, 2);
 				break;
 			case "Soldier":
-				distributeSkillsByTag("Fighter", 3);
-				person.Stats[STRENGTH] += RandInt(0, 2);
-				person.Stats[TACTIC]   += RandInt(0, 2);
+				distributeSkillsByTag("Fighter", 4);
+				atr.Strength += RandInt(0, 2);
+				atr.Tactic   += RandInt(0, 2);
 				break;
 			case "Leader":
-				distributeSkillsByTag(["Politican", "Personality"], 4);
-				person.Stats[INTRIGUE] += RandInt(0, 2);
-				person.Stats[CHARISMA] += RandInt(0, 2);
+				distributeSkillsByTag(["Politican", "Personality"], 5);
+				atr.Intrigue += RandInt(0, 2);
+				atr.Charisma += RandInt(0, 2);
 				break;
 			case "Chancellor":
-				distributeSkillsByTag(["Politican", "Personality"], 4);
-				person.Stats[INTRIGUE] += RandInt(0, 2);
-				person.Stats[CHARISMA] += RandInt(0, 2);
+				distributeSkillsByTag(["Politican", "Personality"], 5);
+				atr.Intrigue += RandInt(0, 2);
+				atr.Charisma += RandInt(0, 2);
 				break;
 			case "Advisor":
-				distributeSkillsByTag("Politican", 3);
-				person.Stats[INTRIGUE] += RandInt(0, 2);
-				person.Stats[CHARISMA] += RandInt(0, 2);
+				distributeSkillsByTag("Politican", 4);
+				atr.Intrigue += RandInt(0, 2);
+				atr.Charisma += RandInt(0, 2);
 				break;
 			case "Politican":
-				distributeSkillsByTag("Politican", 2);
-				person.Stats[INTRIGUE] += RandInt(0, 2);
-				person.Stats[CHARISMA] += RandInt(0, 2);
+				distributeSkillsByTag("Politican", 3);
+				atr.Intrigue += RandInt(0, 2);
+				atr.Charisma += RandInt(0, 2);
 				break;
 			case "Trader":
 				break;
@@ -152,75 +146,76 @@ function DevelopCharacter(person, minState, maxState)
 	switch(person.Development)
 	{
 		case 0: // Child
-			GiveBaseAttributes(person);
+			GiveBaseBaseAttributes(person);
 			var choice = person.makeChoice("Development", ["Play", "Study"]);
 			switch(choice)
 			{
 				case "Play":
-					person.Stats[STRENGTH] += 1;
-					person.Stats[CHARISMA] += 1;
+					atr.Strength += 1;
+					atr.Charisma += 1;
 					break;
 				case "Study":
-					person.Stats[TACTIC   ] += 1;
-					person.Stats[WILLPOWER] += 1;
+					atr.Tactic    += 1;
+					atr.Willpower += 1;
 					break;
 			}
 			if(Math.random() < 0.1)
 			{
 				person.Traits.push("Talented");
-				talented = true;
+				talented = 1;
+			}
+			else if(Math.random() < 0.05)
+			{
+				person.Traits.push("Genius");
+				talented = 2;
+			}
+			else if(Math.random() < 0.2)
+			{
+				person.Traits.push("Incapable");
+				incapable = true;
 			}
 			person.Development = 1;
 			if(person.Development >= maxState) break;
 		case 1: // Teenager
 			if(person.Age < 12) break;
-			var choice = person.makeChoice("Development", ["Sparring", "Socialize", "Study Tactics", "Study Politics", "Help with Work"]);
+			var choice = person.makeChoice("Development", ["Sparring", "Socialize", "Study Tactics", "Study Politics"]);
 			switch(choice)
 			{
 				case "Sparring":
-					person.Stats[STRENGTH ] += 2;
-					person.Stats[CHARISMA ] -= 1;
-					person.Stats[WILLPOWER] += 1;
+					atr.Strength += 2;
+					atr.Charisma -= 1;
+					atr.Willpower += 1;
 					distributeSkills([["Swordsman", 1], ["Spearbearer", 1], ["Archery", 1]]);
 					if(Math.random() < 0.25)
 						person.giveTrait("Bold");
 					if(Math.random() < 0.10)
 						person.giveTrait("Cruel");
-					if(Math.random() < 0.25 && person.Stats[WILLPOWER] > 3)
+					if(Math.random() < 0.25 && atr.Willpower > 3)
 						person.giveTrait("Fierce");
 					break;
 				case "Socialize":
-					person.Stats[STRENGTH     ] -= 1;
-					person.Stats[CHARISMA     ] += 2;
-					person.Stats[RandInt(0, 4)] += 1;
+					atr.Strength     -= 1;
+					atr.Charisma     += 2;
 					distributeSkills([["Scholar", 1], ["Street Smarts", 1]]);
 					if(Math.random() < 0.25)
 						person.giveTrait("Affectionate");
 					break;
 				case "Study Tactics":
-					person.Stats[TACTIC   ] += 1;
-					person.Stats[WILLPOWER] += 1;
+					atr.Tactic    += 1;
+					atr.Willpower += 1;
 					distributeSkillsByTag("Tactican", 1);
 					if(Math.random() < 0.25)
 						person.giveTrait("Cold Hearted");
 					break;
 				case "Study Politics":
-					person.Stats[INTRIGUE ] += 2;
-					person.Stats[CHARISMA ] += 1;
-					person.Stats[WILLPOWER] -= 1;
+					atr.Intrigue  += 2;
+					atr.Charisma  += 1;
+					atr.Willpower -= 1;
 					distributeSkillsByTag("Politics", 1);
 					if(Math.random() < 0.15)
 						person.giveTrait("Cowardice");
 					if(Math.random() < 0.15)
 						person.giveTrait("Manipulative");
-					break;
-				case "Help with Work":
-					person.Stats[STRENGTH]      += 1;
-					person.Stats[RandInt(0, 4)] += 1;
-					person.Stats[RandInt(0, 4)] += 1;
-					distributeSkills([["Diligent", 1], ["Construction", 1], ["Persuasion", 1]]);
-					if(Math.random() < 0.15)
-						person.giveTrait("Humble");
 					break;
 			}
 			person.Development = 2;
@@ -235,15 +230,15 @@ function DevelopCharacter(person, minState, maxState)
 			{
 				case "Enlist":
 					person.Rank = new Rank("Soldier", person.Home.getFaction());
-					person.Stats[STRENGTH] += 1;
-					person.Stats[TACTIC]   += 1;
+					atr.Strength += 1;
+					atr.Tactic   += 1;
 					distributeSkillsByTag("Fighter", 2);
 					break;
 				case "Study":
-					person.Stats[TACTIC]   += 1;
-					person.Stats[INTRIGUE] += 1;
-					person.Stats[CHARISMA] += 1;
-					distributeSkills([["Terrain Knowledge", 2], ["Scholar", 2]]);
+					atr.Tactic   += 1;
+					atr.Intrigue += 1;
+					atr.Charisma += 1;
+					distributeSkillsByTag(["Tactican", "Politican"], 2);
 					break;
 			}
 			person.Development = 3;
@@ -264,6 +259,7 @@ function DevelopCharacter(person, minState, maxState)
 			person.Development = 6;
 			if(person.Development >= maxState) break;
 	}
+	person.calcAttributes();
 }
 
 function FindPartner(person, people, list)
@@ -306,8 +302,8 @@ function GenerateOffspring(generation)
 
 		partners.forEach(function(spouse, index)
 		{
-			parent.Relations.push(["Spouse", spouse]);
-			spouse.Relations.push(["Spouse", parent]);
+			parent.addRelation("Spouse", spouse);
+			spouse.addRelation("Spouse", parent);
 			// TODO: Social standing rather than gender
 			if(parent.Gender === "male")
 				spouse.setHome(parent.Home);
@@ -334,10 +330,10 @@ function GenerateOffspring(generation)
 
 			child = Character.CreateToken(parent.FatherFamily, partner.FatherFamily, parent.Age - curAge, gender);
 
-			child.Relations.push(["Father", father]);
-			child.Relations.push(["Mother", mother]);
-			parent.Relations.push(["Child", child]);
-			partner.Relations.push(["Child", child]);
+			child.addRelation("Father", father);
+			child.addRelation("Mother", mother);
+			parent.addRelation("Child", child);
+			partner.addRelation("Child", child);
 
 			if(child.Age > 15)
 				child.setHome(parent.Home.getFaction().getControlledCities().randomElement());

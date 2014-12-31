@@ -1,33 +1,54 @@
+"use strict";
+
 var Skills = {};
 var SkillsArray = [];
 
-function SkillDefinition(name, skill)
+function SkillDefinition(name, tag, template)
 {
-	skill.Name = name;
+	var skill = new Skill(name, tag, template);
 	Skills[skill.Name] = skill;
 	SkillsArray.push(skill);
 }
 
-SkillDefinition("Inspiration",      {Tags: ["Personality"], EnableEvents: ["Inspiration"]});
-SkillDefinition("Intimidation",     {Tags: ["Personality"], EnableEvents: ["Intimidation"]});
+// Tactican
+// Basic
+SkillDefinition("Strategist",      "Tactican", { Attributes: ["Tactics", 1] });
+SkillDefinition("Assault Tactics", "Tactican", { Attributes: ["Tactics", 2], Condition: ["Assaulting"], PreReq:{ Skills: ["Strategist", 1] } });
+SkillDefinition("Defense Tactics", "Tactican", { Attributes: ["Tactics", 2], Condition: ["Defending" ], PreReq:{ Skills: ["Strategist", 1] } });
+// Advanced
+SkillDefinition("Siege Expert",    "Tactican", { Attributes: ["Tactics", 2], Condition: ["Sieging" ], PreReq:{ Attributes: ["Tactics", 6], Skills: ["Assault Tactics", 1] } });
+SkillDefinition("Terrain Expert",  "Tactican", { Attributes: ["Tactics", 2], Condition: ["Mountain"], PreReq:{ Attributes: ["Tactics", 6], Skills: ["Defense Tactics", 1] } });
+SkillDefinition("Ambusher",        "Tactican", { EnableEvents: ["Ambusher"],                          PreReq:{ Attributes: ["Tactics", 6], Skills: ["Assault Tactics", 1] } });
+SkillDefinition("Logistics",       "Tactican", { Attributes: ["MovementRate", 0.25],                  PreReq:{ Attributes: ["Tactics", 6], Skills: ["Strategist", 2] } });
 
-SkillDefinition("Siege Expert",     {Tags: ["Tactican"], Effects: [{Type: "Tactics", Effect:1.0, If: ["Sieging"  ]}] });
-SkillDefinition("Mountain Tactics", {Tags: ["Tactican"], Effects: [{Type: "Tactics", Effect:1.0, If: ["Mountains"]}] });
-SkillDefinition("Barricading",      {Tags: ["Tactican"], Effects: [{Type: "Tactics", Effect:1.0, If: ["Defending"]}] });
-SkillDefinition("Ambusher",         {Tags: ["Tactican"], EnableEvents: ["Ambusher"]});
-SkillDefinition("Logistics",        {Tags: ["Tactican"], Effects: [{Type: "MovementRate", Effect:1.0}]});
+// Fighter
+// Basic
+SkillDefinition("Warrior",     "Fighter", { Attributes: ["Strength", 1] });
+SkillDefinition("Swordsman",   "Fighter", { Attributes: ["Strength", 1], Condition: [["Not", "In Formation"]] });
+SkillDefinition("Spearbearer", "Fighter", { Attributes: ["Strength", 1], Condition: ["In Formation"] });
+SkillDefinition("Archery",     "Fighter", { EnableEvents: ["Archery"] });
+// Advanced
+SkillDefinition("Berserker",   "Fighter", { EnableEvents: ["Berserker"],                                                          PreReq:{ Attributes: ["Strength", 6], Traits: ["Wrath"]          } });
+SkillDefinition("Ironwall",    "Fighter", { EnableEvents: ["Ironwall"], Attributes: ["Strength", 1], Condition: ["In Formation"], PreReq:{ Attributes: ["Strength", 6], Skills: ["Spearbearer", 1] } });
+SkillDefinition("Assassin",    "Fighter", { EnableEvents: ["Assassin"], Attributes: ["Strength", 1], Condition: ["Duel"],         PreReq:{ Attributes: ["Strength", 6], Skills: ["Swordsman", 1]   } });
 
-SkillDefinition("Swordsman",        {Tags: ["Fighter"], Effects: [{Type: "Combat", Effect:0.5, If: ["Duel"]}, {Type: "Combat", Effect:0.5, IfNot: ["In Formation"]}]});
-SkillDefinition("Spearbearer",      {Tags: ["Fighter"], Effects: [{Type: "Combat", Effect:0.5, If: ["Charging"]}, {Type: "Combat", Effect:0.5, If: ["In Formation"]}]});
-SkillDefinition("Archery",          {Tags: ["Fighter"], EnableEvents: ["Archery"]});
-SkillDefinition("Berserker",        {Tags: ["Fighter"], EnableEvents: ["Berserker"]});
-SkillDefinition("Ironwall",         {Tags: ["Fighter"], EnableEvents: ["Ironwall"], Effects: [{Type: "Combat", Effect:0.5, If: ["In Formation"]}]});
-SkillDefinition("Assassin",         {Tags: ["Fighter"], EnableEvents: ["Assassin"], Effects: [{Type: "Combat", Effect:0.5, If: ["Duel"]}]});
+// Politican
+// Basic
+SkillDefinition("Smart",           "Politican", { Attributes: ["Intrigue",   1] });
+SkillDefinition("Charismatic",     "Politican", { Attributes: ["Charisma",   1] });
+SkillDefinition("Wealthy",         "Politican", { Attributes: ["Income",    25] });
+SkillDefinition("Administration",  "Politican", { Attributes: ["Governance", 1] });
+// Advanced
+SkillDefinition("Shemer",          "Politican", { Attributes: ["ActionPoints", 1], PreReq:{ Attributes: ["Intrigue", 6]} });
+SkillDefinition("Foreign Customs", "Politican", { Attributes: ["Charisma",     1], Condition: ["Foreign"], PreReq:{ Attributes: ["Charisma", 6], Skills: ["Scholar", 1]} });
+SkillDefinition("Seduction",       "Politican", { EnableEvents: ["Seduction"], PreReq:{ Attributes: ["Charisma", 6]} });
 
-SkillDefinition("Persuasion",       {Tags: ["Politican"], Effects: [{Type: "Charisma",   Effect:1.0, If: ["Persuading"]}]});
-SkillDefinition("Administrator",    {Tags: ["Politican"], Effects: [{Type: "Governance", Effect:1.0}]});
-SkillDefinition("Shemer",           {Tags: ["Politican"], Effects: [{Type: "PlotIncome", Effect:1.0}]});
-SkillDefinition("Socializer",       {Tags: ["Politican", "Social"], EnableEvents: ["Socializer"]});
-SkillDefinition("Scholar",          {Tags: ["Politican", "Social"], SameTraitRespect: 1.0});
-
-SkillDefinition("Street Smarts",    {Tags: ["Social"], SameTraitRespect: 1.0});
+// General
+// Social
+SkillDefinition("Socializer",    "Social", { EnableEvents: ["Socializer"] });
+SkillDefinition("Scholar",       "Social", { SameTraitRespect: 1 });
+SkillDefinition("Street Smarts", "Social", { SameTraitRespect: 1 });
+// Personality
+SkillDefinition("Inspiration" , "Personality", { EnableEvents: ["Inspiration" ], Attributes: ["Charisma", 1] });
+SkillDefinition("Intimidation", "Personality", { EnableEvents: ["Intimidation"], Attributes: ["Charisma", 1] });
+SkillDefinition("Willpower"   , "Personality", { EnableEvents: ["Heroism"],      Attributes: ["Strength", 2], Condition: ["In Danger"] });

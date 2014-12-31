@@ -58,47 +58,56 @@ function CreateSymbol(symbol)
 
 function CreateLinkFor(obj)
 {
-	var	element = null;
-	var isCharacter = obj.hasOwnProperty("Gender");
-	var isCity = obj.hasOwnProperty("Population");
-	var isFaction = obj.hasOwnProperty("Cities");
-	// Character
-	if((isCharacter && obj.isRelevant()) || !isCharacter)
-	{
-		element = document.createElement('a');
-		element.className = "objectLink";
+	var	div = null;
+	var name;
 
-		var onClick = DisplayObject.bind(undefined, obj, false);
-		element.addEventListener('click', onClick);
-	}
-	else
-	{
-		element = document.createElement('span');
-		element.className = "objectLink unimportant";
-	}
+	var isCharacter = obj instanceof Character;
+	var isCity      = obj instanceof City;
+	var isFaction   = obj instanceof Faction;
+
+	div = document.createElement('div');
+	div.className = "objectLink";
+
+	name = obj.Name;
 
 	if(isCharacter)
-		element.innerHTML = obj.Surname+' '+obj.Name;
-	else
-		element.innerHTML = obj.Name;
+	{
+		name = obj.Surname+' '+obj.Name;
+		var addPlaceholder = true;
 
-	if(isCharacter && !obj.IsAlive)
-		element.appendChild(CreateSymbol("dead"));
-	element.appendChild(CreateSymbol(obj.Gender));
-	if(obj.Rank)
-		element.appendChild(CreateSymbol(obj.Rank.Name));
-	if(isCity)
-		element.appendChild(CreateSymbol("city"));
+		if(!obj.IsAlive)
+		{
+			div.appendChild(CreateSymbol("dead"));
+			addPlaceholder = false;
+		}
+		if(obj.Rank.Icon)
+		{
+			div.appendChild(CreateSymbol(obj.Rank.Icon));
+			addPlaceholder = false
+		}
+
+		if(addPlaceholder)
+			div.appendChild(CreateSymbol("empty"));
+
+		div.appendChild(CreateSymbol(obj.Gender));
+	}
 
 	if(isFaction)
 	{
-		element.style.color = "rgb("+obj.Color[0]+", "+obj.Color[1]+", "+obj.Color[2]+")";
-		element.className += " faction"; 
+		div.style.color = "rgb("+obj.Color[0]+", "+obj.Color[1]+", "+obj.Color[2]+")";
+		div.className += " faction"; 
 		if(ColorIsDark(obj.Color))
-			element.className += " dark"; 
+			div.className += " dark"; 
 	}
-	
-	return element;
+
+	var link = document.createElement('a');
+	link.appendChild(document.createTextNode(name));
+	link.className = "name";
+	var onClick = DisplayObject.bind(undefined, obj, false);
+	div.addEventListener('click', onClick);
+	div.appendChild(link);
+
+	return div;
 }
 
 function CreateTag(obj)
@@ -111,8 +120,9 @@ function CreateTag(obj)
 			div.appendChild(CreateLinkFor(obj));
 		else
 		{
-			div.innerHTML = obj.Name;
+			/*div.innerHTML = obj.Name;*/
 			div.appendChild(CreateSymbol("level-"+Math.floor(obj.Level)));
+			div.appendChild(document.createTextNode(obj.Name));
 		}
 	}
 	else
@@ -251,7 +261,10 @@ function UpdateUI()
 
 			ribbon.appendChild(subtitle);
 
-			var statsTable = HtmlTableFromArray([[CreateSymbol("Strength"), CreateSymbol("Tactic"), CreateSymbol("Charisma"), CreateSymbol("Intrigue"), CreateSymbol("Willpower")], obj.Stats]);
+			var exposedStats = ["Strength", "Tactic", "Charisma", "Intrigue", "Willpower"];
+			var symbols = exposedStats.map(function(e){ return CreateSymbol(e);        });
+			var data    = exposedStats.map(function(e){ return obj.Attributes[e] || 0; });
+			var statsTable = HtmlTableFromArray([symbols, data]);
 			statsTable.className = "section stats";
 			objinfo.appendChild(statsTable);
 
@@ -278,7 +291,7 @@ function UpdateUI()
 			for(var i = 0; i < obj.Relations.length; i++)
 			{
 				var rel = obj.Relations[i];
-				relations.appendChild(CreateDoubleTag(rel[0], rel[1]));
+				relations.appendChild(CreateDoubleTag(rel.Type, rel.Subject));
 			};
 			objinfo.appendChild(relations);
 		}

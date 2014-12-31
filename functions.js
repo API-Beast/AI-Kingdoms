@@ -343,3 +343,12 @@ function TypeCheck(args, types)
 			throw new TypeError("Argument "+i+": Got "+typeof(args[i])+" but expected "+types[i]);
 	}
 }
+
+function ShallowCopy(obj)
+{
+	var copy = {};
+	for(var key in obj)
+	if(obj.hasOwnProperty(key))
+		copy[key] = obj[key];
+	return copy;
+}

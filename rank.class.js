@@ -6,6 +6,7 @@ var Rank = function(name, faction, template)
 	this.Name     = name;
 	this.Faction  = faction;
 	this.Score    = 0;
+	this.Icon     = null;
 
 	if(template)
 		for(var key in template)
@@ -43,11 +44,12 @@ Rank.prototype.assignTo = function(person)
 Rank.prototype.calcScore = function(person)
 {
 	var score = 0;
-	score += person.Stats.reduce(function(prevValue, stat, index){ return prevValue + stat * this.Scoring.Stats[index]; }.bind(this), 0);
-	for(var key in person.Scores)
+	for(var key in this.Scoring)
 	{
-		if(person.Scores.hasOwnProperty(key) && this.Scoring.hasOwnProperty(key))
-			score += person.Scores[key] * this.Scoring[key];
+		if(!this.Scoring.hasOwnProperty(key))     continue;
+
+		if(person.Scores.hasOwnProperty(key))     score += person.Scores    [key] * this.Scoring[key];
+		if(person.Attributes.hasOwnProperty(key)) score += person.Attributes[key] * this.Scoring[key];
 	}
 	if(this.SkillModifier)
 	{

@@ -13,6 +13,14 @@ var Character = function()
 	this.Health       = RandBellCurve(40, 80);
 	this.IsAlive      = true;
 	this.Stats        = [0, 0, 0, 0, 0];
+
+	// Attributes = BaseAttributes + Modification through static traits and skills
+	this.BaseAttributes = {Strength: 0, Tactic: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
+	this.Attributes     = {Strength: 0, Tactic: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
+
+	this.BaseEnabledEvents = {};
+	this.EnabledEvents     = {};
+
 	this.Skills       = []; // {Name: "", Level: 0}
 	this.Traits       = [];
 	this.Score        = -1;
@@ -51,33 +59,71 @@ Character.prototype.isRelevant = function()
 	return this.Development != 0;
 };
 
-Character.prototype.calculateScore = function()
+Character.prototype.applyEffects = function(effects, attributes, situation)
 {
+
+};
+
+Character.prototype.calcAttributes = function()
+{
+	this.Attributes = ShallowCopy(this.BaseAttributes);
+	var that = this;
+
+	this.Skills.forEach(function(it, index)
+	{
+		var effect = Skills[it.Name].Effect;
+
+		if(effect.isStatic() === true)
+		if(effect.conditionsFulfilled(it.Level, that.Attributes, []))
+			effect.apply(it.Level, that.Attributes, []);
+	});
+	return this.Attributes;
+};
+
+Character.prototype.calcTempAttributes = function(situation)
+{
+	calcAttributes();
+	var tmpAttrib = ShallowCopy(this.Attributes);
+
+	this.Skills.forEach(function(it, index)
+	{
+		var effect = Skills[it.Name].Effect;
+
+		if(effect.isStatic() === false)
+		if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
+			effect.apply(it.Level, tmpAttrib, situation);
+	});
+	return tmpAttrib;
+};
+
+Character.prototype.calcScores = function()
+{
+	var that = this;
 	 // A score less than 0 means "completly irrelevant"
 	this.Scores.Rank = this.Rank.Score;
 
 	this.Scores.Prestige = 0;
 	this.Feats.forEach(function(feat, index)
 	{
-		this.Scores.Prestige += feat.Score;
+		that.Scores.Prestige += feat.Score;
 	});
 
 	// Add scores from minor ranks
 	this.MinorRanks.forEach(function(rank, index)
 	{
-		this.Score.Prestige += rank.Score;
+		that.Score.Prestige += rank.Score;
 	});
 	// Being related to influential people raises the score somewhat
 	this.Relations.forEach(function(relation, index)
 	{
 		if(["Father", "Brother", "Mother", "Sister"].contains(relation.Type))
 		{
-			this.Scores.Heritage += Math.floor(relation.Subject.Score / 4);
-			if(relation.Subject.Rank.Name === "Leader" && relation.Subject.Faction === this.Home.Faction)
-				this.Scores.Heritage += 6;
+			that.Scores.Heritage += Math.floor(relation.Subject.Score / 4);
+			if(relation.Subject.Rank.Name === "Leader" && relation.Subject.Faction === that.Home.Faction)
+				that.Scores.Heritage += 6;
 		}
 		else
-			this.Scores.Relations += Math.floor(relation.Subject.Score / 8); // Round down to avoid feedback loop
+			that.Scores.Relations += Math.floor(relation.Subject.Score / 8); // Round down to avoid feedback loop
 	});
 
 	this.Score = 0;
@@ -178,6 +224,8 @@ Character.prototype.getSkill = function(name)
 Character.prototype.giveSkill = function(name, level)
 {
 	TypeCheck(arguments, ["string", "number"]);
+	console.assert(Skills.hasOwnProperty(name) === true, "Skill " + name + " doesn't exist!");
+
 	for(var i = 0; i < this.Skills.length; i++)
 	{
 		var skill = this.Skills[i];
@@ -195,6 +243,8 @@ Character.prototype.giveSkill = function(name, level)
 Character.prototype.trainSkill = function(name, amount, maxLevel)
 {
 	TypeCheck(arguments, ["string", "number", "number"]);
+	console.assert(Skills.hasOwnProperty(name) === true, "Skill '" + name + "' doesn't exist!");
+
 	for(var i = 0; i < this.Skills.length; i++)
 	{
 		var skill = this.Skills[i];
