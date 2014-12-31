@@ -132,6 +132,7 @@ function DistributeRanks()
 	GameState.Factions.forEach(
 	function(faction)
 	{
+		if(faction.ParentFaction != null) return;
 		faction.Ranks.forEach(
 		function(rank)
 		{
@@ -141,6 +142,7 @@ function DistributeRanks()
 				return;
 			var population = GameState.Characters;
 			population = population.filter(rank.canApply.bind(rank));
+			population.forEach(function(e){e.calcScores();});
 			population = population.mapMetadata(rank.calcScore.bind(rank), "_rscore");
 			population = population.sort(function(a, b){ return a._rscore - b._rscore; });
 			population.length = i;

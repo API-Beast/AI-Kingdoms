@@ -17,19 +17,18 @@ Data.Faction.Names       = ["Guang", "Fujian", "Anhui", "Jiangsu", "Shang", "Hub
 
 
 var Sprites = {
-Mountain:[
-	{X: 158, Y: 166, W: 200, H: 140, Type: "Mountain"},
-	{X:  31, Y: 306, W: 200, H: 170, Type: "Mountain"},
-	{X:  27, Y: 313, W: 200, H: 165, Type: "Mountain"},
-	{X: 414, Y: 290, W: 125, H: 193, Type: "Mountain"},
-	{X: 230, Y: 310, W: 183, H: 155, Type: "Mountain"},
-	{X:  41, Y: 502, W: 170, H: 160, Type: "Mountain"},
-	{X: 282, Y: 683, W: 290, H:  85, Type: "Mountain"}
-	],
-Forest:[
-	{X: 579, Y: 631, W: 100, H: 100, Type: "Forest"},
-	{X: 682, Y: 631, W: 100, H: 100, Type: "Forest"},
-	{X: 784, Y: 631, W: 100, H: 100, Type: "Forest"},
-	{X: 883, Y: 631, W: 100, H: 100, Type: "Forest"}
-]};
+	Mountain:[
+		{X: 158, Y: 166, W: 200, H: 140, Type: "Mountain"},
+		{X:  31, Y: 306, W: 200, H: 170, Type: "Mountain"},
+		{X:  27, Y: 313, W: 200, H: 165, Type: "Mountain"},
+		{X: 414, Y: 290, W: 125, H: 193, Type: "Mountain"},
+		{X: 230, Y: 310, W: 183, H: 155, Type: "Mountain"},
+		{X:  41, Y: 502, W: 170, H: 160, Type: "Mountain"},
+		{X: 282, Y: 683, W: 290, H:  85, Type: "Mountain"}],
+	Forest:[
+		{X: 579, Y: 631, W: 100, H: 100, Type: "Forest"},
+		{X: 682, Y: 631, W: 100, H: 100, Type: "Forest"},
+		{X: 784, Y: 631, W: 100, H: 100, Type: "Forest"},
+		{X: 883, Y: 631, W: 100, H: 100, Type: "Forest"}]
+};
 
