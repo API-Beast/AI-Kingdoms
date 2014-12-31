@@ -195,7 +195,7 @@ function InitUI()
 	symbol.addEventListener('click', SetMapMode.bind(undefined, 'realms'));
 	controls.appendChild(symbol);
 
-	var symbol = CreateSymbol("Tactic");
+	var symbol = CreateSymbol("Tactics");
 	symbol.addEventListener('click', SetMapMode.bind(undefined, 'factions'));
 	controls.appendChild(symbol);*/
 
@@ -261,7 +261,7 @@ function UpdateUI()
 
 			ribbon.appendChild(subtitle);
 
-			var exposedStats = ["Strength", "Tactic", "Charisma", "Intrigue", "Willpower"];
+			var exposedStats = ["Strength", "Tactics", "Charisma", "Intrigue", "Willpower"];
 			var symbols = exposedStats.map(function(e){ return CreateSymbol(e);        });
 			var data    = exposedStats.map(function(e){ return obj.Attributes[e] || 0; });
 			var statsTable = HtmlTableFromArray([symbols, data]);

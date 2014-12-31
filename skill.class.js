@@ -4,7 +4,7 @@ var Skill = function(name, tag, template)
 {
 	this.Name = name;
 	this.PreReq = { Attributes:[], Skills:[], Traits:[] };
-	this.LevelFactor = [1, 2, 4, 8, 16];
+
 	this.Effect = new Effect();
 	if(typeof tag === "object")
 		this.Tags = tag;

@@ -15,8 +15,8 @@ var Character = function()
 	this.Stats        = [0, 0, 0, 0, 0];
 
 	// Attributes = BaseAttributes + Modification through static traits and skills
-	this.BaseAttributes = {Strength: 0, Tactic: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
-	this.Attributes     = {Strength: 0, Tactic: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
+	this.BaseAttributes = {Strength: 0, Tactics: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
+	this.Attributes     = {Strength: 0, Tactics: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
 
 	this.BaseEnabledEvents = {};
 	this.EnabledEvents     = {};

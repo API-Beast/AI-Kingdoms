@@ -99,25 +99,25 @@ function DevelopCharacter(person, minState, maxState)
 			case "General":
 				distributeSkillsByTag(["Fighter", "Tactican", "Personality"], 5);
 				atr.Strength += RandInt(0, 2);
-				atr.Tactic   += RandInt(0, 2);
+				atr.Tactics   += RandInt(0, 2);
 				break;
 			case "Commander":
 				distributeSkillsByTag(["Fighter", "Tactican"], 4);
 				atr.Strength += RandInt(0, 2);
-				atr.Tactic   += RandInt(0, 2);
+				atr.Tactics   += RandInt(0, 2);
 				break;
 			case "Soldier":
 				distributeSkillsByTag("Fighter", 4);
 				atr.Strength += RandInt(0, 2);
-				atr.Tactic   += RandInt(0, 2);
+				atr.Tactics   += RandInt(0, 2);
 				break;
 			case "Leader":
-				distributeSkillsByTag(["Politican", "Personality"], 5);
+				distributeSkillsByTag(["Social", "Politican", "Personality"], 5);
 				atr.Intrigue += RandInt(0, 2);
 				atr.Charisma += RandInt(0, 2);
 				break;
 			case "Chancellor":
-				distributeSkillsByTag(["Politican", "Personality"], 5);
+				distributeSkillsByTag(["Social", "Politican", "Personality"], 5);
 				atr.Intrigue += RandInt(0, 2);
 				atr.Charisma += RandInt(0, 2);
 				break;
@@ -155,7 +155,7 @@ function DevelopCharacter(person, minState, maxState)
 					atr.Charisma += 1;
 					break;
 				case "Study":
-					atr.Tactic    += 1;
+					atr.Tactics    += 1;
 					atr.Willpower += 1;
 					break;
 			}
@@ -185,7 +185,7 @@ function DevelopCharacter(person, minState, maxState)
 					atr.Strength += 2;
 					atr.Charisma -= 1;
 					atr.Willpower += 1;
-					distributeSkills([["Swordsman", 1], ["Spearbearer", 1], ["Archery", 1]]);
+					distributeSkillsByTag("Fighter", 2);
 					if(Math.random() < 0.25)
 						person.giveTrait("Bold");
 					if(Math.random() < 0.10)
@@ -196,12 +196,12 @@ function DevelopCharacter(person, minState, maxState)
 				case "Socialize":
 					atr.Strength     -= 1;
 					atr.Charisma     += 2;
-					distributeSkills([["Scholar", 1], ["Street Smarts", 1]]);
+					distributeSkillsByTag("Social", 2);
 					if(Math.random() < 0.25)
 						person.giveTrait("Affectionate");
 					break;
 				case "Study Tactics":
-					atr.Tactic    += 1;
+					atr.Tactics    += 1;
 					atr.Willpower += 1;
 					distributeSkillsByTag("Tactican", 1);
 					if(Math.random() < 0.25)
@@ -231,11 +231,11 @@ function DevelopCharacter(person, minState, maxState)
 				case "Enlist":
 					person.Rank = new Rank("Soldier", person.Home.getFaction());
 					atr.Strength += 1;
-					atr.Tactic   += 1;
+					atr.Tactics   += 1;
 					distributeSkillsByTag("Fighter", 2);
 					break;
 				case "Study":
-					atr.Tactic   += 1;
+					atr.Tactics   += 1;
 					atr.Intrigue += 1;
 					atr.Charisma += 1;
 					distributeSkillsByTag(["Tactican", "Politican"], 2);

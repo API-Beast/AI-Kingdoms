@@ -21,7 +21,7 @@ var Faction = function()
 	this.Ranks.push(new Rank("General", this, {
 		Icon: "General",
 		Openings: 2,
-		Scoring: { Strength: 0.25, Tactic: 2, Prestige: 2, Relations: 0.2, Heritage: 0.2 },
+		Scoring: { Strength: 0.25, Tactics: 2, Prestige: 2, Relations: 0.2, Heritage: 0.2 },
 		SkillMod: [["Inspiration", +5], ["Intimidation", +5]],
 		TraitMod: [["Cowardice", -10]],
 		Score:  6,
@@ -30,7 +30,7 @@ var Faction = function()
 	this.Ranks.push(new Rank("Commander", this, {
 		Icon: "Commander",
 		Openings: 6,
-		Scoring: { Strength: 0.25, Tactic: 1, Prestige: 1, Relations: 0.2, Heritage: 0.2 },
+		Scoring: { Strength: 0.25, Tactics: 1, Prestige: 1, Relations: 0.2, Heritage: 0.2 },
 		TraitMod: [["Cowardice", -5]],
 		Score:  2,
 		PreviousRank: "Soldier"

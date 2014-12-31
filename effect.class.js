@@ -5,7 +5,7 @@ var Effect = function(template)
 	this.Attributes   = [];
 	this.EnableEvents = [];
 	this.Condition    = [];
-	this.LevelFactor  = [1, 2, 4, 8, 16];
+	this.LevelFactor  = [0, 1, 2, 4, 6, 10];
 
 	if(template)
 	for(var key in template)
