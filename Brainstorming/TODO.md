@@ -4,8 +4,8 @@ AI Kingdoms - TODO
 This is a list of things that can be done right now, not of long term goals.
 
 ## Time-Flow
-- [] Money Flow
--  Gradual Character Aging
+- [ ] Money Flow
+- [ ] Gradual Character Aging
 
 ## Character
 - [x] Attributes
