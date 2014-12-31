@@ -1,4 +1,4 @@
-All abillities have 4 Levels, 4 is “Legendary”, 1 is “Basic”. Level 2 is twice as strong as Level 1, Level 3 twice as strong as Level 2, etc.
+All abillities have 5 levels. Each level is twice as effective as the previous one.
 
 Tactican
 ========
@@ -62,3 +62,4 @@ General
 - **Street Smarts**: More respect from other characters with the same trait.
 - **Scholar**: More respect from other characters with the same trait.
 - **Socializer**: Increased chance to make friends.
+- **Willpower**: +X Strength and Chance of Heroic events when in Danger.
