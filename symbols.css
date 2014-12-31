@@ -3,15 +3,15 @@
 	display: inline-block;
 }
 
-a .symbol, span .symbol
-{
-	margin-top: 2px;
-	margin-left: 5px;
-}
-
 .symbol+.symbol
 {
 	margin-left: 0px;
+}
+
+.symbol.empty
+{
+	width: 16px;
+	height: 16px;
 }
 
 .symbol.female
@@ -28,65 +28,44 @@ a .symbol, span .symbol
   height: 16px;
 }
 
-.symbol.city
+.symbol.dead
 {
   background: url("Assets/symbols.png") -32px 0px;
   width: 16px;
   height: 16px;
 }
 
-.symbol.dead
-{
-  background: url("Assets/symbols.png") -48px 0px;
-  width: 16px;
-  height: 16px;
-}
-
-.symbol.Soldier
+.symbol.Commander
 {
 	background: url("Assets/symbols.png") 0px -16px;
 	width: 16px;
 	height: 16px;
 }
 
-.symbol.Commander
+.symbol.General
 {
 	background: url("Assets/symbols.png") -16px -16px;
 	width: 16px;
 	height: 16px;
 }
 
-.symbol.General
+.symbol.Leader
 {
 	background: url("Assets/symbols.png") -32px -16px;
 	width: 16px;
 	height: 16px;
 }
 
-.symbol.MinorLeader
-{
-	background: url("Assets/symbols.png") -64px -16px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.Leader
-{
-	background: url("Assets/symbols.png") -80px -16px;
-	width: 16px;
-	height: 16px;
-}
-
 .symbol.Governor, .symbol.Advisor
 {
-	background: url("Assets/symbols.png") -96px -16px;
+	background: url("Assets/symbols.png") -48px -16px;
 	width: 16px;
 	height: 16px;
 }
 
 .symbol.Chancellor
 {
-	background: url("Assets/symbols.png") -112px -16px;
+	background: url("Assets/symbols.png") -64px -16px;
 	width: 16px;
 	height: 16px;
 }
@@ -116,6 +95,13 @@ a .symbol, span .symbol
 .symbol.level-4
 {
 	background: url("Assets/symbols.png") -48px -32px;
+	width: 16px;
+	height: 16px;
+}
+
+.symbol.level-4
+{
+	background: url("Assets/symbols.png") -64px -32px;
 	width: 16px;
 	height: 16px;
 }
