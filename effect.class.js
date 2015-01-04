@@ -6,6 +6,9 @@ var Effect = function(template)
 	this.EnableEvents = [];
 	this.Condition    = [];
 	this.LevelFactor  = [0, 1, 2, 4, 6, 10];
+	this.Likes        = [];
+	this.Dislikes     = [];
+	this.Exclusive    = [];
 
 	if(template)
 	for(var key in template)
@@ -49,7 +52,38 @@ Effect.prototype.getDescription = function(level)
 	var intend = "";
 	if(this.Condition.length > 0)
 	{
-		result = "While "+ this.Condition.join(" and ") +":<br>";
+		result  = "<b>While ";
+		for (var i = 0; i < this.Condition.length; i++)
+		{
+			var val = this.Condition[i];
+			var mod = "And";
+
+			if(i === 0)
+				mod = undefined;
+			
+			if(typeof val === "object")
+			{
+				mod = val[0];
+				val = val[1];
+
+				if(mod == "Not")
+				{
+					if(i === 0)
+						mod = "not";
+					else
+						mod = "And not"
+				}
+			}
+
+			if(mod)
+				result += mod + " <i>" + val + "</i>";
+			else
+				result += val;
+
+			if(i != (this.Condition.length-1))
+				result += "\n  ";
+		}
+		result += ":</b>\n";
 		intend = "  ";
 	}
 	if(this.Attributes)
@@ -57,12 +91,14 @@ Effect.prototype.getDescription = function(level)
 	{
 		var name = this.Attributes[i];
 		var bonus = this.Attributes[i+1] * this.LevelFactor[level];
-		result += intend+"+ "+bonus+" "+name+"<br>";
+		result += intend+"+"+bonus+" "+name+"\n";
 	};
 	if(this.EnableEvents)
 	for(var i = 0; i < this.EnableEvents.length; i++)
 	{
-		result += intend+this.EnableEvents[i]+" Events +"+level+"<br>";
+		result += intend+"Enables <i>"+this.EnableEvents[i]+"</i> Events\n";
 	}
+	if(this.Likes.length)    result += "Likes Characters with <i>"+this.Likes.join("</i> or <i>")+"</i>\n";
+	if(this.Dislikes.length) result += "Dislikes Characters with <i>"+this.Likes.join("</i> or <i>")+"</i>\n";
 	return result;
 };

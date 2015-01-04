@@ -52,8 +52,6 @@ function GameStart()
   var gen3 = genGeneration(gen2);
   var gen4 = genGeneration(gen3);
 
-	AssignFaction();
-
 	InitUI();
 	UpdateUI();
 	history.pushState(null, null);
@@ -81,6 +79,8 @@ function GameLoop()
 	ctx.fillStyle = ctx.createPattern(Assets["BG"], 'repeat');
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+	ctx.lineJoin = 'bevel';
+
 	var map = GameState.Map;
 	for(var i = map.Terrain.length - 1; i >= 0; i--)
 	{
@@ -101,7 +101,7 @@ function GameLoop()
 		ctx.drawImage(Assets["Terrain"], sx, sy, sw, sh, dx, dy, dw, dh)
 	};
 
-	var drawStructure = function(src, struct)
+	var drawStructure = function(src, struct, minor)
 	{
 		var faction = null;
 		if(struct.hasOwnProperty("Faction")) 
@@ -122,15 +122,16 @@ function GameLoop()
 		if(struct.hasOwnProperty("Name"))
 		{
 			ctx.save();
-			ctx.font = '12pt Lobster';
+			ctx.font = '600 12pt Vollkorn';
 			ctx.textAlign     = "center";
-			ctx.fillStyle     = 'black';
+			ctx.fillStyle     = '#1b0b00';
 			ctx.shadowBlur    = 2;
 			ctx.shadowColor   = "white";
 			ctx.shadowOffsetY = 1;
 
-			if(true)
+			if(!minor)
 			{
+				ctx.font = '14pt Lobster';
 				ctx.fillStyle   = 'rgb('+faction.Color[0]+', '+faction.Color[1]+', '+faction.Color[2]+')';
 				if(ColorIsDark(faction.Color))
 				{
@@ -156,20 +157,10 @@ function GameLoop()
 		function(city)
 		{
 			if(city.Type == "city")
-				drawStructure({X: 45, Y: 0, W: 53, H: 53}, city);
+				drawStructure({X: 45, Y: 0, W: 53, H: 53}, city, true);
 			else if(city.Type == "capital")
 				drawStructure({X: 98, Y: 0, W: 87, H: 53}, city);
 		}
 	);
 	GameState.Map.Villages.map(drawStructure.bind(undefined, {X:  0, Y: 0, W: 48, H: 53}));
-
-	var radius = Math.min(canvas.width, canvas.height)/2;
-	var gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, radius*2);
-	gradient.addColorStop(0,   "rgba(0,0,0, 0.0)");
-	gradient.addColorStop(0.2, "rgba(0,0,0, 0.0)");
-	gradient.addColorStop(0.5, "rgba(0,0,0, 0.1)");
-	gradient.addColorStop(0.7, "rgba(0,0,0, 0.2)");
-	gradient.addColorStop(0.9, "rgba(0,0,0, 0.4)");
-	ctx.fillStyle = gradient;
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }

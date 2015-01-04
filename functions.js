@@ -96,7 +96,7 @@ function ClrInterpolate(p1, p2, factor)
 function ColorIsDark(clr)
 {
 	var brightness = (0.2126*clr[0] + 0.7152*clr[1] + 0.0722*clr[2]);
-	return brightness < 80;
+	return brightness < 140;
 }
 
 function AngleToVec2(angle)

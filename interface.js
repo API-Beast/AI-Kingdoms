@@ -11,8 +11,8 @@ function UpdateSize()
 	var elements = document.querySelectorAll("#sidebar section");
 	for (var i = 0; i < elements.length; i++)
 		elements[i].style["height"] = window.innerHeight-20+"px";
-	var objinfo = document.getElementById("object-info");
-	objinfo.style["height"] = window.innerHeight-30+"px";
+	var objInfo = document.getElementById("object-info");
+	objInfo.style["height"] = window.innerHeight-30+"px";
 }
 
 function DisplayObject(obj, noScroll)
@@ -100,6 +100,13 @@ function CreateLinkFor(obj)
 			div.className += " dark"; 
 	}
 
+	if(isCity)
+	{
+		var symb = CreateSymbol("solid-color");
+		symb.style.backgroundColor = "rgb("+obj.Faction.Color[0]+", "+obj.Faction.Color[1]+", "+obj.Faction.Color[2]+")";
+		div.appendChild(symb);
+	}
+
 	var link = document.createElement('a');
 	link.appendChild(document.createTextNode(name));
 	link.className = "name";
@@ -120,7 +127,10 @@ function CreateTag(obj)
 			div.appendChild(CreateLinkFor(obj));
 		else
 		{
-			/*div.innerHTML = obj.Name;*/
+			var skill = Skills[obj.Name];
+			var tooltip = skill.Effect.getDescription(obj.Level);
+			tooltip = "<b>"+obj.Name+" "+obj.Level+"</b>\n"+tooltip;
+			SetTooltip(div, tooltip);
 			div.appendChild(CreateSymbol("level-"+Math.floor(obj.Level)));
 			div.appendChild(document.createTextNode(obj.Name));
 		}
@@ -205,30 +215,31 @@ function InitUI()
 
 function UpdateUI()
 {
-	var objinfo = document.getElementById("object-info");
-	objinfo.innerHTML = "";
+	var objInfo = document.getElementById("object-info");
+	objInfo.innerHTML = "";
 	if(Ui.ShowObject)
 	{
 		var obj = Ui.CurrentObject;
-		var isCharacter = obj.hasOwnProperty("Gender");
-		var isCity = obj.hasOwnProperty("Population");
-		var isFaction = obj.hasOwnProperty("Cities");
+		var isCharacter = obj instanceof Character;
+		var isCity      = obj instanceof City;
+		var isFaction   = obj instanceof Faction;
 
 		var faction = null;
 		if(isFaction)
-		{
 			faction = obj;
-		}
-		else
+		else if(isCharacter)
 		{
-			faction = obj.Faction;
-			while(Ui.MapMode == "realms" && faction.ParentFaction)
-				faction = faction.ParentFaction;
+			faction = obj.Rank.Faction;
+			if(!faction)
+				faction = obj.Home.Faction;
 		}
+		else if(isCity)
+			faction = obj.Faction;
 
 		var ribbon = document.createElement('div');
 		ribbon.className = "section ribbon";
 		ribbon.style.backgroundColor = "rgb("+faction.Color[0]+", "+faction.Color[1]+", "+faction.Color[2]+")";
+		if(ColorIsDark(faction.Color)) ribbon.className += " dark";
 
 		var title = document.createElement('div');
 		if(isCharacter)
@@ -237,17 +248,7 @@ function UpdateUI()
 			title.innerHTML = obj.Name;
 		title.className = "title";
 		ribbon.appendChild(title);
-		objinfo.appendChild(ribbon);
-
-		var misc = document.createElement('div');
-		misc.className = "section misc";
-		if(obj.Home)          misc.appendChild(CreateDoubleTag("Home",          obj.Home));
-		if(obj.Faction)       misc.appendChild(CreateDoubleTag("Faction",       obj.Faction));
-		if(obj.ParentFaction) misc.appendChild(CreateDoubleTag("Controlled by", obj.ParentFaction));
-		if(obj.Capital)       misc.appendChild(CreateDoubleTag("Capital",       obj.Capital));
-		if(obj.Leader)        misc.appendChild(CreateDoubleTag("Leader",        obj.Leader));
-		if(obj.Governor)      misc.appendChild(CreateDoubleTag("Governor",      obj.Governor));
-		objinfo.appendChild(misc);
+		objInfo.appendChild(ribbon);
 
 		if(isCharacter)
 		{
@@ -261,30 +262,39 @@ function UpdateUI()
 
 			ribbon.appendChild(subtitle);
 
-			var exposedStats = ["Strength", "Tactics", "Charisma", "Intrigue", "Willpower"];
-			var symbols = exposedStats.map(function(e){ return CreateSymbol(e);        });
-			var data    = exposedStats.map(function(e){ return obj.Attributes[e] || 0; });
-			var statsTable = HtmlTableFromArray([symbols, data]);
-			statsTable.className = "section stats";
-			objinfo.appendChild(statsTable);
+			var stats = document.createElement('div');
 
-			var traits = document.createElement('div');
-			traits.className = "section traits";
+			stats.className = "section stats";
+			var exposedAttrbs = ["Strength", "Tactics", "Charisma", "Intrigue"];
+			var symbols    = exposedAttrbs.map(function(e){ return CreateSymbol(e);        });
+			var data       = exposedAttrbs.map(function(e){ return obj.Attributes[e] || 0; });
+			var attributes = HtmlTableFromArray([symbols, data]);
+			attributes.className = "attributes";
+			stats.appendChild(attributes);
+
 			for(var i = 0; i < obj.Traits.length; i++)
 			{
 				var trait = obj.Traits[i];
-				traits.appendChild(CreateTag(trait));
+				stats.appendChild(CreateTag(trait));
 			};
-			objinfo.appendChild(traits);
+
+			objInfo.appendChild(stats);
+
+			var misc = document.createElement('div');
+			misc.className = "section misc";
+			if(obj.Home)          misc.appendChild(CreateDoubleTag("Home",          obj.Home));
+			if(obj.Faction)       misc.appendChild(CreateDoubleTag("Faction",       obj.Faction));
+			objInfo.appendChild(misc);
 
 			var skills = document.createElement('div');
 			skills.className = "section skills";
 			for(var i = 0; i < obj.Skills.length; i++)
 			{
 				var skill = obj.Skills[i];
-				skills.appendChild(CreateTag(skill));
+				var tag = CreateTag(skill);
+				skills.appendChild(tag);
 			};
-			objinfo.appendChild(skills);
+			objInfo.appendChild(skills);
 
 			var relations = document.createElement('div');
 			relations.className = "section relations";
@@ -293,26 +303,40 @@ function UpdateUI()
 				var rel = obj.Relations[i];
 				relations.appendChild(CreateDoubleTag(rel.Type, rel.Subject));
 			};
-			objinfo.appendChild(relations);
+			objInfo.appendChild(relations);
 		}
 		else if(isCity)
 		{
+			var misc = document.createElement('div');
+			misc.className = "section misc";
+			if(obj.Faction)  misc.appendChild(CreateDoubleTag("Controlled by", obj.Faction));
+			if(obj.Governor) misc.appendChild(CreateDoubleTag("Governor",      obj.Governor));
+			objInfo.appendChild(misc);
+
 			var population = document.createElement('div');
 			population.className = "section population";
 			obj.Population.map(
 			function(person){
 				if(!(person.IsAlive)) return;
+				if(!(person.isRelevant())) return;
 				population.appendChild(CreateTag(person));
 			}
 			);
-			objinfo.appendChild(population);
+			objInfo.appendChild(population);
 		}
 		else if(isFaction)
 		{
+			var misc = document.createElement('div');
+			misc.className = "section misc";
+			if(obj.ParentFaction) misc.appendChild(CreateDoubleTag("Controlled by", obj.ParentFaction));
+			if(obj.Capital)       misc.appendChild(CreateDoubleTag("Capital",       obj.Capital));
+			if(obj.Leader)        misc.appendChild(CreateDoubleTag("Leader",        obj.Leader));
+			objInfo.appendChild(misc);
+
 			var subs = document.createElement('div');
 			subs.className = "section subs";
 			obj.SubFactions.map(function(faction){ subs.appendChild(CreateTag(faction)); });
-			objinfo.appendChild(subs);
+			objInfo.appendChild(subs);
 
 			var cities = document.createElement('div');
 			cities.className = "section cities";
@@ -321,7 +345,7 @@ function UpdateUI()
 				cities.appendChild(CreateTag(city));
 			}
 			);
-			objinfo.appendChild(cities);
+			objInfo.appendChild(cities);
 
 			var members = document.createElement('div');
 			members.className = "section members";
@@ -332,7 +356,7 @@ function UpdateUI()
 				members.appendChild(CreateTag(person));
 			}
 			);
-			objinfo.appendChild(members);
+			objInfo.appendChild(members);
 		}
 
 	}
@@ -341,7 +365,7 @@ function UpdateUI()
 		GameState.Factions.map(function(faction)
 		{
 			if(!faction.ParentFaction)
-				objinfo.appendChild(CreateTag(faction));
+				objInfo.appendChild(CreateTag(faction));
 		});
 	}
 }

@@ -79,8 +79,11 @@ function GeneratePoliticalLandscape()
 	var families = GameState.Families.slice();
 	var cities   = GameState.Map.Cities.slice();
 
-	// Generate 15 Factions
-	for(var i = 15; i >= 0; i--)
+	var numFactions = 6;
+	var numBigFactions = 6;
+
+	// Generate Factions
+	for(var i = numFactions; i > 0; i--)
 	{
 		var city = cities.popRandom();
 		var faction = new Faction();
@@ -104,8 +107,8 @@ function GeneratePoliticalLandscape()
 
 	// Determine the biggest 6 factions...
 	var sortedFactions = GameState.Factions.sort(function(a, b){return b.Cities.length - a.Cities.length});
-	var bigFactions = sortedFactions.slice(0, 5);
-	var smallFactions = sortedFactions.slice(5);
+	var bigFactions = sortedFactions.slice(0, numBigFactions);
+	var smallFactions = sortedFactions.slice(numBigFactions);
 	// Give the big factions more dominant colors.
 	bigFactions.forEach(function(faction){
 		faction.Color = Data.Faction.MajorColors.popRandom();
@@ -163,13 +166,4 @@ function AssignHome()
 		person.Home = city;
 		city.Population.push(person);
 	};
-}
-
-function AssignFaction()
-{
-	for(var i = 0; i < GameState.Characters.length; i++)
-	{
-		var person = GameState.Characters[i];
-		person.Faction = person.Home.Faction;
-	}
 }

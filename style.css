@@ -1,3 +1,37 @@
+@font-face
+{
+  font-family: 'Lobster';
+  src: url("Assets/Lobster.otf");
+}
+
+/*@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 400;
+  src: url("Assets/vollkorn-regular.woff");
+}*/
+
+@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 500;
+  src: url("Assets/vollkorn-medium.woff");
+}
+
+@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 600;
+  src: url("Assets/vollkorn-semibold.woff");
+}
+
+/*@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 700;
+  src: url("Assets/vollkorn-bold.woff");
+}*/
+
 div, section
 {
 	box-sizing: border-box;
@@ -11,6 +45,8 @@ section, body
 body
 {
 	margin: 0;
+	font-family: 'Vollkorn', sans-serif;
+	font-weight: 500;
 }
 
 #sidebar
@@ -60,13 +96,24 @@ body
 	font-family: 'Lobster', sans-serif;
 }
 
-.tag, .double-tag > span
+.tag
 {
-	min-width: 155px;
-	max-width: 155px;
-	padding: 2px;
+	width: 32%;
+	display: inline-block;
+}
+
+.double-tag > span
+{
+	width: 49%;
+	height: 24px;
 	display: inline-block;
 	box-sizing: border-box;
+	margin-left: 2px;
+}
+
+.double-tag > span:first-child
+{
+	border-right: 1px solid black;
 }
 
 .tag, .double-tag
@@ -75,8 +122,11 @@ body
 	background: url("Assets/uibg.jpg");
 	margin: 2px;
 	color: black;
-	line-height: 16px;
+	line-height: 20px;
 	padding: 2px;
+	height: 24px;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .action
@@ -100,7 +150,7 @@ body
 
 .double-tag
 {
-	max-width: 325px;
+	/*max-width: 325px;*/
 }
 
 .section
@@ -110,7 +160,7 @@ body
 
 .objectLink
 {
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .objectLink a
@@ -146,50 +196,49 @@ body
 	margin-left: auto;
 	margin-right: auto;
 	width: 360px;
+	clear: both;
 }
 
 .section.ribbon
 {
-	background: rgb(210, 40, 30);
 	box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.5);
 	border: 1px solid black;
 	box-sizing: content-box;
 	margin-bottom: 30px;
-	/*width: 370px;*/
 	padding: 10px;
 	padding-left: 20px;
 	color: black;
 }
 
-.section.ribbon.city
+.section.stats
 {
-	background: rgb(30, 140, 40);
+	min-height: 70px;
 }
 
-.stats
+.section.stats .tag
 {
-	width: 260px;
-	background: rgba(0, 0, 0, 0.9);
-	border-image: url("Assets/goldborder.png") 5 5 4 stretch;
-	border-style: solid;
+	width: auto;
 }
 
-.stats tr:first-child td
+.attributes
 {
-	background: rgb(160, 160, 160);
+	border: 1px solid black;
+	background: url("Assets/uibg.jpg");
+	width: 140px;
+	color: black;
+	padding: 2px;
+	margin:  2px;
+	float: left;
+	display: inline-block;
 }
 
-.stats tr:not(:first-child) td
-{
-	background: rgb(90, 90, 90);
-}
-
-.stats td
+.attributes td
 {
 	text-align: center;
-	font-weight:  bold;
-	font-family: 'Open Sans', sans-serif;
-	color: white;
+	font-weight: bold;
+	font-family: serif;
+	font-size: 20px;
+
 	padding: 0;
 	margin: 0;
 }
@@ -197,4 +246,20 @@ body
 #controls
 {
 	display: none;
+}
+
+[data-tooltip]
+{
+	cursor: pointer;
+}
+
+.tooltip
+{
+	background: white;
+	color: black;
+	border: 1px solid black;
+	padding: 2px;
+	margin: 2px;
+	margin-left: 15px;
+	white-space: pre;
 }
