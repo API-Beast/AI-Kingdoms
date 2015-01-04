@@ -10,7 +10,7 @@ var Tooltip =
 		Tooltip.Element.style.visibility = "hidden";
 		document.body.appendChild(Tooltip.Element);
 	},
-	MouseOver: function(e)
+	MouseEnter: function(e)
 	{
 		if(!Tooltip.Element)
 			Tooltip.Initialize();
@@ -27,7 +27,7 @@ var Tooltip =
 		Tooltip.Element.style.top      = e.clientY+"px";
 		Tooltip.Element.style.left     = e.clientX+"px";
 	},
-	MouseOut: function(e)
+	MouseLeave: function(e)
 	{
 		Tooltip.Element.className = "tooltip hidden";
 		Tooltip.Element.style.visibility = "hidden";
@@ -38,7 +38,7 @@ var Tooltip =
 function SetTooltip(obj, tooltip)
 {
 	obj.setAttribute("data-tooltip", tooltip);
-	obj.addEventListener("mouseenter", Tooltip.MouseOver);
+	obj.addEventListener("mouseenter", Tooltip.MouseEnter);
 	obj.addEventListener("mousemove",  Tooltip.MouseMove);
-	obj.addEventListener("mouseleave",  Tooltip.MouseOut);
+	obj.addEventListener("mouseleave", Tooltip.MouseLeave);
 }
