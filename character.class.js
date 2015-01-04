@@ -15,8 +15,8 @@ var Character = function()
 	this.Stats        = [0, 0, 0, 0, 0];
 
 	// Attributes = BaseAttributes + Modification through static traits and skills
-	this.BaseAttributes = {Strength: 0, Tactics: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
-	this.Attributes     = {Strength: 0, Tactics: 0, Charisma: 0, Intrigue: 0, Willpower: 0};
+	this.BaseAttributes = {Strength: 0, Tactics: 0, Charisma: 0, Intrigue: 0, Willpower: 0, Health: RandBellCurve(40, 80), Learning: 2, "Skill Diversity": 3, Income: 1};
+	this.Attributes     = ShallowCopy(this.BaseAttributes);
 
 	this.BaseEnabledEvents = {};
 	this.EnabledEvents     = {};

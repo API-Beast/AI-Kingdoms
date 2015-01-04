@@ -92,6 +92,16 @@ function DevelopCharacter(person, minState, maxState)
 		skills = skills.map(function(skill){ return [skill.Name, maxLevel]; });
 		distributeSkills(skills);
 	};
+	var distributeTraitsByTag = function(tags, numTraits)
+	{
+		var traits;
+		if(typeof tags === 'object')
+			traits = TraitsArray.filter(function(trait){ return trait.Tags.some(function(t){ return tags.contains(t); }); });
+		else
+			traits = TraitsArray.filter(function(trait){ return trait.Tags.contains(tags); });
+
+		traits = traits.filter(function(trait){ return trait.preReqFulfilled(person); });
+	};
 	var advanceCareer = function()
 	{
 		switch(person.Rank.Name)
