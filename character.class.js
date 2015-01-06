@@ -59,11 +59,6 @@ Character.prototype.isRelevant = function()
 	return this.Development != 0;
 };
 
-Character.prototype.applyEffects = function(effects, attributes, situation)
-{
-
-};
-
 Character.prototype.calcAttributes = function()
 {
 	this.Attributes = ShallowCopy(this.BaseAttributes);
@@ -76,6 +71,14 @@ Character.prototype.calcAttributes = function()
 		if(effect.isStatic() === true)
 		if(effect.conditionsFulfilled(it.Level, that.Attributes, []))
 			effect.apply(it.Level, that.Attributes, []);
+	});
+	this.Traits.forEach(function(it, index)
+	{
+		var effect = Traits[it].Effect;
+
+		if(effect.isStatic() === true)
+		if(effect.conditionsFulfilled(1, that.Attributes, []))
+			effect.apply(1, that.Attributes, []);
 	});
 	return this.Attributes;
 };
@@ -92,6 +95,14 @@ Character.prototype.calcTempAttributes = function(situation)
 		if(effect.isStatic() === false)
 		if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
 			effect.apply(it.Level, tmpAttrib, situation);
+	});
+	this.Traits.forEach(function(it, index)
+	{
+		var effect = Traits[it].Effect;
+
+		if(effect.isStatic() === false)
+		if(effect.conditionsFulfilled(1, tmpAttrib, situation))
+			effect.apply(1, tmpAttrib, situation);
 	});
 	return tmpAttrib;
 };
@@ -207,8 +218,8 @@ Character.prototype.hasTrait = function(name)
 
 Character.prototype.giveTrait = function(name)
 {
-	if(!this.hasTrait(name))
-		this.Traits.push(name);
+	console.assert(Traits.hasOwnProperty(name) === true, "Trait " + name + " doesn't exist!");
+	this.Traits.push(name);
 }
 
 Character.prototype.getSkill = function(name)

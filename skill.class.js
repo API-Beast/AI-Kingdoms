@@ -6,6 +6,8 @@ var Skill = function(name, tag, template)
 	this.PreReq = { Attributes:[], Skills:[], Traits:[] };
 	this.Exclusive = [];
 	this.IsTrait   = false;
+	this.Weight    = 1;
+	this.Icon      = null;
 
 	this.Effect = new Effect();
 	if(typeof tag === "object")

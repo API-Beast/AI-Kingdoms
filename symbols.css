@@ -1,17 +1,13 @@
 .symbol
 {
 	display: inline-block;
+	width: 16px;
+	height: 16px;
 }
 
 .symbol+.symbol
 {
 	margin-left: 0px;
-}
-
-.symbol.empty
-{
-	width: 16px;
-	height: 16px;
 }
 
 .symbol.solid-color
@@ -23,129 +19,42 @@
 	box-sizing: border-box;
 }
 
-.symbol.female
-{
-  background: url("Assets/symbols.png") 0px 0px;
-  width: 16px;
-  height: 16px;
-}
+.symbol.female{ background: url("Assets/symbols.png")   0px   0px; }
+.symbol.male  { background: url("Assets/symbols.png") -16px   0px; }
+.symbol.dead  { background: url("Assets/symbols.png") -32px   0px; }
 
-.symbol.male
-{
-  background: url("Assets/symbols.png") -16px 0px;
-  width: 16px;
-  height: 16px;
-}
+.symbol.Commander { background: url("Assets/symbols.png")   0px -16px; }
+.symbol.General   { background: url("Assets/symbols.png") -16px -16px; }
+.symbol.Leader    { background: url("Assets/symbols.png") -32px -16px; }
+.symbol.Governor  { background: url("Assets/symbols.png") -48px -16px; }
+.symbol.Chancellor{ background: url("Assets/symbols.png") -64px -16px; }
 
-.symbol.dead
-{
-  background: url("Assets/symbols.png") -32px 0px;
-  width: 16px;
-  height: 16px;
-}
+.symbol.level-1{ background: url("Assets/symbols.png")   0px -32px; }
+.symbol.level-2{ background: url("Assets/symbols.png") -16px -32px; }
+.symbol.level-3{ background: url("Assets/symbols.png") -32px -32px; }
+.symbol.level-4{ background: url("Assets/symbols.png") -48px -32px; }
+.symbol.level-5{ background: url("Assets/symbols.png") -64px -32px; }
 
-.symbol.Commander
-{
-	background: url("Assets/symbols.png") 0px -16px;
-	width: 16px;
-	height: 16px;
-}
+.symbol.Strength { background: url("Assets/stats.png")    0px 0px; width: 32px; height: 32px; }
+.symbol.Tactics  { background: url("Assets/stats.png")  -32px 0px; width: 32px; height: 32px; }
+.symbol.Charisma { background: url("Assets/stats.png")  -64px 0px; width: 32px; height: 32px; }
+.symbol.Intrigue { background: url("Assets/stats.png")  -96px 0px; width: 32px; height: 32px; }
+.symbol.Willpower{ background: url("Assets/stats.png") -128px 0px; width: 32px; height: 32px; }
 
-.symbol.General
-{
-	background: url("Assets/symbols.png") -16px -16px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.Leader
-{
-	background: url("Assets/symbols.png") -32px -16px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.Governor, .symbol.Advisor
-{
-	background: url("Assets/symbols.png") -48px -16px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.Chancellor
-{
-	background: url("Assets/symbols.png") -64px -16px;
-	width: 16px;
-	height: 16px;
-}
-
-
-.symbol.level-1
-{
-	background: url("Assets/symbols.png") -0px -32px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.level-2
-{
-	background: url("Assets/symbols.png") -16px -32px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.level-3
-{
-	background: url("Assets/symbols.png") -32px -32px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.level-4
-{
-	background: url("Assets/symbols.png") -48px -32px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.level-4
-{
-	background: url("Assets/symbols.png") -64px -32px;
-	width: 16px;
-	height: 16px;
-}
-
-.symbol.Strength
-{
-	background: url("Assets/stats.png") 0px 0px;
-	width: 32px;
-	height: 32px;
-}
-
-.symbol.Tactics
-{
-	background: url("Assets/stats.png") -32px 0px;
-	width: 32px;
-	height: 32px;
-}
-
-.symbol.Charisma
-{
-	background: url("Assets/stats.png") -64px 0px;
-	width: 32px;
-	height: 32px;
-}
-
-.symbol.Intrigue
-{
-	background: url("Assets/stats.png") -96px 0px;
-	width: 32px;
-	height: 32px;
-}
-
-.symbol.Willpower
-{
-	background: url("Assets/stats.png") -128px 0px;
-	width: 32px;
-	height: 32px;
-}
+.symbol.Healthy    { background: url("Assets/symbols.png")    0px -48px; }
+.symbol.Sickly     { background: url("Assets/symbols.png")    0px -64px; }
+.symbol.Fierce     { background: url("Assets/symbols.png")  -32px -64px; }
+.symbol.Rational   { background: url("Assets/symbols.png")  -32px -48px; }
+.symbol.Monstrous  { background: url("Assets/symbols.png")  -16px -64px; }
+.symbol.Talented   { background: url("Assets/symbols.png")  -80px -48px; }
+.symbol.Dilligent  { background: url("Assets/symbols.png")  -96px -48px; }
+.symbol.Honest     { background: url("Assets/symbols.png") -144px -48px; }
+.symbol.Empathic   { background: url("Assets/symbols.png")  -48px -48px; }
+.symbol.Calculating{ background: url("Assets/symbols.png")  -32px -80px; }
+.symbol.Incapable  { background: url("Assets/symbols.png")  -80px -64px; }
+.symbol.Focused    { background: url("Assets/symbols.png") -112px -48px; }
+.symbol.Manipulative{background: url("Assets/symbols.png") -144px -64px; }
+.symbol.Cruel      { background: url("Assets/symbols.png")  -48px -64px; }
+.symbol.Lustful    { background: url("Assets/symbols.png") -128px -48px; }
+.symbol.Dominant   { background: url("Assets/symbols.png")  -64px -48px; }
+.symbol.Obedient   { background: url("Assets/symbols.png")  -64px -64px; }

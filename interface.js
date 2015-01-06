@@ -117,14 +117,16 @@ function CreateLinkFor(obj)
 	return div;
 }
 
-function CreateTag(obj)
+function CreateTag(obj, symbol)
 {
 	var div = document.createElement('div');
 	div.className = 'tag';
 	if(typeof(obj) == 'object')
 	{
 		if(obj instanceof City || obj instanceof Faction || obj instanceof Character)
+		{
 			div.appendChild(CreateLinkFor(obj));
+		}
 		else
 		{
 			var skill = Skills[obj.Name];
@@ -136,7 +138,11 @@ function CreateTag(obj)
 		}
 	}
 	else
-		div.innerHTML = obj;
+	{
+		if(symbol)
+			div.appendChild(CreateSymbol(symbol));
+		div.appendChild(document.createTextNode(obj));
+	}
 	return div;
 }
 
@@ -275,7 +281,11 @@ function UpdateUI()
 			for(var i = 0; i < obj.Traits.length; i++)
 			{
 				var trait = obj.Traits[i];
-				stats.appendChild(CreateTag(trait));
+				var tag = CreateTag(trait, Traits[trait].Icon);
+				var tooltip = Traits[trait].Effect.getDescription(1);
+				tooltip = "<b>"+trait+"</b>\n"+tooltip;
+				SetTooltip(tag, tooltip);
+				stats.appendChild(tag);
 			};
 
 			objInfo.appendChild(stats);

@@ -8,7 +8,6 @@ var Effect = function(template)
 	this.LevelFactor  = [0, 1, 2, 4, 6, 10];
 	this.Likes        = [];
 	this.Dislikes     = [];
-	this.Exclusive    = [];
 
 	if(template)
 	for(var key in template)
@@ -91,7 +90,10 @@ Effect.prototype.getDescription = function(level)
 	{
 		var name = this.Attributes[i];
 		var bonus = this.Attributes[i+1] * this.LevelFactor[level];
-		result += intend+"+"+bonus+" "+name+"\n";
+		if(bonus > 0)
+			result += intend+"+"+bonus+" "+name+"\n";
+		else
+			result += intend+bonus+" "+name+"\n";
 	};
 	if(this.EnableEvents)
 	for(var i = 0; i < this.EnableEvents.length; i++)
@@ -99,6 +101,6 @@ Effect.prototype.getDescription = function(level)
 		result += intend+"Enables <i>"+this.EnableEvents[i]+"</i> Events\n";
 	}
 	if(this.Likes.length)    result += "Likes Characters with <i>"+this.Likes.join("</i> or <i>")+"</i>\n";
-	if(this.Dislikes.length) result += "Dislikes Characters with <i>"+this.Likes.join("</i> or <i>")+"</i>\n";
+	if(this.Dislikes.length) result += "Dislikes Characters with <i>"+this.Dislikes.join("</i> or <i>")+"</i>\n";
 	return result;
 };

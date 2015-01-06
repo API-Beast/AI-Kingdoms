@@ -41,8 +41,8 @@ SkillDefinition("Assassin",    "Fighter", { EnableEvents: ["Assassin"], Attribut
 
 // Politican
 // Basic
-SkillDefinition("Smart",           "Politican", { Attributes: ["Intrigue",   2] });
-SkillDefinition("Charismatic",     "Politican", { Attributes: ["Charisma",   2] });
+SkillDefinition("Smart",           ["Basic", "Politican"], { Attributes: ["Intrigue",   2, "Tactics", 1] });
+SkillDefinition("Charismatic",     ["Basic", "Politican"], { Attributes: ["Charisma",   2] });
 SkillDefinition("Wealthy",         "Politican", { Attributes: ["Income",    25], PreReq:{ Skills: ["Charismatic", 1]} });
 SkillDefinition("Administration",  "Politican", { Attributes: ["Governance", 1], PreReq:{ Skills: ["Smart",       1]} });
 // Advanced
@@ -73,25 +73,25 @@ function TraitDefinition(name, tag, template)
 }
 
 // These traits are distributed upon beeing born.
-TraitDefinition("Healthy",     "Child", {Exclusive: ["Sickly"],     Attributes: ["Charisma", +2, "Strength", +1, "Health", +10] });
-TraitDefinition("Sickly",      "Child", {Exclusive: ["Healthy"],    Attributes: ["Charisma", -1, "Strength", -2, "Health", -10] });
-TraitDefinition("Brave",       "Child", {Exclusive: ["Coward"],     Attributes: ["Strength", +1], Likes: ["Brave"],  EnableEvents: ["Brave"] });
+TraitDefinition("Healthy",     "Child", {Icon: "Healthy", Exclusive: ["Sickly"],     Attributes: ["Charisma", +2, "Strength", +1, "Health", +10] });
+TraitDefinition("Sickly",      "Child", {Icon: "Sickly",  Exclusive: ["Healthy"],    Attributes: ["Charisma", -1, "Strength", -4, "Health", -10] });
+//TraitDefinition("Brave",       "Child", {Exclusive: ["Coward"], Attributes: ["Strength", +1], Likes: ["Brave"],  EnableEvents: ["Brave"] });
 // These traits are distributed upon reaching teenage age.
-TraitDefinition("Fierce",      "Teen",  {Exclusive: ["Rational"],   Attributes: ["Strength", +2, "Tactics", -1] });
-TraitDefinition("Rational",    "Teen",  {Exclusive: ["Fierce"],     Attributes: ["Tactics", +2] });
-TraitDefinition("Monstrous",   "Teen",  {                           Attributes: ["Strength", +4, "Charisma", -3] });
-TraitDefinition("Talented",    "Teen",  {Exclusive: ["Incapable"],  Attributes: ["Learning", +1], Likes: ["Talented"]});
-TraitDefinition("Dilligent",   "Teen",  {                           Attributes: ["Learning", +1] });
-TraitDefinition("Honest",      "Teen",  {Exclusive: ["Deceiving"],  Attributes: ["Intrigue", -2], Likes: ["Honest"], Dislikes: ["Deceiving"] });
-TraitDefinition("Romantic",    "Teen",  {Exclusive: ["Cruel"],      Attributes: ["Charisma", +1], Dislikes: ["Cruel"] });
-TraitDefinition("Coward",      "Teen",  {Exclusive: ["Brave"],      Attributes: ["Intrigue", +1, "Charisma", -2] });
+TraitDefinition("Fierce",      "Teen",  {Icon: "Fierce",   Exclusive: ["Rational"],   Attributes: ["Strength", +3, "Tactics", -2] });
+TraitDefinition("Rational",    "Teen",  {Icon: "Rational", Exclusive: ["Fierce"],     Attributes: ["Tactics", +2] });
+TraitDefinition("Monstrous",   "Teen",  {Icon: "Monstrous", Weight: 0.25, Attributes: ["Strength", +4, "Charisma", -3] });
+TraitDefinition("Talented",    "Teen",  {Icon: "Talented", Exclusive: ["Incapable"], Attributes: ["Learning", +1], Likes: ["Talented"]});
+TraitDefinition("Dilligent",   "Teen",  {Icon: "Dilligent", Attributes: ["Learning", +1] });
+TraitDefinition("Honest",      "Teen",  {Icon: "Honest",   Exclusive: ["Manipulative"], Attributes: ["Intrigue", -2], Likes: ["Honest"], Dislikes: ["Manipulative"] });
+TraitDefinition("Empathic",    "Teen",  {Icon: "Empathic", Exclusive: ["Cruel", "Manipulative"], Attributes: ["Charisma", +2], Likes: ["Honest"], Dislikes: ["Cruel", "Manipulative"] });
+//TraitDefinition("Coward",      "Teen",  {Exclusive: ["Brave"], Attributes: ["Intrigue", +1, "Charisma", -2] });
 // These traits are distributed upon reaching adulthood.
-TraitDefinition("Calculating", "Adult", {Exclusive: ["Fierce"],     Attributes: ["Tactics", +2, "Intrigue", +2, "Charisma", -2] });
-TraitDefinition("Incapable",   "Adult", {Exclusive: ["Talented"],   Attributes: ["Learning", -1] });
-TraitDefinition("Focused",     "Adult", {                           Attributes: ["Skill Diversity", -1] });
-TraitDefinition("Deceiving",   "Adult", {Exclusive: ["Honest"],     Attributes: ["Intrigue", +3, "Charisma", -1] });
-TraitDefinition("Cruel",       "Adult", {Exclusive: ["Romantic"],   Attributes: ["Charisma", -2], Dislikes: ["Romantic"], EnableEvents: ["Cruel"] });
-TraitDefinition("Lustful",     "Adult", {Exclusive: ["Infertile"],  Attributes: ["Fertility", +1] });
-TraitDefinition("Infertile",   "Adult", {Exclusive: ["Lustful"],    Attributes: ["Fertility", -1] });
-TraitDefinition("Dominant",    "Adult", {Exclusive: ["Obedient"],   Attributes: ["Charisma", +2, "Intrigue", +2]});
-TraitDefinition("Obedient",    "Adult", {Exclusive: ["Dominant"],   Attributes: ["Charisma", +2, "Intrigue", -2], Likes: ["Dominant"] });
+TraitDefinition("Calculating", "Adult", {Icon: "Calculating", Exclusive: ["Fierce"], Attributes: ["Tactics", +2, "Intrigue", +2, "Charisma", -2] });
+TraitDefinition("Incapable",   "Adult", {Icon: "Incapable", Exclusive: ["Talented"], Attributes: ["Learning", -1] });
+TraitDefinition("Focused",     "Adult", {Icon: "Focused", Attributes: ["Skill Diversity", -1] });
+TraitDefinition("Manipulative","Adult", {Icon: "Manipulative", Weight: 0.50, Exclusive: ["Honest", "Empathic"], Attributes: ["Intrigue", +4, "Charisma", -2] });
+TraitDefinition("Cruel",       "Adult", {Icon: "Cruel",   Exclusive: ["Empathic"], Attributes: ["Charisma", -2], Dislikes: ["Empathic"], EnableEvents: ["Cruel"] });
+TraitDefinition("Lustful",     "Adult", {Icon: "Lustful", Exclusive: ["Infertile"], Attributes: ["Fertility", +1] });
+//TraitDefinition("Infertile",   "Adult", {Weight: 0.25, Exclusive: ["Lustful"], Attributes: ["Fertility", -1] });
+TraitDefinition("Dominant",    "Adult", {Icon: "Dominant", Weight: 0.50, Exclusive: ["Obedient"], Attributes: ["Charisma", +2, "Intrigue", +2]});
+TraitDefinition("Obedient",    "Adult", {Icon: "Obedient", Weight: 0.50, Exclusive: ["Dominant", "Cruel"],   Attributes: ["Charisma", +2, "Intrigue", -2], Likes: ["Dominant"] });

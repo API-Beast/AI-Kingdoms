@@ -51,14 +51,12 @@ function GiveBaseBaseAttributes(person)
 
 function DevelopCharacter(person, minState, maxState)
 {
-	var talented = person.hasTrait("Talented") + person.hasTrait("Genius")*2;
-	var incapable = person.hasTrait("Incapable");
 	var atr = person.BaseAttributes;
 
 	var distributeSkills = function(skills)
 	{
-		var i = 2 + talented - incapable;
-		var onlyTrain = person.Skills.length > (3 + talented - incapable);
+		var i = person.Attributes.Learning;
+		var onlyTrain = person.Skills.length > person.Attributes["Skill Diversity"];
 		skills = skills.filter(function(skill)
 		{ 
 			var s = person.getSkill(skill[0]);
@@ -78,12 +76,11 @@ function DevelopCharacter(person, minState, maxState)
 			person.trainSkill(skill[0], 1, skill[1]||1);
 			i -= 1;
 		}
+		person.calcAttributes();
 	};
 	var distributeSkillsByTag = function(tags, maxLevel)
 	{
 		var skills;
-		// Depends on the attributes so recalculate them.
-		person.calcAttributes();
 		if(typeof tags === 'object')
 			skills = SkillsArray.filter(function(skill){ return skill.Tags.some(function(t){ return tags.contains(t); }); });
 		else
@@ -99,8 +96,18 @@ function DevelopCharacter(person, minState, maxState)
 			traits = TraitsArray.filter(function(trait){ return trait.Tags.some(function(t){ return tags.contains(t); }); });
 		else
 			traits = TraitsArray.filter(function(trait){ return trait.Tags.contains(tags); });
-
-		traits = traits.filter(function(trait){ return trait.preReqFulfilled(person); });
+		var i = numTraits;
+		while(i && traits.length)
+		{
+			var trait = traits.popRandom();
+			if(!person.hasTrait(trait.Name))
+			if(trait.Weight >= 1 || Math.random() < trait.Weight)
+			if(trait.preReqFulfilled(person))
+			{
+				i -= 1;
+				person.giveTrait(trait.Name);
+			}
+		}
 	};
 	var advanceCareer = function()
 	{
@@ -157,6 +164,10 @@ function DevelopCharacter(person, minState, maxState)
 	{
 		case 0: // Child
 			GiveBaseBaseAttributes(person);
+			
+			if(Math.random() > 0.60)
+				distributeTraitsByTag("Child", 1);
+			
 			var choice = person.makeChoice("Development", ["Play", "Study"]);
 			switch(choice)
 			{
@@ -169,25 +180,12 @@ function DevelopCharacter(person, minState, maxState)
 					atr.Willpower += 1;
 					break;
 			}
-			if(Math.random() < 0.1)
-			{
-				person.Traits.push("Talented");
-				talented = 1;
-			}
-			else if(Math.random() < 0.05)
-			{
-				person.Traits.push("Genius");
-				talented = 2;
-			}
-			else if(Math.random() < 0.2)
-			{
-				person.Traits.push("Incapable");
-				incapable = true;
-			}
 			person.Development = 1;
 			if(person.Development >= maxState) break;
 		case 1: // Teenager
 			if(person.Age < 12) break;
+
+			distributeTraitsByTag("Teen", RandInt(1, 2));
 			var choice = person.makeChoice("Development", ["Sparring", "Socialize", "Study Tactics", "Study Politics"]);
 			switch(choice)
 			{
@@ -195,43 +193,31 @@ function DevelopCharacter(person, minState, maxState)
 					atr.Strength += 2;
 					atr.Charisma -= 1;
 					atr.Willpower += 1;
-					distributeSkillsByTag("Fighter", 2);
-					if(Math.random() < 0.25)
-						person.giveTrait("Bold");
-					if(Math.random() < 0.10)
-						person.giveTrait("Cruel");
-					if(Math.random() < 0.25 && atr.Willpower > 3)
-						person.giveTrait("Fierce");
+					distributeSkillsByTag(["Basic", "Fighter"], 2);
 					break;
 				case "Socialize":
 					atr.Strength     -= 1;
 					atr.Charisma     += 2;
-					distributeSkillsByTag("Social", 2);
-					if(Math.random() < 0.25)
-						person.giveTrait("Affectionate");
+					distributeSkillsByTag(["Basic", "Social"], 2);
 					break;
 				case "Study Tactics":
 					atr.Tactics    += 1;
 					atr.Willpower += 1;
-					distributeSkillsByTag("Tactican", 1);
-					if(Math.random() < 0.25)
-						person.giveTrait("Cold Hearted");
+					distributeSkillsByTag(["Basic", "Tactican"], 1);
 					break;
 				case "Study Politics":
 					atr.Intrigue  += 2;
 					atr.Charisma  += 1;
 					atr.Willpower -= 1;
-					distributeSkillsByTag("Politics", 1);
-					if(Math.random() < 0.15)
-						person.giveTrait("Cowardice");
-					if(Math.random() < 0.15)
-						person.giveTrait("Manipulative");
+					distributeSkillsByTag(["Basic", "Politics"], 1);
 					break;
 			}
 			person.Development = 2;
 			if(person.Development >= maxState) break;
 		case 2: // Young adult
 			if(person.Age < 16) break;
+
+			distributeTraitsByTag("Adult", 1);
 			var choices =  ["Study"];
 			if(person.Rank.Name == "Commoner")
 				choices.push("Enlist");
@@ -253,20 +239,42 @@ function DevelopCharacter(person, minState, maxState)
 			}
 			person.Development = 3;
 			if(person.Development >= maxState) break;
-		case 3: // Adult
-			if(person.Age < 24) break;
+		case 3: // Adult 1
+			if(person.Age < 20) break;
+
+			distributeTraitsByTag("Adult", 1);
 			advanceCareer();
 			person.Development = 4;
 			if(person.Development >= maxState) break;
-		case 4: // Middle aged
-			if(person.Age < 36) break;
+		case 4: // Adult 2
+			if(person.Age < 26) break;
 			advanceCareer();
 			person.Development = 5;
 			if(person.Development >= maxState) break;
-		case 5: // Old man
-			if(person.Age < 50) break;
+		case 5: // Adult 3
+			if(person.Age < 32) break;
 			advanceCareer();
 			person.Development = 6;
+			if(person.Development >= maxState) break;
+		case 6: // Adult 4
+			if(person.Age < 40) break;
+			advanceCareer();
+			person.Development = 7;
+			if(person.Development >= maxState) break;
+		case 7: // Middle aged
+			if(person.Age < 50) break;
+			advanceCareer();
+			person.Development = 8;
+			if(person.Development >= maxState) break;
+		case 8: // Old
+			if(person.Age < 65) break;
+			advanceCareer();
+			person.Development = 9;
+			if(person.Development >= maxState) break;
+		case 9: // Very old
+			if(person.Age < 80) break;
+			advanceCareer();
+			person.Development = 10;
 			if(person.Development >= maxState) break;
 	}
 	person.calcAttributes();

@@ -44,7 +44,7 @@ function GameStart()
   	return newGen;
   };
 
-	var gen1 = GenerateBaseGeneration(200);
+	var gen1 = GenerateBaseGeneration(100);
 	GameState.Characters = gen1;
 	GeneratePoliticalLandscape();
 	AssignHome();
