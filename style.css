@@ -37,9 +37,18 @@ div, section
 	box-sizing: border-box;
 }
 
-section, body
+section, body, #sidebar
 {
+	background: #555;
+}
+
+#sidebar section
+{
+	width: 395px;
+	padding: 10px;
+  box-shadow: inset 0 10px 50px 25px #bbb, 0 -2px 5px rgba(0,0,0,0.2);
 	background: #777;
+	border-top: 2px solid black;
 }
 
 body
@@ -47,6 +56,9 @@ body
 	margin: 0;
 	font-family: 'Vollkorn', sans-serif;
 	font-weight: 500;
+
+	-webkit-font-feature-settings: "lnum" 1;
+	font-feature-settings: "lnum" 1;
 }
 
 #sidebar
@@ -57,14 +69,6 @@ body
 	bottom:   0px;
 	width:    400px;
 	border-right: 5px solid black;
-	background: #222;
-}
-
-#sidebar section
-{
-	width: 395px;
-	padding: 10px;
-	box-shadow: inset 0 0 50px;
 }
 
 #sidebar #object-info-tab
@@ -75,6 +79,30 @@ body
 #sidebar #object-info
 {
 	overflow-y: auto;
+}
+
+#resource-bar
+{
+	height: 40px;
+	padding: 4px;
+	text-align: right;
+}
+
+.resource
+{
+	display: inline-block;
+	min-width: 80px;
+	text-align: left;
+}
+
+.resource .symbol
+{
+	margin-right: 10px;
+}
+
+.resource .value
+{
+	text-align: right;
 }
 
 #playfield
@@ -118,7 +146,7 @@ body
 	border-right: 1px solid black;
 }
 
-.tag, .double-tag
+.tag, .double-tag, .resource
 {
 	border: 1px solid black;
 	background: url("Assets/uibg.jpg");
@@ -240,7 +268,6 @@ body
 {
 	text-align: center;
 	font-weight: bold;
-	font-family: serif;
 	font-size: 20px;
 
 	padding: 0;
