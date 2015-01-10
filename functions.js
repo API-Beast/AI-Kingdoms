@@ -352,3 +352,28 @@ function ShallowCopy(obj)
 		copy[key] = obj[key];
 	return copy;
 }
+
+function ApplyTemplate(to, template)
+{
+	if(template)
+	for(var key in template)
+	if(template.hasOwnProperty(key))
+	{
+		to[key] = template[key];
+	}
+	return to;
+}
+
+function ApplyTemplateMultiple(to, template, alt)
+{
+	if(template)
+	for(var key in template)
+	if(template.hasOwnProperty(key))
+	{
+		if(to.hasOwnProperty(key))
+			to[key] = template[key];
+		else
+			alt[key] = template[key];
+	}
+	return to;
+}

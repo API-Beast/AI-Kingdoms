@@ -23,7 +23,7 @@ var Faction = function()
 		Openings: 2,
 		Scoring: { Strength: 0.25, Tactics: 2, Prestige: 2, Relations: 0.2, Heritage: 0.2 },
 		SkillMod: [["Inspiration", +5], ["Intimidation", +5]],
-		TraitMod: [["Cowardice", -10]],
+		TraitMod: [["Pacifist", -25]],
 		Score:  6,
 		PreviousRank: "Commander"
 	}));
@@ -31,7 +31,7 @@ var Faction = function()
 		Icon: "Commander",
 		Openings: 6,
 		Scoring: { Strength: 0.25, Tactics: 1, Prestige: 1, Relations: 0.2, Heritage: 0.2 },
-		TraitMod: [["Cowardice", -5]],
+		TraitMod: [["Pacifist", -25]],
 		Score:  2,
 		PreviousRank: "Soldier"
 	}));
@@ -40,6 +40,7 @@ var Faction = function()
 		Openings: 2,
 		Scoring: { Intrigue: 1, Charisma: 1, Prestige: 1.0, Relations: 2.0, Heritage: 0.5 },
 		SkillMod: [["Shemer", +5], ["Socializer", +3], ["Scholar", +3]],
+		TraitMod: [["Pacifist", -10]],
 		Score: 6
 	}));
 };

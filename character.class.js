@@ -63,6 +63,7 @@ Character.prototype.calcAttributes = function()
 {
 	this.Attributes = ShallowCopy(this.BaseAttributes);
 	var that = this;
+	var mult = {};
 
 	this.Skills.forEach(function(it, index)
 	{
@@ -70,7 +71,7 @@ Character.prototype.calcAttributes = function()
 
 		if(effect.isStatic() === true)
 		if(effect.conditionsFulfilled(it.Level, that.Attributes, []))
-			effect.apply(it.Level, that.Attributes, []);
+			effect.apply(it.Level, that.Attributes, [], mult);
 	});
 	this.Traits.forEach(function(it, index)
 	{
@@ -78,8 +79,14 @@ Character.prototype.calcAttributes = function()
 
 		if(effect.isStatic() === true)
 		if(effect.conditionsFulfilled(1, that.Attributes, []))
-			effect.apply(1, that.Attributes, []);
+			effect.apply(1, that.Attributes, [], mult);
 	});
+	for(var attr in mult)
+	{
+		if(mult.hasOwnProperty(attr))
+		if(this.Attributes.hasOwnProperty(attr))
+			this.Attributes[attr] = Math.floor(this.Attributes[attr] * mult[attr]);
+	}
 	return this.Attributes;
 };
 
@@ -87,6 +94,7 @@ Character.prototype.calcTempAttributes = function(situation)
 {
 	calcAttributes();
 	var tmpAttrib = ShallowCopy(this.Attributes);
+	var mult;
 
 	this.Skills.forEach(function(it, index)
 	{
@@ -94,7 +102,7 @@ Character.prototype.calcTempAttributes = function(situation)
 
 		if(effect.isStatic() === false)
 		if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
-			effect.apply(it.Level, tmpAttrib, situation);
+			effect.apply(it.Level, tmpAttrib, situation, mult);
 	});
 	this.Traits.forEach(function(it, index)
 	{
@@ -102,8 +110,14 @@ Character.prototype.calcTempAttributes = function(situation)
 
 		if(effect.isStatic() === false)
 		if(effect.conditionsFulfilled(1, tmpAttrib, situation))
-			effect.apply(1, tmpAttrib, situation);
+			effect.apply(1, tmpAttrib, situation, mult);
 	});
+	for(var attr in mult)
+	{
+		if(mult.hasOwnProperty(attr))
+		if(tmpAttrib.hasOwnProperty(attr))
+			tmpAttrib[attr] = Math.round(tmpAttrib[attr] * mult[attr]);
+	}
 	return tmpAttrib;
 };
 
@@ -129,7 +143,7 @@ Character.prototype.calcScores = function()
 	{
 		if(["Father", "Brother", "Mother", "Sister"].contains(relation.Type))
 		{
-			that.Scores.Heritage += Math.floor(relation.Subject.Score / 4);
+			that.Scores.Heritage += Math.round(relation.Subject.Score / 4);
 			if(relation.Subject.Rank.Name === "Leader" && relation.Subject.Faction === that.Home.Faction)
 				that.Scores.Heritage += 6;
 		}

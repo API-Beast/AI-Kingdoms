@@ -3,35 +3,51 @@
 var Effect = function(template)
 {
 	this.Attributes   = [];
-	this.EnableEvents = [];
+	this.AttrMult     = [];
+	this.AddTag       = [];
+	this.Description  = "";
 	this.Condition    = [];
 	this.LevelFactor  = [0, 1, 2, 4, 6, 10];
 	this.Likes        = [];
 	this.Dislikes     = [];
 
-	if(template)
-	for(var key in template)
-	if(template.hasOwnProperty(key))
-		this[key] = template[key];
+	ApplyTemplate(this, template);
 }
 
-Effect.prototype.apply = function(level, attr, extraEvents)
+Effect.prototype.apply = function(level, attr, charTags, attrMult)
 {
-	if(this.Attributes)
+	if(attr)
 	for(var i = 0; i < this.Attributes.length; i+=2)
 	{
 		var name = this.Attributes[i];
-		var bonus = this.Attributes[i+1] * this.LevelFactor[level];
-		attr[name] += bonus;
-	};
-	if(this.EnableEvents)
-	for(var i = 0; i < this.EnableEvents.length; i++)
-	{
-		var key = this.EnableEvents[i];
-		if(!extraEvents.hasOwnProperty(key))
-			extraEvents[key]  = level;
+		var bonus = this.Attributes[i+1];
+		if(typeof bonus === "object")
+			bonus = bonus[level];
 		else
-			extraEvents[key] += level;
+			bonus = bonus * this.LevelFactor[level];
+		if(!attr.hasOwnProperty(name))
+			attr[name]  = bonus
+		else
+		  attr[name] += bonus;
+	};
+	if(attrMult)
+	for(var i = 0; i < this.AttrMult.length; i+=2)
+	{
+		var name = this.AttrMult[i];
+		var mult = this.AttrMult[i+1] * this.LevelFactor[level];
+		if(!attrMult.hasOwnProperty(name))
+			attrMult[name]  = 1.0 + mult;
+		else
+		  attrMult[name] += mult;
+	};
+	if(charTags)
+	for(var i = 0; i < this.AddTag.length; i++)
+	{
+		var key = this.AddTag[i];
+		if(!charTags.hasOwnProperty(key))
+			charTags[key]  = level;
+		else
+			charTags[key] += level;
 	}
 };
 
@@ -49,6 +65,13 @@ Effect.prototype.getDescription = function(level)
 {
 	var result = "";
 	var intend = "";
+	if(this.Description)
+	for(var i = 0; i < this.AddTag.length; i++)
+	{
+		result += intend+"Enables <i>"+this.AddTag[i]+"</i> Events\n";
+	}
+	if(this.AddTag.length)
+		result += ""
 	if(this.Condition.length > 0)
 	{
 		result  = "<b>While ";
@@ -85,22 +108,43 @@ Effect.prototype.getDescription = function(level)
 		result += ":</b>\n";
 		intend = "  ";
 	}
-	if(this.Attributes)
 	for(var i = 0; i < this.Attributes.length; i+=2)
 	{
 		var name = this.Attributes[i];
-		var bonus = this.Attributes[i+1] * this.LevelFactor[level];
-		if(bonus > 0)
-			result += intend+"+"+bonus+" "+name+"\n";
+		var bonus = this.Attributes[i+1];
+		if(typeof bonus === "object")
+			bonus = bonus[level];
 		else
-			result += intend+bonus+" "+name+"\n";
-	};
-	if(this.EnableEvents)
-	for(var i = 0; i < this.EnableEvents.length; i++)
-	{
-		result += intend+"Enables <i>"+this.EnableEvents[i]+"</i> Events\n";
+			bonus = bonus * this.LevelFactor[level];
+
+		if(bonus != 0)
+		{
+			if(bonus > 0)
+				result += intend+"+"+bonus+" "+name+"\n";
+			else
+				result += intend+bonus+" "+name+"\n";
+		}
 	}
+	for(var i = 0; i < this.AttrMult.length; i+=2)
+	{
+		var name = this.AttrMult[i];
+		var mult = this.AttrMult[i+1];
+		if(typeof mult === "object")
+			mult = mult[level];
+		else
+			mult = mult * this.LevelFactor[level];
+
+		if(mult != 0)
+		{
+			if(mult > 0)
+				result += intend+"+"+(mult*100).toFixed(0)+"% "+name+"\n";
+			else
+				result += intend+(mult*100).toFixed(0)+"% "+name+"\n";
+		}
+	}
+
 	if(this.Likes.length)    result += "Likes Characters with <i>"+this.Likes.join("</i> or <i>")+"</i>\n";
 	if(this.Dislikes.length) result += "Dislikes Characters with <i>"+this.Dislikes.join("</i> or <i>")+"</i>\n";
+
 	return result;
 };

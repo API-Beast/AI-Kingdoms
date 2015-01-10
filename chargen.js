@@ -176,7 +176,7 @@ function DevelopCharacter(person, minState, maxState)
 					atr.Charisma += 1;
 					break;
 				case "Study":
-					atr.Tactics    += 1;
+					atr.Tactics   += 1;
 					atr.Willpower += 1;
 					break;
 			}

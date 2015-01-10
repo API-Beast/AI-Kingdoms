@@ -15,15 +15,7 @@ var Skill = function(name, tag, template)
 	else
 		this.Tags = [tag];
 
-	if(template)
-	for(var key in template)
-	if(template.hasOwnProperty(key))
-	{
-		if(this.Effect.hasOwnProperty(key))
-			this.Effect[key] = template[key];
-		else
-			this[key] = template[key];
-	}
+	ApplyTemplateMultiple(this, template, this.Effect);
 };
 
 Skill.prototype.preReqFulfilled = function(person)
