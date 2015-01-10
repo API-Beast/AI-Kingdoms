@@ -11,19 +11,20 @@ This is a list of things that can be done right now, not of long term goals.
 - [x] Attributes
 - [x] Static Skills
 - [x] Dynamic Skills that only affect the character in certain situations~~
-- [ ] Traits that affect the character like Skills do
- + Icons depending on category of trait? Since we do not have trait levels. 
+- [x] Traits that affect the character like Skills do
+ + [x] Icons depending on category of trait? Since we do not have trait levels. 
 - [ ] Level up requirements for Skills, to make the skill distribution a bit more coherent.
-- [ ] Character Gen: Distribute Traits by Tags, like the Skills.
-- [ ] [Idea] Focus? How much the character is currently improving, affected by how active and how sucessful he is. To simulate up and downs in a career.
+- [x] Character Gen: Distribute Traits by Tags, like the Skills.
 
 ## Interface
 - [ ] Portraits
-- [ ] New layout to accomodate tshe portraits
+- [ ] New layout to accomodate the portraits
 - [ ] Display of Action Point resource
 - [ ] Display of current Time and time controls
 - [ ] UI for army display
 - [ ] UI for battle display
+- [ ] UI for event display
+- [ ] Log UI for small events
 
 ## Armies & Battles
 - [ ] Aim for a Minimal Valuable Product at first

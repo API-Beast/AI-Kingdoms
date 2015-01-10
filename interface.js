@@ -1,18 +1,19 @@
 "use strict";
 
 var Ui = {
-	ShowObject      : false,
-	CurrentObject   : null,
-	MapMode         : "realms"
+	ShowObject   : false,
+	CurrentObject: null,
+	MapMode      : "realms",
+	TimeSpeed    : 1
 };
 
 function UpdateSize()
 {
 	var elements = document.querySelectorAll("#sidebar section");
 	for (var i = 0; i < elements.length; i++)
-		elements[i].style["height"] = window.innerHeight-20+"px";
+		elements[i].style["height"] = window.innerHeight-60+"px";
 	var objInfo = document.getElementById("object-info");
-	objInfo.style["height"] = window.innerHeight-30+"px";
+	objInfo.style["height"] = window.innerHeight-70+"px";
 }
 
 function DisplayObject(obj, noScroll)
@@ -219,6 +220,14 @@ function InitUI()
 	map.addEventListener("click", OnClick);
 }
 
+function UpdateResourceUI()
+{
+	var div  = document.querySelector("#resource-bar .resource.time .value");
+	var moon = ((GameState.Day / 30) | 0) + 1;
+	var day  = (GameState.Day % 30) + 1;
+	div.innerHTML = ""+day+"."+moon+"."+GameState.Year;
+}
+
 function UpdateUI()
 {
 	var objInfo = document.getElementById("object-info");
@@ -378,4 +387,5 @@ function UpdateUI()
 				objInfo.appendChild(CreateTag(faction));
 		});
 	}
+	UpdateResourceUI();
 }

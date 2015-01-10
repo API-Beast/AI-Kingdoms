@@ -60,6 +60,6 @@
 .symbol.Obedient   { background: url("Assets/symbols.png")  -64px -64px; }
 .symbol.Pacifist   { background: url("Assets/symbols.png") -112px -64px; }
 
-.symbol.Time        { background: url("Assets/symbols.png") - 0px -96px; };
+.symbol.Time        { background: url("Assets/symbols.png")  -0px -96px; };
 .symbol.Gold        { background: url("Assets/symbols.png") -16px -96px; };
 .symbol.ActionPoints{ background: url("Assets/symbols.png") -32px -96px; };

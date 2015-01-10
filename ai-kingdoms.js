@@ -8,6 +8,8 @@ var GameState =
 		Map: { Terrain: [], Cities: [], Villages: [] },
 		Factions: [],
 	  Families: [],
+	  Year: 643,
+	  Day: 0
 	};
 
 function GameInit()
