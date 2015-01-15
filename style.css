@@ -105,6 +105,13 @@ body
 	text-align: right;
 }
 
+.resource .income
+{
+	color: green;
+	text-align: right;
+	font-size: 80%;
+}
+
 #playfield
 {
 	position:   absolute;
@@ -293,4 +300,10 @@ body
 	margin: 2px;
 	margin-left: 15px;
 	white-space: pre;
+}
+
+.meta
+{
+	color: #640;
+	font-style: italic;
 }

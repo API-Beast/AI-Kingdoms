@@ -66,6 +66,12 @@ Effect.prototype.getDescription = function(level)
 	var result = "";
 	var intend = "";
 	if(this.Description)
+	{
+		if(typeof this.Description === "string")
+			result += "<span class='meta'>"+ this.Description + "</span>\n";
+		else
+			result += "<span class='meta'>"+ this.Description[0].replace("{1}", this.Description[1][level-1]) + "</span>\n";
+	}
 	for(var i = 0; i < this.AddTag.length; i++)
 	{
 		result += intend+"Enables <i>"+this.AddTag[i]+"</i> Events\n";

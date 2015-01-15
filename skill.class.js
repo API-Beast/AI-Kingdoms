@@ -1,21 +1,31 @@
 "use strict";
 
-var Skill = function(name, tag, template)
+var Skill = function(template)
 {
-	this.Name = name;
+	this.Name = "_MISSING_NAME_";
 	this.PreReq = { Attributes:[], Skills:[], Traits:[] };
 	this.Exclusive = [];
 	this.IsTrait   = false;
 	this.Weight    = 1;
 	this.Icon      = null;
+	this.Effects   = [];
+	this.Tags      = [];
 
-	this.Effect = new Effect();
-	if(typeof tag === "object")
-		this.Tags = tag;
-	else
-		this.Tags = [tag];
+	ApplyTemplate(this, template);
+	for(var i = 0; i < this.Effects.length; i++)
+	{
+		this.Effects[i] = new Effect(this.Effects[i]);
+	};
+};
 
-	ApplyTemplateMultiple(this, template, this.Effect);
+Skill.prototype.getDescription = function(level)
+{
+	var desc = [];
+	for(var i = 0; i < this.Effects.length; i++)
+	{
+		desc.push(this.Effects[i].getDescription(level));
+	};
+	return desc.join("\n");
 };
 
 Skill.prototype.preReqFulfilled = function(person)

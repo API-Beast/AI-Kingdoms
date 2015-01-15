@@ -1,0 +1,287 @@
+Skills
+{
+  Name = Strategist
+  Tags = [Tactican]
+
+  [Effects]
+  Attributes = [Tactics, 2]
+}
+
+Skills
+{
+  Name = "Assault Tactics"
+  Tags = [Tactican]
+
+  PreReq.Skills = [Strategist, 1]
+
+  [Effects]
+  Attributes = [Tactics, 3]
+  Condition = [Assaulting]
+}
+
+Skills
+{
+  Name = "Defense Tactics"
+  Tags = [Tactican]
+
+  PreReq.Skills = [Strategist, 1]
+
+  [Effects]
+  Attributes = [Tactics, 3]
+  Condition = [Defending]
+}
+
+Skills
+{
+  Name = "Siege Expert"
+  Tags = [Tactican]
+
+  PreReq.Attributes = [Tactics, 6]
+  PreReq.Skills = ["Assault Tactics", 1]
+
+  [Effects]
+  Attributes = [Tactics, 3]
+  Condition = [Sieging]
+}
+
+Skills
+{
+  Name = "Terrain Expert"
+  Tags = [Tactican]
+
+  PreReq.Attributes = [Tactics, 6]
+  PreReq.Skills = ["Defense Tactics", 1]
+
+  [Effects]
+  Attributes = [Tactics, 3]
+  Condition = [Mountain]
+}
+
+Skills
+{
+  Name = Ambusher
+  Tags = [Tactican]
+
+  PreReq.Attributes = [Tactics, 6]
+  PreReq.Skills = ["Assault Tactics", 1]
+
+  [Effects]
+  AddTag = [Ambusher]
+  Description = "Will apply Ambush tactics when appropriate."
+}
+
+Skills
+{
+  Name = Logistics
+  Tags = [Tactican]
+
+  PreReq.Attributes = [Tactics, 6]
+  PreReq.Skills = [Strategist, 2]
+
+  [Effects]
+  Attributes = ["Movement-Rate", 0.25]
+}
+
+Skills
+{
+  Name = Warrior
+  Tags = [Fighter]
+
+  [Effects]
+  Attributes = [Strength, 2]
+}
+
+Skills
+{
+  Name = Swordsman
+  Tags = [Fighter]
+
+  PreReq.Skills = [Warrior, 1]
+
+  [Effects]
+  Attributes = [Strength, 3]
+  Condition = [[Not, "In Formation"]]
+}
+
+Skills
+{
+  Name = "Spearbearer"
+  Tags = [Fighter]
+
+  PreReq.Skills = [Warrior, 1]
+
+  [Effects]
+  Attributes = [Strength, 3]
+  Condition = ["In Formation"]
+}
+
+Skills
+{
+  Name = Archery
+  Tags = [Fighter]
+
+  PreReq.Skills = [Warrior, 1]
+
+  [Effects]
+  AddTag = [Archery]
+  Description = ["{1} Chance to kill a target without a duel.", [Slight, Low, Minor, Major, High]]
+}
+
+Skills
+{
+  Name = Berserker
+  Tags = [Fighter]
+
+  PreReq.Attributes = [Strength, 6]
+  PreReq.Traits = [Fierce]
+
+  [Effects]
+  AddTag = [Berserker]
+  Description = "May fall into a Berserk rage."
+  [Effects]
+  AttrMult = [Strength, [0.5, 1, 1.5, 2, 3]]
+  Condition = [Berserk]
+}
+
+Skills
+{
+  Name = Ironwall
+  Tags = [Fighter]
+
+  PreReq.Attributes = [Strength, 6]
+  PreReq.Skills = ["Spearbearer", 1]
+
+  [Effects]
+  AddTag = [Ironwall]
+  Description = "Will not break formation, even if the morale is low."
+  [Effects]
+  AttrMult = [Strength, [0.25, 0.5, 0.75, 1, 1.5]]
+  Condition = ["In Formation"]
+}
+
+Skills
+{
+  Name = Assassin
+  Tags = [Fighter]
+
+  PreReq.Attributes = [Strength, 6]
+  PreReq.Skills = [Swordsman, 1]
+
+  [Effects]
+  Description = "Will try to kill high ranking characters during combat."
+  AddTag = [Assassin]
+  [Effects]
+  AttrMult = [Strength, [0.25, 0.5, 0.75, 1, 1.5]]
+  Condition = [Duel]
+}
+
+Skills
+{
+  Name = Smart
+  Tags = [Basic, Politican]
+
+  [Effects]
+  Attributes = [Intrigue, 2, Tactics, 1]
+}
+
+Skills
+{
+  Name = "Charismatic"
+  Tags = [Basic, Politican]
+
+  [Effects]
+  Attributes = [Charisma, 2]
+}
+
+Skills
+{
+  Name = Wealthy
+  Tags = [Politican]
+
+  PreReq.Skills = ["Charismatic", 1]
+
+  [Effects]
+  Attributes = ["Gold/month", 10]
+}
+
+Skills
+{
+  Name = "Administrator"
+  Tags = [Politican]
+
+  PreReq.Skills = [Smart, 1]
+
+  [Effects]
+  Attributes = ["City-Growth", 10]
+}
+
+Skills
+{
+  Name = Shemer
+  Tags = [Politican]
+
+  PreReq.Attributes = [Intrigue, 6]
+
+  [Effects]
+  Attributes = ["AP/month", 1]
+}
+
+Skills
+{
+  Name = "Foreign Customs"
+  Tags = [Politican]
+
+  PreReq.Attributes = [Charisma, 6]
+  PreReq.Skills = [Scholar, 1]
+
+  [Effects]
+  AttrMult = [Charisma, [0.25, 0.5, 0.75, 1, 2]]
+  Condition = [Foreign]
+}
+
+Skills
+{
+  Name = Seduction
+  Tags = [Politican]
+
+  PreReq.Attributes = [Charisma, 6]
+
+  [Effects]
+  AddTag = [Seduction]
+  CostMult = [Seduction, [1, 0.75, 0.5, 0.25, 0.12]]
+}
+
+Skills
+{
+  Name = "Inspirational"
+  Tags = ["Personality"]
+
+  PreReq.Attributes = [Charisma, [4, 8, 14, 20, 26]]
+
+  [Effects]
+  Attributes = [Charisma, 1]
+  AddTag = ["Inspiration"]
+}
+
+Skills
+{
+  Name = "Intimidating"
+  Tags = ["Personality"]
+
+  PreReq.Attributes = [Strength, [2, 4, 8, 14, 20], Charisma, [2, 4, 8, 8, 8]]
+
+  [Effects]
+  Attributes = [Charisma, 1]
+  AddTag = ["Intimidation"]
+}
+
+Skills
+{
+  Name = Willpower
+  Tags = ["Personality"]
+
+  [Effects]
+  Attributes = [Strength, 3]
+  AddTag = [Heroism]
+  Condition = [In Danger]
+}

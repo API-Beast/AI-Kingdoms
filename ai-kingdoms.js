@@ -12,18 +12,29 @@ var GameState =
 	  Day: 0
 	};
 
-function GameInit()
+var GameInit = function()
 {
-	LoadImage("Assets/background.jpg", "BG");
-	LoadImage("Assets/playerStructures.png", "Cities");
-	LoadImage("Assets/mapElements.png", "Terrain");
+	var tmp = Backend.GameLoaded;
+	Backend.GameLoaded = null;
+
+	Backend.LoadImage("Assets/background.jpg", "BG");
+	Backend.LoadImage("Assets/playerStructures.png", "Cities");
+	Backend.LoadImage("Assets/mapElements.png", "Terrain");
+
+	RequestData();
+
+	if(Backend.AssetsToLoad === 0)
+		tmp();
+	Backend.GameLoaded = tmp;
 }
 
-function GameStart()
+var GameLoaded = function()
 {
 	var canvas = document.getElementById("map");
 	canvas.width  = GameState.MapSizeX;
 	canvas.height = GameState.MapSizeY;
+
+	LoadData();
 
 	UpdateSize();
 	window.onresize = UpdateSize;
@@ -78,7 +89,7 @@ function GameLoop()
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	ctx.fillStyle = ctx.createPattern(Assets["BG"], 'repeat');
+	ctx.fillStyle = ctx.createPattern(Backend.Assets["BG"], 'repeat');
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	ctx.lineJoin = 'bevel';
@@ -100,7 +111,7 @@ function GameLoop()
 		var dw = sw;
 		var dh = sh;
 
-		ctx.drawImage(Assets["Terrain"], sx, sy, sw, sh, dx, dy, dw, dh)
+		ctx.drawImage(Backend.Assets["Terrain"], sx, sy, sw, sh, dx, dy, dw, dh)
 	};
 
 	var drawStructure = function(src, struct, minor)

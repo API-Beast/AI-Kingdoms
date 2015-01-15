@@ -67,19 +67,25 @@ Character.prototype.calcAttributes = function()
 
 	this.Skills.forEach(function(it, index)
 	{
-		var effect = Skills[it.Name].Effect;
-
-		if(effect.isStatic() === true)
-		if(effect.conditionsFulfilled(it.Level, that.Attributes, []))
-			effect.apply(it.Level, that.Attributes, [], mult);
+		var skill = Skills[it.Name];
+		for (var i = 0; i < skill.Effects.length; i++)
+		{
+			var effect = skill.Effects[i];
+			if(effect.isStatic() === true)
+			if(effect.conditionsFulfilled(it.Level, that.Attributes, []))
+				effect.apply(it.Level, that.Attributes, [], mult);
+		};
 	});
-	this.Traits.forEach(function(it, index)
+	this.Traits.forEach(function(name, index)
 	{
-		var effect = Traits[it].Effect;
-
-		if(effect.isStatic() === true)
-		if(effect.conditionsFulfilled(1, that.Attributes, []))
-			effect.apply(1, that.Attributes, [], mult);
+		var skill = Traits[name];
+		for (var i = 0; i < skill.Effects.length; i++)
+		{
+			var effect = skill.Effects[i];
+			if(effect.isStatic() === true)
+			if(effect.conditionsFulfilled(1, that.Attributes, []))
+				effect.apply(1, that.Attributes, [], mult);
+		}
 	});
 	for(var attr in mult)
 	{
@@ -98,19 +104,25 @@ Character.prototype.calcTempAttributes = function(situation)
 
 	this.Skills.forEach(function(it, index)
 	{
-		var effect = Skills[it.Name].Effect;
-
-		if(effect.isStatic() === false)
-		if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
-			effect.apply(it.Level, tmpAttrib, situation, mult);
+		var skill = Skills[it.Name];
+		for (var i = 0; i < skill.Effects.length; i++)
+		{
+			var effect = skill.Effects[i];
+			if(effect.isStatic() === false)
+			if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
+				effect.apply(it.Level, tmpAttrib, situation, mult);
+		};
 	});
-	this.Traits.forEach(function(it, index)
+	this.Traits.forEach(function(name, index)
 	{
-		var effect = Traits[it].Effect;
-
-		if(effect.isStatic() === false)
-		if(effect.conditionsFulfilled(1, tmpAttrib, situation))
-			effect.apply(1, tmpAttrib, situation, mult);
+		var skill = Traits[name];
+		for (var i = 0; i < skill.Effects.length; i++)
+		{
+			var effect = skill.Effects[i];
+			if(effect.isStatic() === false)
+			if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
+				effect.apply(it.Level, tmpAttrib, situation, mult);
+		}
 	});
 	for(var attr in mult)
 	{

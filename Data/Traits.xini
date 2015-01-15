@@ -1,0 +1,230 @@
+Traits
+{
+  Name = Healthy
+  Tags = [Child]
+
+  Icon = Healthy
+  Exclusive = [Sickly]
+
+  [Effects]
+  Attributes = [Health, 10]
+  AttrMult = [Charisma, 0.1, Strength, 0.1]
+}
+
+Traits
+{
+  Name = Sickly
+  Tags = [Child]
+
+  Exclusive = [Healthy]
+  Icon = Sickly
+
+  [Effects]
+  Attributes = [Health, -10]
+  AttrMult = [Charisma, -0.1, Strength, -0.1]
+}
+
+Traits
+{
+  Name = Fierce
+  Tags = [Teen]
+
+  Exclusive = [Rational]
+  Icon = Fierce
+
+  [Effects]
+  AttrMult = [Strength, 0.2, Tactics, -0.2]
+}
+
+Traits
+{
+  Name = Rational
+  Tags = [Teen]
+
+  Exclusive = [Fierce]
+  Icon = Rational
+
+  [Effects]
+  AttrMult = [Tactics, 0.2]
+}
+
+Traits
+{
+  Name = Monstrous
+  Tags = [Teen]
+
+  Weight = 0.25
+  Icon = Monstrous
+
+  [Effects]
+  AttrMult = [Strength, 0.4, Charisma, -0.4]
+}
+
+Traits
+{
+  Name = Talented
+  Tags = [Teen]
+
+  Exclusive = [Incapable]
+  Icon = Talented
+
+  [Effects]
+  Attributes = [Learning, 1]
+  Likes = [Talented]
+}
+
+Traits
+{
+  Name = Dilligent
+  Tags = [Teen]
+
+  Icon = Dilligent
+
+  [Effects]
+  Attributes = [Learning, 1]
+}
+
+Traits
+{
+  Name = Honest
+  Tags = [Teen]
+
+  Exclusive = ["Manipulative"]
+  Icon = Honest
+
+  [Effects]
+  AttrMult = [Intrigue, -0.2]
+  Likes = [Honest]
+  Dislikes = ["Manipulative"]
+}
+
+Traits
+{
+  Name = Empathic
+  Tags = [Teen]
+
+  Exclusive = [Cruel, "Manipulative"]
+  Icon = Empathic
+
+  [Effects]
+  Attributes = [Charisma, 4]
+  Likes = [Honest]
+  Dislikes = [Cruel, "Manipulative"]
+}
+
+Traits
+{
+  Name = "Calculating"
+  Tags = [Adult]
+
+  Exclusive = [Fierce]
+  Icon = "Calculating"
+
+  [Effects]
+  AttrMult = [Tactics, 0.2, Intrigue, 0.2, Charisma, -0.2]
+}
+
+Traits
+{
+  Name = Incapable
+  Tags = [Adult]
+
+  Exclusive = [Talented]
+  Icon = Incapable
+
+  [Effects]
+  Attributes = [Learning, -1]
+}
+
+Traits
+{
+  Name = Focused
+  Tags = [Adult]
+
+  Icon = Focused
+
+  [Effects]
+  Attributes = ["Skill Diversity", -1]
+}
+
+Traits
+{
+  Name = "Manipulative"
+  Tags = [Adult]
+
+  Exclusive = [Honest, Empathic]
+  Weight = 0.5
+  Icon = "Manipulative"
+
+  [Effects]
+  AttrMult = [Intrigue, 0.4, Charisma, -0.2]
+}
+
+Traits
+{
+  Name = Cruel
+  Tags = [Adult]
+
+  Exclusive = [Empathic, Cruel]
+  Weight = 0.5
+  Icon = Cruel
+
+  [Effects]
+  AttrMult = [Charisma, -0.4]
+  AddTag = [Cruel]
+  Dislikes = [Empathic]
+}
+
+Traits
+{
+  Name = Lustful
+  Tags = [Adult]
+
+  Icon = Lustful
+
+  [Effects]
+  Attributes = [Fertility, 1]
+}
+
+Traits
+{
+  Name = Pacifist
+  Tags = [Adult]
+
+  Exclusive = [Cruel]
+  Weight = 0.25
+  Icon = Pacifist
+
+  [Effects]
+  AttrMult = [Strength, -0.2]
+  AddTag = [Pacifist]
+  Description = "Will try to solve conflicts without violence."
+  Dislikes = [Cruel]
+}
+
+Traits
+{
+  Name = Dominant
+  Tags = [Adult]
+
+  Exclusive = [Obedient]
+  Weight = 0.5
+  Icon = Dominant
+
+  [Effects]
+  AttrMult = [Charisma, 0.4]
+}
+
+Traits
+{
+  Name = Obedient
+  Tags = [Adult]
+
+  Exclusive = [Dominant, Cruel]
+  Weight = 0.5
+  Icon = Obedient
+
+  [Effects]
+  Attributes = [Charisma, 4, Intrigue, -2]
+  Likes = [Dominant]
+}

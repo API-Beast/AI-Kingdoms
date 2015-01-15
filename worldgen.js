@@ -126,7 +126,7 @@ function GeneratePoliticalLandscape()
 	// Tint town image for each faction.
 	GameState.Factions.forEach(function(faction)
 	{
-		faction.TownTexture = RecolorImage(Assets["Cities"], faction.Color);
+		faction.TownTexture = RecolorImage(Backend.Assets["Cities"], faction.Color);
 	});
 }
 

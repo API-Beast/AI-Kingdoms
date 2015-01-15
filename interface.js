@@ -131,7 +131,7 @@ function CreateTag(obj, symbol)
 		else
 		{
 			var skill = Skills[obj.Name];
-			var tooltip = skill.Effect.getDescription(obj.Level);
+			var tooltip = skill.getDescription(obj.Level);
 			tooltip = "<b>"+obj.Name+" "+obj.Level+"</b>\n"+tooltip;
 			SetTooltip(div, tooltip);
 			div.appendChild(CreateSymbol("level-"+Math.floor(obj.Level)));
@@ -291,7 +291,7 @@ function UpdateUI()
 			{
 				var trait = obj.Traits[i];
 				var tag = CreateTag(trait, Traits[trait].Icon);
-				var tooltip = Traits[trait].Effect.getDescription(1);
+				var tooltip = Traits[trait].getDescription(1);
 				tooltip = "<b>"+trait+"</b>\n"+tooltip;
 				SetTooltip(tag, tooltip);
 				stats.appendChild(tag);
