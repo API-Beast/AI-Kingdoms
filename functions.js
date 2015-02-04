@@ -377,3 +377,17 @@ function ApplyTemplateMultiple(to, template, alt)
 	}
 	return to;
 }
+
+function Align(length, string, spacer)
+{
+	if(typeof string !== "string")
+		string = String(string);
+	if(!spacer)
+		spacer = " ";
+
+	var padding = "";
+	for(var i = string.length; i < length; i++)
+		padding += spacer;
+
+	return padding+string;
+}

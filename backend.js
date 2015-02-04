@@ -4,8 +4,9 @@ var Backend =
 {
 	AssetsToLoad: 0,
 	Assets: {},
-	LoadImage: null,
-	LoadText:  null
+	LoadImage:  null,
+	LoadText:   null,
+	GameLoaded: null
 };
 
 document.onreadystatechange = function ()
@@ -51,7 +52,7 @@ Backend.LoadText = function(src, key)
 		Backend.Assets[key] = this.responseText;
 		Backend.AssetsToLoad -= 1;
 		if(Backend.AssetsToLoad === 0 && GameLoaded)
-			GameLoaded();
+			Backend.GameLoaded();
 	}
 
 	var request = new XMLHttpRequest();

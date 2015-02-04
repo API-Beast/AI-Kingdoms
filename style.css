@@ -25,6 +25,13 @@
   src: url("Assets/vollkorn-semibold.woff");
 }
 
+@font-face
+{
+	font-family: 'Dancing Script';
+	font-weight: 400;
+	src: url("Assets/DancingScript-Regular.otf");
+}
+
 /*@font-face
 {
   font-family: 'Vollkorn';
@@ -39,7 +46,7 @@ div, section
 
 section, body, #sidebar
 {
-	background: #555;
+	background: #fee;
 }
 
 #sidebar section
@@ -85,14 +92,34 @@ body
 {
 	height: 40px;
 	padding: 4px;
-	text-align: right;
+	width: 95px;
+	float: right;
+}
+
+#overview
+{
+	height: 45px;
 }
 
 .resource
 {
 	display: inline-block;
 	min-width: 80px;
-	text-align: left;
+}
+
+.time
+{
+	padding: 2px;
+	margin:  2px;
+	line-height: 24px;
+	font-size: 140%;
+	font-family: 'Dancing Script', cursive;
+}
+
+.time .date
+{
+	font-size: 70%;
+	font-family: 'Vollkorn', sans-serif;
 }
 
 .resource .symbol

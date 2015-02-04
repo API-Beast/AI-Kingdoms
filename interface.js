@@ -222,10 +222,8 @@ function InitUI()
 
 function UpdateResourceUI()
 {
-	var div  = document.querySelector("#resource-bar .resource.time .value");
-	var moon = ((GameState.Day / 30) | 0) + 1;
-	var day  = (GameState.Day % 30) + 1;
-	div.innerHTML = ""+day+"."+moon+"."+GameState.Year;
+	var div  = document.querySelector("#overview .time");
+	div.innerHTML = Data.Months[GameState.Month-1] + " <span class='date'>" + Align(2, GameState.Day, "0")+"."+Align(2, GameState.Month, "0")+"."+Align(3, GameState.Year, "0")+"</span>";
 }
 
 function UpdateUI()

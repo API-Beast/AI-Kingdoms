@@ -3,20 +3,20 @@
 var GameState =
 	{ 
 		MapSizeX: 2000, MapSizeY: 1500,
+		Player: {Character: null},
 		Characters: [],
 		SecondaryCharacters: [],
 		Map: { Terrain: [], Cities: [], Villages: [] },
 		Factions: [],
 	  Families: [],
-	  Year: 643,
-	  Day: 0
+	  Year: 112,
+	  Month: 4,
+	  Day: 17,
+	  Timeline: {}
 	};
 
 var GameInit = function()
 {
-	var tmp = Backend.GameLoaded;
-	Backend.GameLoaded = null;
-
 	Backend.LoadImage("Assets/background.jpg", "BG");
 	Backend.LoadImage("Assets/playerStructures.png", "Cities");
 	Backend.LoadImage("Assets/mapElements.png", "Terrain");
@@ -24,8 +24,8 @@ var GameInit = function()
 	RequestData();
 
 	if(Backend.AssetsToLoad === 0)
-		tmp();
-	Backend.GameLoaded = tmp;
+		GameLoaded();
+	Backend.GameLoaded = GameLoaded;
 }
 
 var GameLoaded = function()
@@ -71,6 +71,24 @@ var GameLoaded = function()
 
 	GameRedraw();
 	setInterval(GameRedraw, 5000);
+	setInterval(GameStep,   1000);
+}
+
+function GameStep()
+{
+	GameState.Day++;
+	if(GameState.Day > Data.MonthLength[GameState.Month-1])
+	{
+		GameState.Month++;
+		GameState.Day = 1;
+		if(GameState.Month > Data.Months.length)
+		{
+			GameState.Month = 1;
+			GameState.Year++;
+		}
+	}
+
+	UpdateUI();
 }
 
 function GameRedraw()

@@ -18,7 +18,6 @@
 	<script src="skill.class.js"></script>
 
 	<script src="data.js"></script>
-	<script src="skills.data.js"></script>
 
 	<script src="ai-kingdoms.js"></script>
 	<script src="worldgen.js"></script>
@@ -30,10 +29,12 @@
 </head>
 <body>
 	<div id="sidebar">
-		<div id="resource-bar">
-			<div class="resource gold"><span class="symbol Gold"></span><span class="value">100</span><span class="income">(+10)</div>
-			<div class="resource ap"><span class="symbol ActionPoints"></span><span class="value">100</span><span class="income">(+10)</div>
-			<div class="resource time"><span class="symbol Time"></span><span class="value">X.XX.XXX</span></div>
+		<div id="overview">
+			<span class="time">X.XX.XXX</span>
+			<div id="resource-bar">
+				<div class="resource gold"><span class="symbol Gold"></span><span class="value">100</span><span class="income">(+10)</div>
+				<div class="resource ap"><span class="symbol ActionPoints"></span><span class="value">100</span><span class="income">(+10)</div>
+			</div>
 		</div>
 		<div class="tabbed">
 			<section id="about-game" class="active-tab">
