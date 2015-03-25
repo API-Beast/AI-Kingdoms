@@ -12,7 +12,7 @@ Skills
   Name = "Assault Tactics"
   Tags = [Tactican]
 
-  PreReq.Skills = [Strategist, 1]
+  PreReq.Skills = [[Strategist, 1]]
 
   [Effects]
   Attributes = [Tactics, 3]
@@ -24,7 +24,7 @@ Skills
   Name = "Defense Tactics"
   Tags = [Tactican]
 
-  PreReq.Skills = [Strategist, 1]
+  PreReq.Skills = [[Strategist, 1]]
 
   [Effects]
   Attributes = [Tactics, 3]
@@ -37,7 +37,7 @@ Skills
   Tags = [Tactican]
 
   PreReq.Attributes = [Tactics, 6]
-  PreReq.Skills = ["Assault Tactics", 1]
+  PreReq.Skills = [["Assault Tactics", 1]]
 
   [Effects]
   Attributes = [Tactics, 3]
@@ -50,7 +50,7 @@ Skills
   Tags = [Tactican]
 
   PreReq.Attributes = [Tactics, 6]
-  PreReq.Skills = ["Defense Tactics", 1]
+  PreReq.Skills = [["Defense Tactics", 1]]
 
   [Effects]
   Attributes = [Tactics, 3]
@@ -63,7 +63,7 @@ Skills
   Tags = [Tactican]
 
   PreReq.Attributes = [Tactics, 6]
-  PreReq.Skills = ["Assault Tactics", 1]
+  PreReq.Skills = [["Assault Tactics", 1]]
 
   [Effects]
   AddTag = [Ambusher]
@@ -76,7 +76,7 @@ Skills
   Tags = [Tactican]
 
   PreReq.Attributes = [Tactics, 6]
-  PreReq.Skills = [Strategist, 2]
+  PreReq.Skills = [[Strategist, 2]]
 
   [Effects]
   Attributes = ["Movement-Rate", 0.25]
@@ -96,7 +96,7 @@ Skills
   Name = Swordsman
   Tags = [Fighter]
 
-  PreReq.Skills = [Warrior, 1]
+  PreReq.Skills = [[Warrior, 1]]
 
   [Effects]
   Attributes = [Strength, 3]
@@ -108,7 +108,7 @@ Skills
   Name = "Spearbearer"
   Tags = [Fighter]
 
-  PreReq.Skills = [Warrior, 1]
+  PreReq.Skills = [[Warrior, 1]]
 
   [Effects]
   Attributes = [Strength, 3]
@@ -120,7 +120,7 @@ Skills
   Name = Archery
   Tags = [Fighter]
 
-  PreReq.Skills = [Warrior, 1]
+  PreReq.Skills = [[Warrior, 1]]
 
   [Effects]
   AddTag = [Archery]
@@ -149,7 +149,7 @@ Skills
   Tags = [Fighter]
 
   PreReq.Attributes = [Strength, 6]
-  PreReq.Skills = ["Spearbearer", 1]
+  PreReq.Skills = [["Spearbearer", 1]]
 
   [Effects]
   AddTag = [Ironwall]
@@ -165,7 +165,7 @@ Skills
   Tags = [Fighter]
 
   PreReq.Attributes = [Strength, 6]
-  PreReq.Skills = [Swordsman, 1]
+  PreReq.Skills = [[Swordsman, 1]]
 
   [Effects]
   Description = "Will try to kill high ranking characters during combat."
@@ -198,7 +198,7 @@ Skills
   Name = Wealthy
   Tags = [Politican]
 
-  PreReq.Skills = ["Charismatic", 1]
+  PreReq.Skills = [["Charismatic", 1]]
 
   [Effects]
   Attributes = ["Gold/month", 10]
@@ -209,7 +209,7 @@ Skills
   Name = "Administrator"
   Tags = [Politican]
 
-  PreReq.Skills = [Smart, 1]
+  PreReq.Skills = [[Smart, 1]]
 
   [Effects]
   Attributes = ["City-Growth", 10]
@@ -232,7 +232,7 @@ Skills
   Tags = [Politican]
 
   PreReq.Attributes = [Charisma, 6]
-  PreReq.Skills = [Scholar, 1]
+  PreReq.Skills = [[Scholar, 1]]
 
   [Effects]
   AttrMult = [Charisma, [0.25, 0.5, 0.75, 1, 2]]

@@ -5,8 +5,7 @@ var Backend =
 	AssetsToLoad: 0,
 	Assets: {},
 	LoadImage:  null,
-	LoadText:   null,
-	GameLoaded: null
+	LoadText:   null
 };
 
 document.onreadystatechange = function ()
@@ -31,8 +30,6 @@ Backend.LoadImage = function(src, key)
 	var finished = function()
 	{
 		Backend.AssetsToLoad -= 1;
-		if(Backend.AssetsToLoad === 0 && GameLoaded)
-			GameLoaded();
 	}
 
 	var img = new Image();
@@ -42,21 +39,21 @@ Backend.LoadImage = function(src, key)
 	Backend.Assets[key] = img;
 }
 
-Backend.LoadText = function(src, key)
+Backend.LoadTextFiles = function(relPath, src, callback)
 {
-	Backend.AssetsToLoad += 1;
-	Backend.Assets[key] = null;
-
-	var finished = function()
+	var numFiles = src.length;
+	for(var i = 0; i < src.length; i++)
 	{
-		Backend.Assets[key] = this.responseText;
-		Backend.AssetsToLoad -= 1;
-		if(Backend.AssetsToLoad === 0 && GameLoaded)
-			Backend.GameLoaded();
-	}
+		var finished = function()
+		{
+			numFiles--;
+			callback(this.responseText, numFiles, src[i]); 
+		}
 
-	var request = new XMLHttpRequest();
-	request.addEventListener("load", finished, false);
-	request.open("GET", src);
-	request.send();
+		var request = new XMLHttpRequest();
+		request.addEventListener("load", finished, false);
+		request.open("GET", relPath+src[i]);
+		request.send();
+	};
+
 }

@@ -50,116 +50,6 @@ function SetMapMode(mode)
 	GameRedraw();
 }
 
-function CreateSymbol(symbol)
-{
-	var span = document.createElement('span');
-	span.className = "symbol "+symbol;
-	return span;
-}
-
-function CreateLinkFor(obj)
-{
-	var	div = null;
-	var name;
-
-	var isCharacter = obj instanceof Character;
-	var isCity      = obj instanceof City;
-	var isFaction   = obj instanceof Faction;
-
-	div = document.createElement('div');
-	div.className = "objectLink";
-
-	name = obj.Name;
-
-	if(isCharacter)
-	{
-		name = obj.Surname+' '+obj.Name;
-		var addPlaceholder = true;
-
-		if(!obj.IsAlive)
-		{
-			div.appendChild(CreateSymbol("dead"));
-			addPlaceholder = false;
-		}
-		if(obj.Rank.Icon)
-		{
-			div.appendChild(CreateSymbol(obj.Rank.Icon));
-			addPlaceholder = false
-		}
-
-		if(addPlaceholder)
-			div.appendChild(CreateSymbol("empty"));
-
-		div.appendChild(CreateSymbol(obj.Gender));
-	}
-
-	if(isFaction)
-	{
-		div.style.color = "rgb("+obj.Color[0]+", "+obj.Color[1]+", "+obj.Color[2]+")";
-		div.className += " faction"; 
-		if(ColorIsDark(obj.Color))
-			div.className += " dark"; 
-	}
-
-	if(isCity)
-	{
-		var symb = CreateSymbol("solid-color");
-		symb.style.backgroundColor = "rgb("+obj.Faction.Color[0]+", "+obj.Faction.Color[1]+", "+obj.Faction.Color[2]+")";
-		div.appendChild(symb);
-	}
-
-	var link = document.createElement('a');
-	link.appendChild(document.createTextNode(name));
-	link.className = "name";
-	var onClick = DisplayObject.bind(undefined, obj, false);
-	div.addEventListener('click', onClick);
-	div.appendChild(link);
-
-	return div;
-}
-
-function CreateTag(obj, symbol)
-{
-	var div = document.createElement('div');
-	div.className = 'tag';
-	if(typeof(obj) == 'object')
-	{
-		if(obj instanceof City || obj instanceof Faction || obj instanceof Character)
-		{
-			div.appendChild(CreateLinkFor(obj));
-		}
-		else
-		{
-			var skill = Skills[obj.Name];
-			var tooltip = skill.getDescription(obj.Level);
-			tooltip = "<b>"+obj.Name+" "+obj.Level+"</b>\n"+tooltip;
-			SetTooltip(div, tooltip);
-			div.appendChild(CreateSymbol("level-"+Math.floor(obj.Level)));
-			div.appendChild(document.createTextNode(obj.Name));
-		}
-	}
-	else
-	{
-		if(symbol)
-			div.appendChild(CreateSymbol(symbol));
-		div.appendChild(document.createTextNode(obj));
-	}
-	return div;
-}
-
-function CreateDoubleTag(text, obj)
-{
-	var div = document.createElement('div');
-	div.className = 'double-tag';
-	var spanA = document.createElement('span');
-	var spanB = document.createElement('span');
-	spanA.innerHTML = text;
-	spanB.appendChild(CreateLinkFor(obj));
-	div.appendChild(spanA);
-	div.appendChild(spanB);
-	return div;
-}
-
 function OnBack(e)
 {
 	if(e.state)
@@ -205,17 +95,6 @@ function InitUI()
 	for (var i = 0; i < elements.length; i++)
 		elements[i].addEventListener("click", SetActiveTab.bind(undefined, elements[i].parentNode.parentNode));
 
-	/*var controls = document.getElementById("controls");
-	controls.innerHTML = "";
-
-	var symbol = CreateSymbol("Strength");
-	symbol.addEventListener('click', SetMapMode.bind(undefined, 'realms'));
-	controls.appendChild(symbol);
-
-	var symbol = CreateSymbol("Tactics");
-	symbol.addEventListener('click', SetMapMode.bind(undefined, 'factions'));
-	controls.appendChild(symbol);*/
-
 	var map = document.getElementById("map");
 	map.addEventListener("click", OnClick);
 }
@@ -226,164 +105,161 @@ function UpdateResourceUI()
 	div.innerHTML = Data.Months[GameState.Month-1] + " <span class='date'>" + Align(2, GameState.Day, "0")+"."+Align(2, GameState.Month, "0")+"."+Align(3, GameState.Year, "0")+"</span>";
 }
 
+function MakeObjView(data)
+{
+	var objInfo = document.getElementById("object-info");
+	objInfo.innerHTML = "";
+
+	var curSection = objInfo;
+	var curElement = objInfo;
+
+	for(var i = 0; i < Data.length; i++)
+	switch(Data[i].Type)
+	{
+		case "Ribbon":
+
+
+			objInfo.appendChild(ribbon);
+			curSection = ribbon;
+			break;
+		case "Text":
+			var div = document.createElement('div');
+			var text = document.createTextNode(Data[i].Text);
+			div.className = Data[i].Class;
+			curSection.appendChild(div);
+			curElement = div;
+			break;
+		case "Icon":
+			var icon = CreateSymbol(Data[i].Name);
+			curElement.appendChild(icon);
+			break;
+		case "Link":
+			var div = CreateTag(Data[i].Obj);
+			curSection.appendChild(div);
+			curElement = div;
+			break;
+		case "Double Tag":
+			var div = CreateDoubleTag(Data[i].Label, Data[i].Obj);
+			curSection.appendChild(div);
+			curElement = div;
+			break;
+	}
+
+}
+
 function UpdateUI()
 {
 	var objInfo = document.getElementById("object-info");
 	objInfo.innerHTML = "";
+
+	var AddUI = function(e){objInfo.appendChild(e);};
 	if(Ui.ShowObject)
 	{
 		var obj = Ui.CurrentObject;
-		var isCharacter = obj instanceof Character;
-		var isCity      = obj instanceof City;
-		var isFaction   = obj instanceof Faction;
-
-		var faction = null;
-		if(isFaction)
-			faction = obj;
-		else if(isCharacter)
+		// ==========
+		// Characters
+		// ==========
+		if(obj instanceof Character)
 		{
-			faction = obj.Rank.Faction;
+			var faction = obj.Rank.Faction;
 			if(!faction)
 				faction = obj.Home.Faction;
+
+			var subtitle = [UI.Text(obj.Rank.Name+', '+obj.Age)];
+			if(!obj.IsAlive) subtitle.push(UI.Symbol("dead"));
+			subtitle.push(UI.Symbol(obj.Gender));
+
+			AddUI(UI.Ribbon(faction.Color, UI.Text(obj.Surname+' '+obj.Name), subtitle));
 		}
-		else if(isCity)
-			faction = obj.Faction;
-
-		var ribbon = document.createElement('div');
-		ribbon.className = "section ribbon";
-		ribbon.style.backgroundColor = "rgb("+faction.Color[0]+", "+faction.Color[1]+", "+faction.Color[2]+")";
-		if(ColorIsDark(faction.Color)) ribbon.className += " dark";
-
-		var title = document.createElement('div');
-		if(isCharacter)
-			title.innerHTML = obj.Surname+' '+obj.Name;
-		else
-			title.innerHTML = obj.Name;
-		title.className = "title";
-		ribbon.appendChild(title);
-		objInfo.appendChild(ribbon);
-
-		if(isCharacter)
+		// ======
+		// Cities
+		// ======
+		else if(obj instanceof City)
 		{
-			var subtitle = document.createElement('span');
-			subtitle.innerHTML = obj.Rank.Name+', '+obj.Age;
-			subtitle.className = "subtitle";
+			AddUI(UI.Ribbon(obj.Faction.Color, UI.Text(obj.Name)));
 
-			if(!obj.IsAlive)
-				subtitle.appendChild(CreateSymbol("dead"));
-			subtitle.appendChild(CreateSymbol(obj.Gender));
-
-			ribbon.appendChild(subtitle);
-
-			var stats = document.createElement('div');
-
-			stats.className = "section stats";
-			var exposedAttrbs = ["Strength", "Tactics", "Charisma", "Intrigue"];
-			var symbols    = exposedAttrbs.map(function(e){ return CreateSymbol(e);        });
-			var data       = exposedAttrbs.map(function(e){ return obj.Attributes[e] || 0; });
-			var attributes = HtmlTableFromArray([symbols, data]);
-			attributes.className = "attributes";
-			stats.appendChild(attributes);
-
-			for(var i = 0; i < obj.Traits.length; i++)
-			{
-				var trait = obj.Traits[i];
-				var tag = CreateTag(trait, Traits[trait].Icon);
-				var tooltip = Traits[trait].getDescription(1);
-				tooltip = "<b>"+trait+"</b>\n"+tooltip;
-				SetTooltip(tag, tooltip);
-				stats.appendChild(tag);
-			};
-
-			objInfo.appendChild(stats);
-
-			var misc = document.createElement('div');
-			misc.className = "section misc";
-			if(obj.Home)          misc.appendChild(CreateDoubleTag("Home",          obj.Home));
-			if(obj.Faction)       misc.appendChild(CreateDoubleTag("Faction",       obj.Faction));
-			objInfo.appendChild(misc);
-
-			var skills = document.createElement('div');
-			skills.className = "section skills";
-			for(var i = 0; i < obj.Skills.length; i++)
-			{
-				var skill = obj.Skills[i];
-				var tag = CreateTag(skill);
-				skills.appendChild(tag);
-			};
-			objInfo.appendChild(skills);
-
-			var relations = document.createElement('div');
-			relations.className = "section relations";
-			for(var i = 0; i < obj.Relations.length; i++)
-			{
-				var rel = obj.Relations[i];
-				relations.appendChild(CreateDoubleTag(rel.Type, rel.Subject));
-			};
-			objInfo.appendChild(relations);
+			var misc = [];
+			if(obj.Faction)  misc.push(UI.DoubleTag("Controlled by", UI.Link(obj.Faction)));
+			if(obj.Governor) misc.push(UI.DoubleTag("Governor",      UI.Link(obj.Governor)));
+			AddUI(UI.Div(misc, "section misc"));
+			
+			AddUI(UI.LinkList(obj.Population, "section population", function(p){ return p.IsAlive && p.isRelevant(); }));
 		}
-		else if(isCity)
+		// ========
+		// Factions
+		// ========
+		else if(obj instanceof Faction)
 		{
-			var misc = document.createElement('div');
-			misc.className = "section misc";
-			if(obj.Faction)  misc.appendChild(CreateDoubleTag("Controlled by", obj.Faction));
-			if(obj.Governor) misc.appendChild(CreateDoubleTag("Governor",      obj.Governor));
-			objInfo.appendChild(misc);
+			AddUI(UI.Ribbon(obj.Color, UI.Text(obj.Name)));
 
-			var population = document.createElement('div');
-			population.className = "section population";
-			obj.Population.map(
-			function(person){
-				if(!(person.IsAlive)) return;
-				if(!(person.isRelevant())) return;
-				population.appendChild(CreateTag(person));
-			}
-			);
-			objInfo.appendChild(population);
+			var misc = [];
+			if(obj.ParentFaction) misc.push(UI.DoubleTag("Controlled by", UI.Link(obj.ParentFaction)));
+			if(obj.Capital)       misc.push(UI.DoubleTag("Capital",       UI.Link(obj.Capital)));
+			if(obj.Leader)        misc.push(UI.DoubleTag("Leader",        UI.Link(obj.Leader)));
+			AddUI(UI.Div(misc, "section misc"));
+
+			AddUI(UI.LinkList(obj.SubFactions, "section subs"));
+			AddUI(UI.LinkList(obj.Cities, "section cities"));
+			AddUI(UI.LinkList(GameState.Characters, "section members", function(p){ return p.IsAlive && person.Rank.Faction == obj; }));
 		}
-		else if(isFaction)
+
+		// Generic for all: Properties
+		if(obj.Properties)
 		{
-			var misc = document.createElement('div');
-			misc.className = "section misc";
-			if(obj.ParentFaction) misc.appendChild(CreateDoubleTag("Controlled by", obj.ParentFaction));
-			if(obj.Capital)       misc.appendChild(CreateDoubleTag("Capital",       obj.Capital));
-			if(obj.Leader)        misc.appendChild(CreateDoubleTag("Leader",        obj.Leader));
-			objInfo.appendChild(misc);
+			var div = UI.Div(undefined, "section properties");
+			AddUI(div);
+			for (var i = 0; i < obj.Properties.length; i++)
+			{
+				var key = obj.Properties[i];
+				var prop = obj[key];
+				if(prop instanceof AttributeList)
+				{
+					var table = [[], []];
+					for(var attr in prop.Static)
+					{
+						if(prop.Static.hasOwnProperty(attr))
+						{
+							var meta = Data.Attributes[attr];
+							if(meta && meta.Display === "Icon")
+							{
+								table[0].push(UI.Symbol(attr));
+								table[1].push(UI.Text(Math.floor(prop.Static[attr])));
+							}
+						}
+					}
+					UI.Append(div, UI.Table(table, "table "+key));
+				}
+				else if(prop instanceof TraitList)
+				{
+					var traits = [];
+					prop.Data.forEach(function(o)
+					{
+						var display = [];
+						if(o.Trait.Icon)
+							display.push(UI.Symbol(o.Trait.Icon));
+						if(o.Level && o.Level > 0)
+							display.push(UI.Symbol("level-"+o.Level));
 
-			var subs = document.createElement('div');
-			subs.className = "section subs";
-			obj.SubFactions.map(function(faction){ subs.appendChild(CreateTag(faction)); });
-			objInfo.appendChild(subs);
+						display.push(o.Trait.Name);
 
-			var cities = document.createElement('div');
-			cities.className = "section cities";
-			obj.Cities.map(
-			function(city){
-				cities.appendChild(CreateTag(city));
-			}
-			);
-			objInfo.appendChild(cities);
-
-			var members = document.createElement('div');
-			members.className = "section members";
-			GameState.Characters.forEach(
-			function(person){
-				if(!(person.IsAlive)) return;
-				if(person.Rank.Faction != obj) return;
-				members.appendChild(CreateTag(person));
-			}
-			);
-			objInfo.appendChild(members);
+						var tag = UI.Tag(display);
+						SetTooltip(tag, o.Trait.getDescription(o.Level));
+						traits.push(tag);
+					});
+					UI.Append(div, UI.Div(traits, "list "+key));
+				}
+				else
+					UI.Append(div, UI.DoubleTag(key, UI.Link(prop)));
+			};
 		}
 
 	}
 	else
+	//
+	// No object displayed, proceed with listing the factions
+	//
 	{
-		GameState.Factions.map(function(faction)
-		{
-			if(!faction.ParentFaction)
-				objInfo.appendChild(CreateTag(faction));
-		});
+		AddUI(UI.LinkList(GameState.Factions, "section factions"));
 	}
 	UpdateResourceUI();
 }

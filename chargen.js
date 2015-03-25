@@ -51,64 +51,69 @@ function GiveBaseBaseAttributes(person)
 
 function DevelopCharacter(person, minState, maxState)
 {
-	var atr = person.BaseAttributes;
+	var atr = person.Attributes.Base;
 
 	var distributeSkills = function(skills)
 	{
-		var i = person.Attributes.Learning;
-		var onlyTrain = person.Skills.length > person.Attributes["Skill Diversity"];
-		skills = skills.filter(function(skill)
-		{ 
-			var s = person.getSkill(skill[0]);
-			var minLevel =  skill[2];
-			var maxLevel = (skill[1] || 1);
-			if(!s)
-				return (minLevel == undefined) && !onlyTrain;
-			if(minLevel && s.Level < minLevel)
-				return false;
-			if(s.Level > maxLevel)
-				return false;
-			return true;
-		});
+		var i = person.Attributes.get("Learning");
+		var onlyTrain = person.Skills.length > person.Attributes.get("Skill Diversity");
+		skills = skills.shuffle();
 		while(i && skills.length)
 		{
-			var skill = skills.popRandom();
-			person.trainSkill(skill[0], 1, skill[1]||1);
-			i -= 1;
+			var tmp      = skills.pop();
+			var skill    = tmp[0];
+			var maxLevel = tmp[1] || 1;
+
+			var entry    = person.Skills.get(skill);
+
+			if(!entry && onlyTrain) continue;
+			if(!entry)
+			{
+				person.Skills.add(skill, 1);
+				i -= 1;
+			}
+			else if(entry.Level < maxLevel)
+			{
+				entry.Level++;
+				i -= 1;
+			}
 		}
 		person.calcAttributes();
 	};
+
 	var distributeSkillsByTag = function(tags, maxLevel)
 	{
 		var skills;
 		if(typeof tags === 'object')
-			skills = SkillsArray.filter(function(skill){ return skill.Tags.some(function(t){ return tags.contains(t); }); });
+			skills = Data.SkillsArray.filter(function(skill){ return skill.Tags.some(function(t){ return tags.contains(t); }); });
 		else
-			skills = SkillsArray.filter(function(skill){ return skill.Tags.contains(tags); });
+			skills = Data.SkillsArray.filter(function(skill){ return skill.Tags.contains(tags); });
 		skills = skills.filter(function(skill){ return skill.preReqFulfilled(person); });
-		skills = skills.map(function(skill){ return [skill.Name, maxLevel]; });
+		skills = skills.map(function(skill){ return [skill, maxLevel]; });
 		distributeSkills(skills);
 	};
+
 	var distributeTraitsByTag = function(tags, numTraits)
 	{
 		var traits;
 		if(typeof tags === 'object')
-			traits = TraitsArray.filter(function(trait){ return trait.Tags.some(function(t){ return tags.contains(t); }); });
+			traits = Data.TraitsArray.filter(function(trait){ return trait.Tags.some(function(t){ return tags.contains(t); }); });
 		else
-			traits = TraitsArray.filter(function(trait){ return trait.Tags.contains(tags); });
+			traits = Data.TraitsArray.filter(function(trait){ return trait.Tags.contains(tags); });
 		var i = numTraits;
 		while(i && traits.length)
 		{
 			var trait = traits.popRandom();
-			if(!person.hasTrait(trait.Name))
+			if(!person.Traits.get(trait.Name))
 			if(trait.Weight >= 1 || Math.random() < trait.Weight)
 			if(trait.preReqFulfilled(person))
 			{
 				i -= 1;
-				person.giveTrait(trait.Name);
+				person.Traits.add(Data.Traits[trait.Name]);
 			}
 		}
 	};
+
 	var advanceCareer = function()
 	{
 		switch(person.Rank.Name)

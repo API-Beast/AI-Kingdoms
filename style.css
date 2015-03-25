@@ -286,19 +286,7 @@ body
 	width: auto;
 }
 
-.attributes
-{
-	border: 1px solid black;
-	background: url("Assets/uibg.jpg");
-	width: 140px;
-	color: black;
-	padding: 2px;
-	margin:  2px;
-	float: left;
-	display: inline-block;
-}
-
-.attributes td
+.table td
 {
 	text-align: center;
 	font-weight: bold;

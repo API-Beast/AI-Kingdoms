@@ -1,0 +1,222 @@
+# ------
+# Tribes
+# ------
+CityTraits
+{
+	Name = Warrior-Tribe
+	Tags = [CityType, BaseType]
+	Weight = 0.5
+
+	[Effects]
+	Attributes = ["Max. Population", +1000, "Army-Size", +0.55, "Economy", +1, "Army-Strength", +4, "Fortification", +2]
+}
+
+CityTraits
+{
+	Name = Craftsmen-Tribe
+	Tags = [CityType, BaseType]
+	Weight = 0.5
+
+	[Effects]
+	Attributes = ["Max. Population", +1000, "Army-Size", +0.30, "Economy", +4, "Army-Strength", +2]
+}
+
+CityTraits
+{
+	Name = Gatherer-Tribe
+	Tags = [CityType, BaseType]
+	Weight = 0.5
+
+	[Effects]
+	Attributes = ["Max. Population", +2000, "Army-Size", +0.30, "Economy", +2, "Army-Strength", +2]
+}
+
+# -----
+# Towns
+# -----
+CityTraits
+{
+	Name = Castle
+	Tags = [CityType, BaseType]
+	Weight = 0.5
+
+	[Effects]
+	Attributes = ["Max. Population", +5000, "Army-Size", +0.40, "Army-Strength", +2, "Fortification", +4]
+}
+
+CityTraits
+{
+	Name = Town
+	Tags = [CityType, BaseType]
+
+	[Effects]
+	Attributes = ["Max. Population", +8000, "Army-Size", +0.20, "Economy", +2, "Fortification", +2]
+}
+
+CityTraits
+{
+	Name = Mercantile City
+	Tags = [CityType, BaseType]
+	Weight = 0.5
+
+	[Effects]
+	Attributes = ["Max. Population", +8000, "Army-Size", +0.15, "Economy", +4, "Fortification", +2]
+}
+
+# ---------------
+# Advanced Cities
+# ---------------
+CityTraits
+{
+	Name = Fortress
+	Tags = [CityType, BaseType]
+	Weight = 0.2
+
+	[Effects]
+	Attributes = ["Max. Population", +8000, "Army-Size", +0.40, "Army-Strength", +2, "Fortification", +8]
+}
+
+CityTraits
+{
+	Name = Megalopolis
+	Tags = [CityType, BaseType]
+	Weight = 0.2
+
+	[Effects]
+	Attributes = ["Max. Population", +16000, "Army-Size", +0.20, "Economy", +3, "Fortification", +4]
+}
+
+# ---------
+# Landscape
+# ---------
+
+CityTraits
+{
+	Name = Mountains
+	Tags = [Start]
+
+	[Effects]
+	Attributes = ["Fortification", +2, "Army-Strength", +1]
+	AttrMult = ["Max. Population", 0.5]
+}
+
+CityTraits
+{
+	Name = Farmland
+	Tags = [Start]
+
+	[Effects]
+	Attributes = ["Army-Size", -0.1]
+	AttrMult = ["Max. Population", 1.5]
+}
+
+# ---------
+# Military
+# ---------
+
+CityTraits
+{
+	Name = Training Grounds
+	Tags = [Structure]
+
+	[Effects]
+	Attributes = ["Army-Strength", +1, "Army-Size", +0.1]
+	LearnSkillCategory = ["Warrior"]
+}
+
+CityTraits
+{
+	Name = Military Academy
+	Tags = [Structure]
+	Weight = 0.5
+
+	[Effects]
+	Attributes = ["Army-Strength", +2]
+	LearnSkillCategory = ["Tactican"]
+}
+
+CityTraits
+{
+	Name = Forum
+	Tags = [Structure]
+	Weight = 0.5
+
+	[Effects]
+	LearnSkillCategory = ["Politican"]
+}
+
+# -------
+# Economy
+# -------
+
+CityTraits
+{
+	Name = Metal Workshop
+	Tags = [Structure]
+	PreReq.Tags = ["Iron"]
+
+	[Effects]
+	Attributes = ["Army-Strength", +2]
+
+	[AuraEffects]
+	Attributes = ["Army-Strength", +1]
+}
+
+CityTraits
+{
+	Name = Iron Mines
+	Tags = [Structure]
+	PreReq.Traits = ["Mountains"]
+
+	[Effects]
+	Attributes = ["Economy", +2]
+	AttrMult = ["Army-Size", 0.75]
+
+	[AuraEffects]
+	AddTag = ["Iron"]
+}
+
+CityTraits
+{
+	Name = Gold Mines
+	Tags = [Structure]
+	PreReq.Traits = ["Mountains"]
+
+	[Effects]
+	Attributes = ["Economy", +4]
+	AttrMult = ["Army-Size", 0.75]
+
+	[AuraEffects]
+	Attributes = ["Economy", +1]
+}
+
+# --------
+# Policies
+# --------
+
+CityTraits
+{
+	Name = Conscription
+	Tags = [Policy]
+
+	[Effects]
+	AttrMult = ["Army-Size", 1.5, "Economy", 0.75]
+}
+
+CityTraits
+{
+	Name = Extra-Taxation
+	Tags = [Policy]
+
+	[Effects]
+	Attributes = ["Taxation", 1.00, "Economy", -1]
+}
+
+CityTraits
+{
+	Name = Limited Immigration
+	Tags = [Policy]
+
+	[Effects]
+	Attributes = ["Immigration-Factor", 0.2, "Economy", -1]
+}

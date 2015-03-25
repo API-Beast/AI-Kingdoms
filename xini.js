@@ -106,6 +106,11 @@ function xini_parse(str, parent)
 		// Numbers
 		else if(v.match(/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/))
 			return Number(v);
+		// Booleans
+		else if(v.match(/^(true|yes|on)$/i))
+			return true;
+		else if(v.match(/^(false|no|off)$/i))
+			return false;
 		// Strings without quotation marks
 		else
 			return v.trim();

@@ -7,7 +7,7 @@ var Effect = function(template)
 	this.AddTag       = [];
 	this.Description  = "";
 	this.Condition    = [];
-	this.LevelFactor  = [0, 1, 2, 4, 6, 10];
+	this.LevelFactor  = [1, 1, 2, 4, 6, 10];
 	this.Likes        = [];
 	this.Dislikes     = [];
 
@@ -60,6 +60,12 @@ Effect.prototype.isStatic = function()
 {
 	return this.Condition.length == 0;
 };
+
+Effect.prototype.getPermanence = function()
+{
+	if(this.isStatic()) return "Static";
+	return "Dynamic";
+}
 
 Effect.prototype.getDescription = function(level)
 {

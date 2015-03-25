@@ -1,0 +1,44 @@
+# Undefined attributes will be hidden by default
+
+# Characters
+[Attributes]
+Name = Strength
+Display = Icon
+
+[Attributes]
+Name = Tactics
+Display = Icon
+
+[Attributes]
+Name = Charisma
+Display = Icon
+
+[Attributes]
+Name = Intrigue
+Display = Icon
+
+# Cities
+[Attributes]
+Name = Population
+Display = Icon
+
+[Attributes]
+Name = Max. Population
+Display = Maximum
+Parent = Population
+
+[Attributes]
+Name = Army-Size
+Display = Icon
+
+[Attributes]
+Name = Economy
+Display = Icon
+
+[Attributes]
+Name = Army-Strength
+Display = Icon
+
+[Attributes]
+Name = Fortification
+Display = Icon

@@ -228,6 +228,25 @@ function RandomFemaleName()
 	return names.randomElement();
 };
 
+Array.prototype.shuffle = function()
+{
+  var currentIndex = this.length;
+  var temporaryValue, randomIndex;
+  var copy = this.slice(0);
+
+  while(currentIndex)
+  {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // Swap a random element with the current index.
+    temporaryValue     = copy[currentIndex];
+    copy[currentIndex] = copy[randomIndex];
+    copy[randomIndex]  = temporaryValue;
+  }
+  return copy;
+}
+
 Array.prototype.randomElement = function()
 {
     return this[Math.floor(Math.random() * this.length)];
@@ -282,28 +301,6 @@ Array.prototype.reduceTo = function(items, check)
 	var that = this.filter(check);
 	that.length = Math.min(that.length, items);
 	return that;
-};
-
-function HtmlTableFromArray(array)
-{
-	var table = document.createElement('table');
-	for (var i = 0; i < array.length; i++)
-	{
-		var subarray = array[i];
-		var row = table.insertRow();
-		for(var j = 0; j < subarray.length; j++)
-		{
-			var cell = row.insertCell();
-			var text = null;
-			if(typeof(subarray[j]) == "object")
-				text = subarray[j];
-			else
-				text = document.createTextNode(subarray[j].toString());
-			cell.appendChild(text);
-		};
-		
-	};
-	return table;
 };
 
 var NeedsRecolorFallback = false;

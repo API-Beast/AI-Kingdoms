@@ -3,8 +3,8 @@ Traits
   Name = Healthy
   Tags = [Child]
 
+  PreReq.Traits = [[Not, Sickly]] 
   Icon = Healthy
-  Exclusive = [Sickly]
 
   [Effects]
   Attributes = [Health, 10]
@@ -16,7 +16,7 @@ Traits
   Name = Sickly
   Tags = [Child]
 
-  Exclusive = [Healthy]
+  PreReq.Traits = [[Not, Healthy]]
   Icon = Sickly
 
   [Effects]
@@ -29,7 +29,7 @@ Traits
   Name = Fierce
   Tags = [Teen]
 
-  Exclusive = [Rational]
+  PreReq.Traits = [[Not, Rational]]
   Icon = Fierce
 
   [Effects]
@@ -41,7 +41,7 @@ Traits
   Name = Rational
   Tags = [Teen]
 
-  Exclusive = [Fierce]
+  PreReq.Traits = [[Not, Fierce]]
   Icon = Rational
 
   [Effects]
@@ -65,7 +65,7 @@ Traits
   Name = Talented
   Tags = [Teen]
 
-  Exclusive = [Incapable]
+  PreReq.Traits = [[Not, Incapable]]
   Icon = Talented
 
   [Effects]
@@ -89,7 +89,7 @@ Traits
   Name = Honest
   Tags = [Teen]
 
-  Exclusive = ["Manipulative"]
+  PreReq.Traits = [[Not, Manipulative]]
   Icon = Honest
 
   [Effects]
@@ -103,7 +103,7 @@ Traits
   Name = Empathic
   Tags = [Teen]
 
-  Exclusive = [Cruel, "Manipulative"]
+  PreReq.Traits = [[Not, Manipulative], [Not, Cruel]]
   Icon = Empathic
 
   [Effects]
@@ -117,7 +117,7 @@ Traits
   Name = "Calculating"
   Tags = [Adult]
 
-  Exclusive = [Fierce]
+  PreReq.Traits = [[Not, Fierce]]
   Icon = "Calculating"
 
   [Effects]
@@ -129,7 +129,7 @@ Traits
   Name = Incapable
   Tags = [Adult]
 
-  Exclusive = [Talented]
+  PreReq.Traits = [[Not, Talented]]
   Icon = Incapable
 
   [Effects]
@@ -152,7 +152,7 @@ Traits
   Name = "Manipulative"
   Tags = [Adult]
 
-  Exclusive = [Honest, Empathic]
+  PreReq.Traits = [[Not, Honest], [Not, Empathic]]
   Weight = 0.5
   Icon = "Manipulative"
 
@@ -165,7 +165,7 @@ Traits
   Name = Cruel
   Tags = [Adult]
 
-  Exclusive = [Empathic, Cruel]
+  PreReq.Traits = [[Not, Empathic], [Not, Cruel]]
   Weight = 0.5
   Icon = Cruel
 
@@ -191,7 +191,7 @@ Traits
   Name = Pacifist
   Tags = [Adult]
 
-  Exclusive = [Cruel]
+  PreReq.Traits = [[Not, Cruel]]
   Weight = 0.25
   Icon = Pacifist
 
@@ -207,7 +207,7 @@ Traits
   Name = Dominant
   Tags = [Adult]
 
-  Exclusive = [Obedient]
+  PreReq.Traits = [[Not, Obedient]]
   Weight = 0.5
   Icon = Dominant
 
@@ -220,7 +220,7 @@ Traits
   Name = Obedient
   Tags = [Adult]
 
-  Exclusive = [Dominant, Cruel]
+  PreReq.Traits = [[Not, Dominant], [Not, Cruel]]
   Weight = 0.5
   Icon = Obedient
 

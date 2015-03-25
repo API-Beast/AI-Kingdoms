@@ -15,14 +15,18 @@ var Character = function()
 	this.Stats        = [0, 0, 0, 0, 0];
 
 	// Attributes = BaseAttributes + Modification through static traits and skills
-	this.BaseAttributes = {Strength: 0, Tactics: 0, Charisma: 0, Intrigue: 0, Willpower: 0, Health: RandBellCurve(40, 80), Learning: 2, "Skill Diversity": 3, Income: 1};
-	this.Attributes     = ShallowCopy(this.BaseAttributes);
+	this.Attributes = new AttributeList();
+	this.Attributes.Base = {"Strength":0, "Tactics":0, "Intrigue":0, "Charisma":0};
+	this.Attributes.setBase("Health", RandBellCurve(40, 80));
+	this.Attributes.setBase("Learning", 2);
+	this.Attributes.setBase("Skill Diversity", 3);
+	this.Attributes.setBase("Income", 1);
 
-	this.BaseEnabledEvents = {};
-	this.EnabledEvents     = {};
+	this.Tags = [];
 
-	this.Skills       = []; // {Name: "", Level: 0}
-	this.Traits       = [];
+	this.Skills       = new TraitList();
+	this.Traits       = new TraitList();
+
 	this.Score        = -1;
 	this.Scores       = { Rank: -1, Prestige: 0, Heritage: 0, Relations: 0};
 	this.Feats        = []; // {Description: "", Score: 0}
@@ -32,6 +36,8 @@ var Character = function()
 
 	this.Relations      = []; // {Type: "", Subject: null}
 	this.MinorRelations = [];
+
+	this.Properties = [["Attributes"], ["Home"], ["Skills"], ["Traits"]];
 
 	this.Home = null;
 };
@@ -61,76 +67,13 @@ Character.prototype.isRelevant = function()
 
 Character.prototype.calcAttributes = function()
 {
-	this.Attributes = ShallowCopy(this.BaseAttributes);
-	var that = this;
-	var mult = {};
+	this.Attributes.resetStatic();
+	this.Traits.applyEffects("Static", this.Attributes, this.Tags);
+	this.Skills.applyEffects("Static", this.Attributes, this.Tags);
 
-	this.Skills.forEach(function(it, index)
-	{
-		var skill = Skills[it.Name];
-		for (var i = 0; i < skill.Effects.length; i++)
-		{
-			var effect = skill.Effects[i];
-			if(effect.isStatic() === true)
-			if(effect.conditionsFulfilled(it.Level, that.Attributes, []))
-				effect.apply(it.Level, that.Attributes, [], mult);
-		};
-	});
-	this.Traits.forEach(function(name, index)
-	{
-		var skill = Traits[name];
-		for (var i = 0; i < skill.Effects.length; i++)
-		{
-			var effect = skill.Effects[i];
-			if(effect.isStatic() === true)
-			if(effect.conditionsFulfilled(1, that.Attributes, []))
-				effect.apply(1, that.Attributes, [], mult);
-		}
-	});
-	for(var attr in mult)
-	{
-		if(mult.hasOwnProperty(attr))
-		if(this.Attributes.hasOwnProperty(attr))
-			this.Attributes[attr] = Math.floor(this.Attributes[attr] * mult[attr]);
-	}
-	return this.Attributes;
-};
-
-Character.prototype.calcTempAttributes = function(situation)
-{
-	calcAttributes();
-	var tmpAttrib = ShallowCopy(this.Attributes);
-	var mult;
-
-	this.Skills.forEach(function(it, index)
-	{
-		var skill = Skills[it.Name];
-		for (var i = 0; i < skill.Effects.length; i++)
-		{
-			var effect = skill.Effects[i];
-			if(effect.isStatic() === false)
-			if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
-				effect.apply(it.Level, tmpAttrib, situation, mult);
-		};
-	});
-	this.Traits.forEach(function(name, index)
-	{
-		var skill = Traits[name];
-		for (var i = 0; i < skill.Effects.length; i++)
-		{
-			var effect = skill.Effects[i];
-			if(effect.isStatic() === false)
-			if(effect.conditionsFulfilled(it.Level, tmpAttrib, situation))
-				effect.apply(it.Level, tmpAttrib, situation, mult);
-		}
-	});
-	for(var attr in mult)
-	{
-		if(mult.hasOwnProperty(attr))
-		if(tmpAttrib.hasOwnProperty(attr))
-			tmpAttrib[attr] = Math.round(tmpAttrib[attr] * mult[attr]);
-	}
-	return tmpAttrib;
+	this.Attributes.resetDynamic();
+	this.Traits.applyEffects("Dynamic", this.Attributes, this.Tags);
+	this.Skills.applyEffects("Dynamic", this.Attributes, this.Tags);
 };
 
 Character.prototype.calcScores = function()
@@ -236,65 +179,6 @@ Character.prototype.addRelation = function(type, subject)
 		relationList.push(entry);
 	return entry;
 };
-
-Character.prototype.hasTrait = function(name)
-{
-	return this.Traits.contains(name);
-};
-
-Character.prototype.giveTrait = function(name)
-{
-	console.assert(Traits.hasOwnProperty(name) === true, "Trait " + name + " doesn't exist!");
-	this.Traits.push(name);
-}
-
-Character.prototype.getSkill = function(name)
-{
-	for(var i = 0; i < this.Skills.length; i++)
-	{
-		if(this.Skills[i].Name === name)
-			return this.Skills[i];
-	}
-	return null;
-}
-
-Character.prototype.giveSkill = function(name, level)
-{
-	TypeCheck(arguments, ["string", "number"]);
-	console.assert(Skills.hasOwnProperty(name) === true, "Skill " + name + " doesn't exist!");
-
-	for(var i = 0; i < this.Skills.length; i++)
-	{
-		var skill = this.Skills[i];
-		if(skill.Name === name)
-		{
-			skill.Level = Math.max(level, skill.Level);
-			return skill;
-		}
-	}
-	var skill = {Name: name, Level: level};
-	this.Skills.push(skill);
-	return skill;
-}
-
-Character.prototype.trainSkill = function(name, amount, maxLevel)
-{
-	TypeCheck(arguments, ["string", "number", "number"]);
-	console.assert(Skills.hasOwnProperty(name) === true, "Skill '" + name + "' doesn't exist!");
-
-	for(var i = 0; i < this.Skills.length; i++)
-	{
-		var skill = this.Skills[i];
-		if(skill.Name === name)
-		{
-			skill.Level = Math.min(skill.Level+amount, Math.max(maxLevel, skill.Level));
-			return skill;
-		}
-	}
-	var skill = {Name: name, Level: amount};
-	this.Skills.push(skill);
-	return skill;
-}
 
 Character.prototype.setHome = function(newHome)
 {

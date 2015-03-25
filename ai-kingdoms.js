@@ -34,8 +34,6 @@ var GameLoaded = function()
 	canvas.width  = GameState.MapSizeX;
 	canvas.height = GameState.MapSizeY;
 
-	LoadData();
-
 	UpdateSize();
 	window.onresize = UpdateSize;
 
@@ -88,7 +86,7 @@ function GameStep()
 		}
 	}
 
-	UpdateUI();
+	UpdateResourceUI();
 }
 
 function GameRedraw()

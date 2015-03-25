@@ -12,7 +12,7 @@ Data.Faction.MinorColors = [[151,39,137], [55,95,26], [167,28,14], [37,38,54], [
                             [169,32,40], [75,78,110], [129,53,22]];
 Data.Faction.MajorColors = [[74,238,129], [219,75,245], [255,62,34], [193,219,5], [81,217,235], [253,51,151], [48,112,253], [226,162,10], [45,126,2]];
 Data.Faction.Names       = ["Guang", "Fujian", "Anhui", "Jiangsu", "Shang", "Hubei", "Hunan", "Yunnan", "Qing",
-														"Xinji", "Pan", "Ganbold", "Batbayar", "Tanar", "Chujang", "Tushoa", "Kanshao", "Pintau",
+														"Xinji", "Panc", "Ganbold", "Batbayar", "Tanar", "Chujang", "Tushoa", "Kanshao", "Pintau",
 														"Xiangsu", "Donbai", "Lendai", "Langtau", "Iowei", "Zenwei", "Veras", "Tindea"];
 
 
@@ -32,39 +32,66 @@ var Sprites = {
 		{X: 883, Y: 631, W: 100, H: 100, Type: "Forest"}]
 };
 
-var Skills = {};
-var SkillsArray = [];
+Data.Skills      = {};
+Data.SkillsArray = [];
 
-var Traits      = {};
-var TraitsArray = [];
+Data.Traits      = {};
+Data.TraitsArray = [];
+
+Data.CityTraits      = {};
+Data.CityTraitsArray = [];
+
+Data.Attributes      = {};
+Data.AttributesArray = [];
+
+var Definitions = {Skills:[], Traits:[], CityTraits:[], Attributes:[]};
 
 function RequestData()
 {
-	Backend.LoadText("Data/Skills.xini", "Skills.xini");
-	Backend.LoadText("Data/Traits.xini", "Traits.xini");
-	Backend.LoadText("Data/Calendar.xini", "Calendar.xini");
+	var onFileListLoaded = function(response)
+	{
+		var fileList = XINI.parse(response).Files;
+		var parseDefinition = function(response, numFilesLeft)
+		{
+			XINI.parse(response, Definitions);
+			if(numFilesLeft === 0)
+				LoadData();
+		};
+		Backend.LoadTextFiles("Data/", fileList, parseDefinition);
+	};
+
+	Backend.LoadTextFiles("Data/", ["_FileList.xini"], onFileListLoaded);
 }
 
 function LoadData()
 {
-	var definitions = {Skills: [], Traits: []};
-	XINI.parse(Backend.Assets["Skills.xini"  ], definitions);
-	XINI.parse(Backend.Assets["Traits.xini"  ], definitions);
-	XINI.parse(Backend.Assets["Calendar.xini"], definitions);
+	for(var i = 0; i < Definitions.Skills.length; i++)
+	{
+		var trait = new Trait(Definitions.Skills[i]);
+		Data.Skills[trait.Name] = trait;
+		Data.SkillsArray.push(trait);
+	};
+	for(var i = 0; i < Definitions.Traits.length; i++)
+	{
+		var trait = new Trait(Definitions.Traits[i]);
+		Data.Traits[trait.Name] = trait;
+		Data.TraitsArray.push(trait);
+	};
+	for(var i = 0; i < Definitions.CityTraits.length; i++)
+	{
+		var trait = new Trait(Definitions.CityTraits[i]);
+		Data.CityTraits[trait.Name] = trait;
+		Data.CityTraitsArray.push(trait);
+	};
+	for(var i = 0; i < Definitions.Attributes.length; i++)
+	{
+		var atr = Definitions.Attributes[i];
+		Data.Attributes[atr.Name] = atr;
+		Data.AttributesArray.push(atr);
+	};
+	for(var key in Definitions)
+	if(Definitions.hasOwnProperty(key) && key !== "Skills" && key !== "Traits" && key !== "CityTraits" && key !== "Attributes")
+		Data[key] = Definitions[key];
 
-	for(var i = 0; i < definitions.Skills.length; i++)
-	{
-		var skill = new Skill(definitions.Skills[i]);
-		Skills[skill.Name] = skill;
-		SkillsArray.push(skill);
-	};
-	for(var i = 0; i < definitions.Traits.length; i++)
-	{
-		var skill = new Skill(definitions.Traits[i]);
-		Traits[skill.Name] = skill;
-		TraitsArray.push(skill);
-	};
-	for(var key in definitions)
-	if(definitions.hasOwnProperty(key) && key !== "Skills" && key !== "Traits")
-		Data[key] = definitions[key];
+	GameLoaded();
 }
