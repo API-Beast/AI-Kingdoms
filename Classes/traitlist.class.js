@@ -50,6 +50,6 @@ TraitList.prototype.applyEffects = function(permanence, attrList, tags)
 	{
 		if(mult.hasOwnProperty(a))
 		if(attr.hasOwnProperty(a))
-			attr[a] = Math.floor(attr[a] * mult[a]);
+			attr[a] = attr[a] * mult[a];
 	}
 };

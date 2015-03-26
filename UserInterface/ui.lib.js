@@ -10,6 +10,8 @@ UI.Append = function(parent, children)
 	}
 	else if(typeof children === "string")
 		parent.appendChild(UI.Text(children));
+	else if(typeof children === "number")
+		parent.appendChild(UI.Number(children));
 	else if(children instanceof Node)
 		parent.appendChild(children);
 	else if(children === undefined);
@@ -20,6 +22,16 @@ UI.Append = function(parent, children)
 UI.Text = function(text)
 {
 	return document.createTextNode(text);
+}
+
+UI.Number = function(num)
+{
+	var text = "";
+	if(Math.abs(num) > 1000)
+		text = (num/1000).toFixed(1)+"k";
+	else 
+		text = Math.floor(num);
+	return UI.Text(text);
 }
 
 UI.Symbol = function(symbol)

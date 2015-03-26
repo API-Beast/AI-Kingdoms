@@ -4,7 +4,7 @@
 CityTraits
 {
 	Name = Warrior-Tribe
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.5
 
 	[Effects]
@@ -14,7 +14,7 @@ CityTraits
 CityTraits
 {
 	Name = Craftsmen-Tribe
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.5
 
 	[Effects]
@@ -24,7 +24,7 @@ CityTraits
 CityTraits
 {
 	Name = Gatherer-Tribe
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.5
 
 	[Effects]
@@ -37,7 +37,7 @@ CityTraits
 CityTraits
 {
 	Name = Castle
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.5
 
 	[Effects]
@@ -47,7 +47,7 @@ CityTraits
 CityTraits
 {
 	Name = Town
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 
 	[Effects]
 	Attributes = ["Max. Population", +8000, "Army-Size", +0.20, "Economy", +2, "Fortification", +2]
@@ -56,7 +56,7 @@ CityTraits
 CityTraits
 {
 	Name = Mercantile City
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.5
 
 	[Effects]
@@ -69,7 +69,7 @@ CityTraits
 CityTraits
 {
 	Name = Fortress
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.2
 
 	[Effects]
@@ -79,7 +79,7 @@ CityTraits
 CityTraits
 {
 	Name = Megalopolis
-	Tags = [CityType, BaseType]
+	Tags = [CityType]
 	Weight = 0.2
 
 	[Effects]
@@ -93,21 +93,21 @@ CityTraits
 CityTraits
 {
 	Name = Mountains
-	Tags = [Start]
+	Tags = [Landscape]
 
 	[Effects]
 	Attributes = ["Fortification", +2, "Army-Strength", +1]
-	AttrMult = ["Max. Population", 0.5]
+	AttrMult = ["Max. Population", -0.5]
 }
 
 CityTraits
 {
-	Name = Farmland
-	Tags = [Start]
+	Name = Plains
+	Tags = [Landscape]
 
 	[Effects]
 	Attributes = ["Army-Size", -0.1]
-	AttrMult = ["Max. Population", 1.5]
+	AttrMult = ["Max. Population", +0.5]
 }
 
 # ---------
@@ -135,16 +135,6 @@ CityTraits
 	LearnSkillCategory = ["Tactican"]
 }
 
-CityTraits
-{
-	Name = Forum
-	Tags = [Structure]
-	Weight = 0.5
-
-	[Effects]
-	LearnSkillCategory = ["Politican"]
-}
-
 # -------
 # Economy
 # -------
@@ -170,7 +160,7 @@ CityTraits
 
 	[Effects]
 	Attributes = ["Economy", +2]
-	AttrMult = ["Army-Size", 0.75]
+	AttrMult = ["Army-Size", -0.25]
 
 	[AuraEffects]
 	AddTag = ["Iron"]
@@ -184,7 +174,7 @@ CityTraits
 
 	[Effects]
 	Attributes = ["Economy", +4]
-	AttrMult = ["Army-Size", 0.75]
+	AttrMult = ["Army-Size", -0.25]
 
 	[AuraEffects]
 	Attributes = ["Economy", +1]
@@ -200,7 +190,7 @@ CityTraits
 	Tags = [Policy]
 
 	[Effects]
-	AttrMult = ["Army-Size", 1.5, "Economy", 0.75]
+	AttrMult = ["Army-Size", +0.5, "Economy", -0.25]
 }
 
 CityTraits

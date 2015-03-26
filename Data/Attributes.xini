@@ -28,7 +28,7 @@ Display = Maximum
 Parent = Population
 
 [Attributes]
-Name = Army-Size
+Name = Soldier-Population
 Display = Icon
 
 [Attributes]

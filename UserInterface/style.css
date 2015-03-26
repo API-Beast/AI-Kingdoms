@@ -286,7 +286,12 @@ body
 	width: auto;
 }
 
-.table td
+table.Attributes
+{
+	float: left;
+}
+
+table td
 {
 	text-align: center;
 	font-weight: bold;

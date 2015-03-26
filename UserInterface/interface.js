@@ -214,7 +214,7 @@ function UpdateUI()
 				var prop = obj[key];
 				if(prop instanceof AttributeList)
 				{
-					var table = [[], []];
+					var table = [];
 					for(var attr in prop.Static)
 					{
 						if(prop.Static.hasOwnProperty(attr))
@@ -222,12 +222,11 @@ function UpdateUI()
 							var meta = Data.Attributes[attr];
 							if(meta && meta.Display === "Icon")
 							{
-								table[0].push(UI.Symbol(attr));
-								table[1].push(UI.Text(Math.floor(prop.Static[attr])));
+								table.push([[UI.Symbol(attr)], prop.Static[attr]]);
 							}
 						}
 					}
-					UI.Append(div, UI.Table(table, "table "+key));
+					UI.Append(div, UI.Table(table, key));
 				}
 				else if(prop instanceof TraitList)
 				{

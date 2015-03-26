@@ -167,3 +167,8 @@ function AssignHome()
 		city.Population.push(person);
 	};
 }
+
+function FinishWorldGeneration()
+{
+	GameState.Map.Cities.forEach(DevelopCity);
+}

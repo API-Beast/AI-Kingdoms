@@ -62,6 +62,7 @@ var GameLoaded = function()
   var gen2 = genGeneration(gen1);
   var gen3 = genGeneration(gen2);
   var gen4 = genGeneration(gen3);
+  FinishWorldGeneration();
 
 	InitUI();
 	UpdateUI();

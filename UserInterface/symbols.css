@@ -19,6 +19,12 @@
 	box-sizing: border-box;
 }
 
+.symbol.Population         { background: url("Assets/cityicons.png")   0px 0px; width: 20px; height: 18px; }
+.symbol.Soldier-Population { background: url("Assets/cityicons.png") -20px 0px; width: 20px; height: 18px; }
+.symbol.Economy            { background: url("Assets/cityicons.png") -40px 0px; width: 20px; height: 18px; }
+.symbol.Army-Strength      { background: url("Assets/cityicons.png") -60px 0px; width: 20px; height: 18px; }
+.symbol.Fortification      { background: url("Assets/cityicons.png") -80px 0px; width: 20px; height: 18px; }
+
 .symbol.female{ background: url("Assets/symbols.png")   0px   0px; }
 .symbol.male  { background: url("Assets/symbols.png") -16px   0px; }
 .symbol.dead  { background: url("Assets/symbols.png") -32px   0px; }
