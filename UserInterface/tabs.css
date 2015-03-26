@@ -1,0 +1,67 @@
+.tabbed
+{
+	position: relative;
+}
+
+.tabbed section
+{
+	position: absolute;
+	top: 20px;
+	z-index: 10;
+}
+
+.tabbed section h2
+{
+	position: absolute;
+	top: -24px;
+	left: 4px;
+	width: 100px;
+	height: 24px;
+	background: #aaa;
+	margin: 0;
+	z-index: 10;
+	padding-left: 5px;
+	box-sizing: border-box;
+
+	border-top  : 2px solid black;
+	border-left : 2px solid black;
+	border-right: 2px solid black;
+
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+
+	box-shadow: 4px -5px 7px -5px rgba(0, 0, 0, 0.5);
+}
+
+.tabbed section h2 a
+{
+	font-size: 16px;
+	font-weight: normal;
+	text-decoration: none;
+	text-align: center;
+	width: 90px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.tabbed section:nth-child(2) h2
+{
+  left: 108px;
+  z-index: 9;
+}
+
+.tabbed section:nth-child(3) h2
+{
+  left: 214px;
+  z-index: 8;
+}
+
+.tabbed section.active-tab
+{
+	z-index: 11;
+}
+
+.tabbed section.active-tab h2
+{
+	background: #bbb;
+}

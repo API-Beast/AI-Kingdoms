@@ -1,0 +1,1543 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"continue"
+			],
+			[
+				"Att",
+				"AttributesArray"
+			],
+			[
+				"f",
+				"f	Anonymous Function"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"Link",
+				"LinkList"
+			],
+			[
+				"title",
+				"titleNode"
+			],
+			[
+				"create",
+				"createTextNode"
+			],
+			[
+				"text",
+				"textNode"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"Trait",
+				"TraitList"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"pro",
+				"prototype"
+			],
+			[
+				"par",
+				"parseDefinition"
+			],
+			[
+				"Load",
+				"LoadData"
+			],
+			[
+				"LoadText",
+				"LoadTextFiles"
+			],
+			[
+				"Attr",
+				"Attributes"
+			],
+			[
+				"City",
+				"CityTraits"
+			],
+			[
+				"font-",
+				"font-family"
+			],
+			[
+				"GameS",
+				"GameStep"
+			],
+			[
+				"string",
+				"stringStart"
+			],
+			[
+				"l",
+				"length"
+			],
+			[
+				"clo",
+				"closedArray"
+			],
+			[
+				"fo",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"get",
+				"getDescription"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"subO",
+				"subObjBody"
+			],
+			[
+				"subOb",
+				"subObj"
+			],
+			[
+				"sub",
+				"subObjBody"
+			],
+			[
+				"subObj",
+				"subObjBody"
+			],
+			[
+				"num",
+				"numProperties"
+			],
+			[
+				"conta",
+				"containsNatVal"
+			],
+			[
+				"contains",
+				"containsObjects"
+			],
+			[
+				"contain",
+				"containsNatVal"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"pe",
+				"peffect"
+			],
+			[
+				"symb",
+				"symbols"
+			],
+			[
+				"fun",
+				"fun	Function"
+			],
+			[
+				"attr",
+				"attrChronic"
+			],
+			[
+				"rand",
+				"random"
+			],
+			[
+				"Tac",
+				"Tactics"
+			],
+			[
+				"Char",
+				"Charisma"
+			],
+			[
+				"Tra",
+				"TraitDefinition"
+			],
+			[
+				"Pol",
+				"Politican"
+			],
+			[
+				"app",
+				"applyEffects"
+			],
+			[
+				"has",
+				"hasOwnProperty"
+			],
+			[
+				"Stre",
+				"STRENGTH"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"Create",
+				"CreateSymbol"
+			],
+			[
+				"p",
+				"population"
+			],
+			[
+				"Effec",
+				"Effects"
+			],
+			[
+				"Skil",
+				"SkillDefinition"
+			],
+			[
+				"prev",
+				"PreviousRank"
+			],
+			[
+				"sort",
+				"sort"
+			],
+			[
+				"Gener",
+				"GenerateOffspring"
+			],
+			[
+				"max",
+				"maxLevel"
+			],
+			[
+				"char",
+				"Character"
+			],
+			[
+				"pr",
+				"proto	Prototype"
+			],
+			[
+				"new",
+				"newHome"
+			],
+			[
+				"Min",
+				"MinorRelations"
+			],
+			[
+				"Minor",
+				"MinorRanks"
+			],
+			[
+				"fr",
+				"foreach	js-foreach"
+			],
+			[
+				"scroll",
+				"scrollTop"
+			],
+			[
+				"Cha",
+				"Character"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"inner",
+				"innerHeight-40"
+			],
+			[
+				"b",
+				"inline-block"
+			],
+			[
+				"border-colo",
+				"border-bottom-color"
+			],
+			[
+				"pare",
+				"parentNode"
+			],
+			[
+				"scro",
+				"scrollPos"
+			],
+			[
+				"isC",
+				"isCity"
+			],
+			[
+				"Ran",
+				"RandomLocation"
+			],
+			[
+				"Fa",
+				"FamilyNames"
+			],
+			[
+				"add",
+				"addColorStop"
+			],
+			[
+				"small",
+				"smallFaction"
+			],
+			[
+				"sor",
+				"sortedFactions"
+			],
+			[
+				"fam",
+				"families"
+			],
+			[
+				"Dist",
+				"DistinctColors"
+			],
+			[
+				"V",
+				"AngleToVec2"
+			],
+			[
+				"Vec2",
+				"Vec2Add"
+			],
+			[
+				"Rand",
+				"RandFloat"
+			],
+			[
+				"MapS",
+				"MapSizeY"
+			],
+			[
+				"fami",
+				"familyA"
+			],
+			[
+				"Ge",
+				"GenerateMan"
+			],
+			[
+				"famil",
+				"familyB"
+			],
+			[
+				"alig",
+				"text-align"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"fu",
+				"fun	Function"
+			],
+			[
+				"crea",
+				"createElement"
+			],
+			[
+				"UiC",
+				"UiCharacterHistory"
+			],
+			[
+				"fa",
+				"familyB"
+			],
+			[
+				"Genera",
+				"GenerateCharacter"
+			],
+			[
+				"age",
+				"ageFirstChild"
+			],
+			[
+				"tr",
+				"traitsByRank"
+			],
+			[
+				"Tactic",
+				"TACTIC"
+			],
+			[
+				"base",
+				"baseTraits"
+			],
+			[
+				"family",
+				"familyB"
+			],
+			[
+				"Map",
+				"MapSizeX"
+			],
+			[
+				"rad",
+				"radiusTurbulence"
+			],
+			[
+				"Vec",
+				"Vec2Add"
+			],
+			[
+				"Vill",
+				"Villages"
+			],
+			[
+				"gener",
+				"GenerateStream"
+			],
+			[
+				"Upda",
+				"UpdateUI"
+			],
+			[
+				"fill",
+				"fillStyle"
+			],
+			[
+				"Ma",
+				"MapSizeY"
+			],
+			[
+				"View",
+				"ViewportSizeY"
+			],
+			[
+				"ca",
+				"canvas	Tag"
+			],
+			[
+				"D",
+				"Deception"
+			],
+			[
+				"random",
+				"randomElement"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"x",
+				"xstruct	xstruct"
+			],
+			[
+				"ma",
+				"map	std::map"
+			],
+			[
+				"t",
+				"tp	template <typename ${1:_InputIter}>"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\"use strict\";\n\n",
+			"file": "citygen.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 15,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\"use strict\";\n\nfunction RandInt(min, max)\n{\n  return Math.floor(Math.random() * ((max+1) - min)) + min;\n};\n\nfunction RandBellCurve(min, max, iterations)\n{\n	if(!iterations) iterations = 10;\n	var rand = 0;\n	for(var i = 0; i < iterations; i++)\n		rand += Math.random();\n	rand /= iterations;\n	return min + rand * (max - min);\n}\n\nfunction RandFloat(min, max)\n{\n	return min + Math.random() * (max - min);\n}\n\nfunction RandVec2(min, max)\n{\n	return {X: RandFloat(min, max), Y: RandFloat(min, max)};\n}\n\nfunction RandAngle()\n{\n	return RandFloat(0, Math.PI*2);\n}\n\nfunction Vec2Add(p1, p2)\n{\n	if(typeof(p2) == \"number\")\n		return {X: p1.X + p2, Y: p1.Y + p2};\n	else\n		return {X: p1.X + p2.X, Y: p1.Y + p2.Y};\n}\n\nfunction Vec2Sub(p1, p2)\n{\n	if(typeof(p2) == \"number\")\n		return {X: p1.X - p2, Y: p1.Y - p2};\n	else\n		return {X: p1.X - p2.X, Y: p1.Y - p2.Y};\n}\n\nfunction Vec2Mul(p1, p2)\n{\n	if(typeof(p2) == \"number\")\n		return {X: p1.X * p2, Y: p1.Y * p2};\n	else\n		return {X: p1.X * p2.X, Y: p1.Y * p2.Y};\n}\n\nfunction Vec2Div(p1, p2)\n{\n	if(typeof(p2) == \"number\")\n		return {X: p1.X / p2, Y: p1.Y / p2};\n	else\n		return {X: p1.X / p2.X, Y: p1.Y / p2.Y};\n}\n\nfunction Vec2Neg(p1)\n{\n	return {X: -p1.X, Y: -p1.Y};\n}\n\nfunction ArrayAdd(a1, a2)\n{\n	var copy = [];\n	for(var i = 0; i < a1.length; i++)\n		copy[i] = a1[i] + a2[i];\n	return copy;\n}\n\nfunction ArrayOperate(a1, a2, func)\n{\n	var copy = [];\n	for(var i = 0; i < a1.length; i++)\n		copy[i] = func(a1[i], a2[i]);\n	return copy;\n}\n\nfunction Vec2Interpolate(p1, p2, factor)\n{\n	return {X: p1.X * (1.0-factor) + p2.X * factor, Y: p1.Y * (1.0-factor) + p2.Y * factor};\n}\n\nfunction ClrInterpolate(p1, p2, factor)\n{\n	return [Math.floor(p1[0] * (1.0-factor) + p2[0] * factor), Math.floor(p1[1] * (1.0-factor) + p2[1] * factor), Math.floor(p1[2] * (1.0-factor) + p2[2] * factor)];\n}\n\nfunction ColorIsDark(clr)\n{\n	var brightness = (0.2126*clr[0] + 0.7152*clr[1] + 0.0722*clr[2]);\n	return brightness < 140;\n}\n\nfunction AngleToVec2(angle)\n{\n	return {X: Math.sin(angle), Y: Math.cos(angle)};\n}\n\nfunction MakeCluster(start, elements, radius, spread, radiusTurbulence)\n{\n	if(!radiusTurbulence) radiusTurbulence = 0;\n	var cluster = [];\n	var angle   = RandFloat(0, Math.PI*2);\n	for(var i = 0; i < elements; i++)\n	{\n		cluster[i] = Vec2Add(start, Vec2Mul(AngleToVec2(angle), radius + RandFloat(0, radiusTurbulence)));\n		angle+=spread/elements;\n	};\n	return cluster;\n}\n\nfunction RandSign()\n{\n	if(Math.random() > 0.5)\n		return 1;\n	return -1;\n}\n\nfunction SquareDistance(point1, point2)\n{\n  var xs = point2.X - point1.X;\n  var ys = point2.Y - point1.Y;\n  return (xs * xs) + (ys * ys);\n};\n\nfunction Distance(point1, point2)\n{\n  var xs = point2.X - point1.X;\n  var ys = point2.Y - point1.Y;\n  return Math.sqrt((xs * xs) + (ys * ys));\n};\n\nfunction FractalSubdivideLine(line, force)\n{\n	var copy = [];\n	var i = 0;\n	while(i < line.length)\n	{\n		var x1 = line[i].X;\n		var y1 = line[i].Y;\n		copy[i*2] = {X: x1, Y: y1};\n		if(i < (line.length - 1))\n		{\n			var x2 = line[i+1].X;\n			var y2 = line[i+1].Y;\n			var rad = (Distance(line[i], line[i+1])/2) * force;\n			copy[i*2+1] = {X: (x1+x2)/2+RandInt(-rad, rad), Y: (y1+y2)/2+RandInt(-rad, rad)};\n		}\n		i++;\n	}\n	return copy;\n};\n\nfunction BoxIntersection(a, b)\n{\n  return !(b.X > a.X+a.W\n        || b.X+b.W < a.X\n        || b.Y > a.Y+a.H\n        || b.Y+b.H < a.Y);\n}\n\nfunction ProximityTestBoxBox(box, listOfBoxes)\n{\n	for(var i = listOfBoxes.length - 1; i >= 0; i--)\n		if(BoxIntersection(box, listOfBoxes[i]))\n			return listOfBoxes[i];\n	return false;\n};\n\nfunction ProximityTestPointPoint(point, listOfPoints, radius)\n{\n	var sqRadius = radius * radius;\n	for(var i = listOfPoints.length - 1; i >= 0; i--)\n		if(SquareDistance(point, listOfPoints[i]) < sqRadius)\n			return listOfPoints[i];\n	return false;\n};\n\nfunction ProximityTestLinePoint(line, listOfPoints, radius)\n{\n	var temp;\n	for(var i = line.length - 1; i >= 0; i--)\n		if(temp = ProximityTestPointPoint(line[i], listOfPoints, radius))\n			return temp;\n	return false;\n};\n\nfunction ProximityTestLineLine(line, listOfLines, radius)\n{\n	var temp;\n	for(var i = listOfLines.length - 1; i >= 0; i--)\n		if(temp = ProximityTestLinePoint(line, listOfLines[i], radius))\n			return temp;\n	return false;\n};\n\nfunction ProximityTestPointLine(point, listOfLines, radius)\n{\n	var temp;\n	for(var i = listOfLines.length - 1; i >= 0; i--)\n		if(temp = ProximityTestPointPoint(point, listOfLines[i], radius))\n			return temp;\n	return false;\n};\n\nfunction RandomMaleName()\n{\n	var names = [\"Ao\", \"Bang\", \"Buwei\", \"Chao\", \"Fuling\", \"Gao\", \"Guang\", \n	             \"He\", \"Hai\", \"Ershi\", \"Jizi\", \"Ju\", \"Kang\", \"Long\", \"Lun\", \"Mang\", \"Qi\",\n	             \"Qian\", \"Qing\", \"She\", \"Sheng\", \"Si\", \"Tian\", \"Wan\", \"Xian\", \"Xie\", \"Xin\",\n	             \"Xing\", \"Yang\", \"Ying\", \"Yu\", \"Yuan\", \"Yun\", \"Zhao\", \"Zheng\", \"Zhua\"];\n	return names.randomElement();\n};\n\nfunction RandomFemaleName()\n{\n	var names = [\"Hou\", \"Ji\", \"Lihua\", \"Na\", \"Zhi\", \"Ai\",\n	             \"An\", \"Bo\", \"Chun\", \"Fang\", \"Fen\", \"He\", \"Huan\", \"Jiao\", \"Lei\", \"Xiu\",\n	             \"Yin\", \"Zhen\"];\n	return names.randomElement();\n};\n\nArray.prototype.shuffle = function()\n{\n  var currentIndex = this.length;\n  var temporaryValue, randomIndex;\n  var copy = this.slice(0);\n\n  while(currentIndex)\n  {\n    randomIndex = Math.floor(Math.random() * currentIndex);\n    currentIndex -= 1;\n\n    // Swap a random element with the current index.\n    temporaryValue     = copy[currentIndex];\n    copy[currentIndex] = copy[randomIndex];\n    copy[randomIndex]  = temporaryValue;\n  }\n  return copy;\n}\n\nArray.prototype.randomElement = function()\n{\n    return this[Math.floor(Math.random() * this.length)];\n};\n\nArray.prototype.popRandom = function()\n{\n	var index = Math.floor(Math.random() * this.length);\n	var element = this[index];\n	this[index] = this[this.length-1];\n	this.pop();\n	return element;\n};\n\nArray.prototype.removeElement = function(ele)\n{\n	var index = this.indexOf(ele);\n	this[index] = this[this.length-1];\n	this.pop();\n};\n\nArray.prototype.removeDuplicates = function()\n{\n	var that = this;\n	return this.filter(function(item, pos)\n	{\n    return that.indexOf(item) == pos;\n	});\n}\n\nArray.prototype.contains = function(value)\n{\n	return this.indexOf(value) != -1;\n};\n\nArray.prototype.max = function( array ){\n    return Math.max.apply( Math, array );\n};\n \nArray.prototype.min = function( array ){\n    return Math.min.apply( Math, array );\n};\n\nArray.prototype.mapMetadata = function(f, property)\n{\n	this.forEach(function(o){ o[property] = f.apply(this, [o].concat(arguments)); });\n	return this;\n};\n\nArray.prototype.reduceTo = function(items, check)\n{\n	var that = this.filter(check);\n	that.length = Math.min(that.length, items);\n	return that;\n};\n\nvar NeedsRecolorFallback = false;\nfunction RecolorImage(img, color)\n{\n	try\n	{\n		var buffer = document.createElement('canvas');\n		buffer.width  = img.width;\n		buffer.height = img.height;\n		var ctx = buffer.getContext('2d');\n		ctx.drawImage(img, 0, 0);\n		var pixels = ctx.getImageData(0, 0, buffer.width, buffer.height);\n	  var d = pixels.data;\n	  for(var i=0; i<d.length; i+=4)\n	  {\n	    d[i+0] = d[i+0] * (color[0] / 255.0);\n	    d[i+1] = d[i+1] * (color[1] / 255.0);\n	    d[i+2] = d[i+2] * (color[2] / 255.0);\n	  }\n	  ctx.putImageData(pixels, 0, 0);\n  }\n  catch(e)\n  {\n  	NeedsRecolorFallback = true;\n  	return img;\n  }\n	return buffer;\n}\n\nfunction TypeCheck(args, types)\n{\n	for(var i = 0; i < types.length; i++)\n	{\n		if(types[i] != \"any\")\n		if(typeof(args[i]) != types[i])\n			throw new TypeError(\"Argument \"+i+\": Got \"+typeof(args[i])+\" but expected \"+types[i]);\n	}\n}\n\nfunction ShallowCopy(obj)\n{\n	var copy = {};\n	for(var key in obj)\n	if(obj.hasOwnProperty(key))\n		copy[key] = obj[key];\n	return copy;\n}\n\nfunction ApplyTemplate(to, template)\n{\n	if(template)\n	for(var key in template)\n	if(template.hasOwnProperty(key))\n	{\n		to[key] = template[key];\n	}\n	return to;\n}\n\nfunction ApplyTemplateMultiple(to, template, alt)\n{\n	if(template)\n	for(var key in template)\n	if(template.hasOwnProperty(key))\n	{\n		if(to.hasOwnProperty(key))\n			to[key] = template[key];\n		else\n			alt[key] = template[key];\n	}\n	return to;\n}\n\nfunction Align(length, string, spacer)\n{\n	if(typeof string !== \"string\")\n		string = String(string);\n	if(!spacer)\n		spacer = \" \";\n\n	var padding = \"\";\n	for(var i = string.length; i < length; i++)\n		padding += spacer;\n\n	return padding+string;\n}",
+			"file": "functions.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 8284,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Data/Attributes.xini",
+			"settings":
+			{
+				"buffer_size": 561,
+				"line_ending": "Unix",
+				"name": "Attributes"
+			}
+		},
+		{
+			"contents": "\"use strict\";\n\nfunction xini_parse(str, parent)\n{\n	// ----------------------------------------------\n	// Preparations for parsing strings in Javascript\n	// Not specific to XINI\n	// ----------------------------------------------\n	var i = -1;\n	var cur = function(){ return str[i]; };\n	var atEnd = function(){ return i >= str.length; };\n	var advance = function(f)\n	{\n		var start = i;\n		while(true)\n		{\n			if(f(cur())) return str.slice(start+1, i).trim();\n			if(atEnd()) return str.slice(start+1).trim();\n			i++;\n		}\n	};\n	var extractNesting = function(open, close)\n	{\n		var start = i+1;\n		var end = start;\n		var nesting = 1;\n		var c = str[end];\n		while(end < str.length)\n		{\n			if(c === open)\n				nesting++;\n			else if(c === close)\n				nesting--;\n			if(!nesting) break;\n			c = str[++end];\n		}\n		i = end;\n		return str.slice(start, end);\n	};\n	var eq = function(c){ return (function(cc, c) {return cc === c;}).bind({}, c); };\n\n	// --------------------------\n	// XINI specific preparations\n	// --------------------------\n	var isOperator = function(c){ return c === '=' || c === '{' || c === '[' || c === ';' || c === '#';};\n	var append     = function(o, k){ if(o[k] === undefined) o[k] = []; var v = new Object({}); o[k].push(v); return v; };\n	var toValue    = function(v)\n	{\n		v = v.trim();\n		var f = v[0], l = v.slice(-1);\n		// [Arrays], a bit complex due to nested Arrays\n		if(f === '[' && l === ']')\n		{\n			v = v.slice(1, -1);\n			var array = [];\n			var nesting = [];\n			var z = 0;\n			var lastValue  = 0;\n			var cleanValue = true;\n			var closeArray = false;\n			var finish = function()\n			{\n				if(closeArray)\n				{\n					array.push(v.slice(nesting.pop(), z));\n					cleanValue = true;\n				}\n				else if(nesting.length === 0)\n				{\n					array.push(v.slice(lastValue, z));\n					cleanValue = true;\n				}\n			};\n			while(z < v.length)\n			{\n				switch(v[z])\n				{\n				case '[':\n				 	if(cleanValue)\n				 		nesting.push(z);\n				 	break;\n				case ']':\n					closeArray = true;\n					break;\n				case ',':\n					finish();\n					lastValue = z+1;\n					break;\n				case ' ':\n				case '\\t':\n				case '\\n':\n					break;\n				default:\n					closeArray = false;\n					cleanValue = false;\n					break;\n				}\n				z++;\n			}\n			finish();\n			return array.map(toValue);\n		}\n		// \"Strings\"\n		else if(f === '\"' && l === '\"')\n			return v.slice(1, -1);\n		// Numbers\n		else if(v.match(/^[-+]?([0-9]*\\.[0-9]+|[0-9]+)$/))\n			return Number(v);\n		// Booleans\n		else if(v.match(/^(true|yes|on)$/i))\n			return true;\n		else if(v.match(/^(false|no|off)$/i))\n			return false;\n		// Strings without quotation marks\n		else\n			return v.trim();\n	}\n	var setValue = function(o, k, v)\n	{\n		var keys = k.split('.');\n		for(var x = 0; x < keys.length-1; x++)\n		{\n			var result = o[keys[x]];\n			if(result === undefined)\n				result = o[keys[x]] = {};\n			o = result;\n		}\n		o[keys[keys.length - 1]] = v;\n	}\n\n	// ----------------\n	// High Level Code\n	// ----------------\n	if(!parent)\n		parent = {};\n	var context = parent;\n\n	while(!atEnd())\n	{\n		var key = \"\", value = \"\", oper = \"\";\n		key = advance(isOperator);\n		oper = cur();\n		switch(oper)\n		{\n			// [ShallowChild]\n			case '[':\n				key = advance(eq(']'));\n				context = append(parent, key);\n				break;\n			// DeepChild{ [...] }\n			case '{':\n				xini_parse(extractNesting('{', '}'), append(parent, key));\n				break;\n			// ; Comment\n			case ';':\n			case '#':\n				advance(eq('\\n'));\n				break;\n			// Key = Value\n			case '=':\n				value = advance(eq(\"\\n\"));\n				// Parsing multi line values, the trickiest part in the whole parser.\n				// We need to look ahead and decide if it is a extension of the value.\n				while(true)\n				{\n					var j = i;\n					i++;\n					var enclosed = false;\n					var line = advance\n					(\n						function(c)\n						{\n							return isOperator(c) || c === '\\n';\n						}\n					);\n\n					var proper = isOperator(cur());\n					// Empty line or line with proper syntax:\n					// We found the end! Insert the value!\n					if(line.length === 0 || proper)\n					{\n						setValue(context, key, toValue(value));\n						i = j;\n						break;\n					}\n					else\n					{\n						value += '\\n';\n						value += line.trim();\n						j = i;\n						if(atEnd())\n						{\n							setValue(context, key, toValue(value));\n							i = j;\n							break;\n						}\n					}\n				}\n				break;\n		}\n	}\n	return parent;\n}\n\nfunction xini_stringify(obj, intend, prefix, split)\n{\n	var contains = function(str, values)\n	{\n		for(var i = 0; i < values.length; i++)\n			if(str.indexOf(values[i]) != -1)\n				return true;\n		return false;\n	};\n	var getType = function(v)\n	{\n		var type = \"\";\n		if(typeof v === \"object\")\n		{\n			if(Array.isArray(v))\n			{\n				var containsObjects = false;\n				var containsValue   = false;\n				for(var i = 0; i < v.length; i++)\n				{\n					var subt = getType(v[i]);\n					if(subt === \"object\" || subt == \"objArray\")\n						containsObjects = true;\n					else\n						containsValue = true;\n				}\n				if(containsValue && !containsObjects)\n					return \"array\";\n				if(containsObjects && !containsValue)\n					return \"objArray\";\n				if(containsObjects && containsValue)\n					return \"object\"; // Handle like a normal Javascript object\n				return \"array\"; // Empty array.\n			}\n			else\n				return \"object\";\n		}\n		return \"value\";\n	};\n	var fvalue = function(v)\n	{\n		if(typeof v === \"object\" && Array.isArray(v))\n		{\n			return \"[\"+v.map(fvalue).join(', ')+\"]\";\n		}\n		else if(typeof v === \"string\")\n		{\n			if(v.length > 10 || contains(v, ['[', '{', '}']) || v.trim() != v)\n				v = '\"'+v+'\"';\n			return v;\n		}\n		else\n			return String(v);\n	};\n\n	var result = \"\";\n	var subObjBody = \"\";\n	var appendix = [];\n	if(!intend) intend = \"\";\n	if(!prefix) prefix = \"\";\n\n	for(var key in obj)\n	{\n		if(!obj.hasOwnProperty(key))\n			continue;\n		var value = obj[key];\n		var type = getType(value);\n		key = prefix + key;\n\n		if(type === \"array\" || type === \"value\")\n		{\n			result += intend + key + \" = \" + fvalue(value) + \"\\n\";\n		}\n		else if(type === \"object\")\n			appendix.push(xini_stringify(value, intend, key+\".\"));\n		else if(type === \"objArray\")\n		{\n			for(var i = 0; i < value.length; i++)\n			{\n				var subObj = value[i];\n				var complex = false;\n\n				for(var subKey in subObj)\n				{\n					if(!subObj.hasOwnProperty(subKey))\n						continue;\n					var subVal = subObj[subKey];\n					if(getType(subVal) === \"objArray\")\n					{\n						complex = true;\n						break;\n					}\n				}\n\n				if(complex)\n					subObjBody += intend + key + \"\\n{\\n\" + xini_stringify(subObj, intend+\"  \") + \"}\\n\\n\";\n				else\n					subObjBody += intend + \"[\" + key + \"]\\n\" + xini_stringify(subObj, intend);\n			};\n		}\n\n	}\n\n	if(appendix.length != 0)\n		result += \"\\n\" + appendix.join('\\n');\n\n	if(subObjBody.length != 0)\n		result += \"\\n\" + subObjBody;\n	\n	return result;\n}\n\nvar XINI =\n{\n	parse: xini_parse,\n	stringify: xini_stringify\n};",
+			"file": "xini.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 6709,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\"use strict\";\n\nvar Data = {};\nData.CityNamePrefixes = [\"Tai\", \"Nan\", \"Xiann\", \"Gan\", \"Xiam\", \"Chu\", \"Zhang\", \"Jang\", \"Jingx\", \"Gying\", \"Sheng\",\n        								 \"Hang\", \"Shuang\", \"Quan\", \"Zaozhou\", \"Xian\", \"Ling\", \"Chan\", \"Taian\", \"Bin\", \"Fang\",\n           							 \"Shan\", \"Jiang\", \"Put\", \"Chu\", \"Ye\", \"Hui\", \"Liao\"];\nData.CityNameSuffixes = [\"hou\", \"yi\", \"jinh\", \"ai\", \"shai\", \"gou\", \"gao\", \"lang\", \"mati\", \"kou\"];\nData.Faction = {};\nData.Faction.MinorColors = [[151,39,137], [55,95,26], [167,28,14], [37,38,54], [61,79,179], [129,46,75], [117,71,16], [52,86,134], [65,36,88],\n                            [72,31,16], [26,82,92], [73,67,15], [132,31,29], [31,69,36], [121,36,98], [74,28,57], [108,57,133], [162,31,68],\n                            [112,67,107], [31,46,84], [63,73,142], [157,32,97], [83,21,33], [153,58,20], [118,59,38], [104,66,166], [134,54,60],\n                            [169,32,40], [75,78,110], [129,53,22]];\nData.Faction.MajorColors = [[74,238,129], [219,75,245], [255,62,34], [193,219,5], [81,217,235], [253,51,151], [48,112,253], [226,162,10], [45,126,2]];\nData.Faction.Names       = [\"Guang\", \"Fujian\", \"Anhui\", \"Jiangsu\", \"Shang\", \"Hubei\", \"Hunan\", \"Yunnan\", \"Qing\",\n														\"Xinji\", \"Panc\", \"Ganbold\", \"Batbayar\", \"Tanar\", \"Chujang\", \"Tushoa\", \"Kanshao\", \"Pintau\",\n														\"Xiangsu\", \"Donbai\", \"Lendai\", \"Langtau\", \"Iowei\", \"Zenwei\", \"Veras\", \"Tindea\"];\n\n\nvar Sprites = {\n	Mountain:[\n		{X: 158, Y: 166, W: 200, H: 140, Type: \"Mountain\"},\n		{X:  31, Y: 306, W: 200, H: 170, Type: \"Mountain\"},\n		{X:  27, Y: 313, W: 200, H: 165, Type: \"Mountain\"},\n		{X: 414, Y: 290, W: 125, H: 193, Type: \"Mountain\"},\n		{X: 230, Y: 310, W: 183, H: 155, Type: \"Mountain\"},\n		{X:  41, Y: 502, W: 170, H: 160, Type: \"Mountain\"},\n		{X: 282, Y: 683, W: 290, H:  85, Type: \"Mountain\"}],\n	Forest:[\n		{X: 579, Y: 631, W: 100, H: 100, Type: \"Forest\"},\n		{X: 682, Y: 631, W: 100, H: 100, Type: \"Forest\"},\n		{X: 784, Y: 631, W: 100, H: 100, Type: \"Forest\"},\n		{X: 883, Y: 631, W: 100, H: 100, Type: \"Forest\"}]\n};\n\nData.Skills      = {};\nData.SkillsArray = [];\n\nData.Traits      = {};\nData.TraitsArray = [];\n\nData.CityTraits      = {};\nData.CityTraitsArray = [];\n\nData.Attributes      = {};\nData.AttributesArray = [];\n\nvar Definitions = {Skills:[], Traits:[], CityTraits:[], Attributes:[]};\n\nfunction RequestData()\n{\n	var onFileListLoaded = function(response)\n	{\n		var fileList = XINI.parse(response).Files;\n		var parseDefinition = function(response, numFilesLeft)\n		{\n			XINI.parse(response, Definitions);\n			if(numFilesLeft === 0)\n				LoadData();\n		};\n		Backend.LoadTextFiles(\"Data/\", fileList, parseDefinition);\n	};\n\n	Backend.LoadTextFiles(\"Data/\", [\"_FileList.xini\"], onFileListLoaded);\n}\n\nfunction LoadData()\n{\n	for(var i = 0; i < Definitions.Skills.length; i++)\n	{\n		var trait = new Trait(Definitions.Skills[i]);\n		Data.Skills[trait.Name] = trait;\n		Data.SkillsArray.push(trait);\n	};\n	for(var i = 0; i < Definitions.Traits.length; i++)\n	{\n		var trait = new Trait(Definitions.Traits[i]);\n		Data.Traits[trait.Name] = trait;\n		Data.TraitsArray.push(trait);\n	};\n	for(var i = 0; i < Definitions.CityTraits.length; i++)\n	{\n		var trait = new Trait(Definitions.CityTraits[i]);\n		Data.CityTraits[trait.Name] = trait;\n		Data.CityTraitsArray.push(trait);\n	};\n	for(var i = 0; i < Definitions.Attributes.length; i++)\n	{\n		var atr = Definitions.Attributes[i];\n		Data.Attributes[atr.Name] = atr;\n		Data.AttributesArray.push(atr);\n	};\n	for(var key in Definitions)\n	if(Definitions.hasOwnProperty(key) && key !== \"Skills\" && key !== \"Traits\" && key !== \"CityTraits\" && key !== \"Attributes\")\n		Data[key] = Definitions[key];\n\n	GameLoaded();\n}",
+			"file": "data.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 3639,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Data/_FileList.xini",
+			"settings":
+			{
+				"buffer_size": 183,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1926,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Data/Traits.xini",
+			"settings":
+			{
+				"buffer_size": 3083,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\"use strict\";\n\nvar Ui = {\n	ShowObject   : false,\n	CurrentObject: null,\n	MapMode      : \"realms\",\n	TimeSpeed    : 1\n};\n\nfunction UpdateSize()\n{\n	var elements = document.querySelectorAll(\"#sidebar section\");\n	for (var i = 0; i < elements.length; i++)\n		elements[i].style[\"height\"] = window.innerHeight-60+\"px\";\n	var objInfo = document.getElementById(\"object-info\");\n	objInfo.style[\"height\"] = window.innerHeight-70+\"px\";\n}\n\nfunction DisplayObject(obj, noScroll)\n{\n	Ui.ShowObject = true;\n	Ui.CurrentObject = obj;\n	SetActiveTab(document.getElementById(\"object-info-tab\"));\n	UpdateUI();\n	\n	if(!noScroll)\n	{\n		if(obj.hasOwnProperty(\"X\"))\n		{\n			var w = playfield.clientWidth;\n			var h = playfield.clientHeight;\n			playfield.scrollLeft = obj.X - w/2;\n			playfield.scrollTop  = obj.Y - h/2;\n		}\n	}\n\n	try\n	{\n		history.pushState(Ui, null);\n	}\n	catch(e)\n	{\n	}\n}\n\nfunction SetMapMode(mode)\n{\n	Ui.MapMode = mode;\n	history.pushState(Ui, null);\n	GameRedraw();\n}\n\nfunction OnBack(e)\n{\n	if(e.state)\n		Ui = e.state;\n	else\n	{\n		Ui.ShowObject = false;\n		Ui.CurrentObject = null;\n		Ui.MapMode = 'realms';\n	}\n	UpdateUI();\n	window.requestAnimationFrame(GameLoop);\n}\nwindow.onpopstate = OnBack;\n\nfunction OnClick(click)\n{\n	var map = document.getElementById(\"playfield\");\n	var pos = {X: click.clientX, Y: click.clientY};\n	var mapPos = {X: map.offsetLeft, Y: map.offsetTop};\n	var scrollPos = { X: map.scrollLeft, Y: map.scrollTop };\n	pos = Vec2Add(pos, Vec2Neg(mapPos));\n	pos = Vec2Add(pos, scrollPos);\n	var city = ProximityTestPointPoint(pos, GameState.Map.Cities, 50);\n	if(city)\n		DisplayObject(city, true);\n}\n\nfunction SetActiveTab(tab)\n{\n	var parent = tab.parentNode;\n	var elements = parent.querySelectorAll(\"section\");\n	for(var i = 0; i < elements.length; i++)\n	{\n		elements[i].className = \"\";\n	}\n	tab.className = \"active-tab\";\n}\n\nfunction InitUI()\n{\n	var elements = document.querySelectorAll(\".tabbed section h2 a\");\n	for (var i = 0; i < elements.length; i++)\n		elements[i].addEventListener(\"click\", SetActiveTab.bind(undefined, elements[i].parentNode.parentNode));\n\n	var map = document.getElementById(\"map\");\n	map.addEventListener(\"click\", OnClick);\n}\n\nfunction UpdateResourceUI()\n{\n	var div  = document.querySelector(\"#overview .time\");\n	div.innerHTML = Data.Months[GameState.Month-1] + \" <span class='date'>\" + Align(2, GameState.Day, \"0\")+\".\"+Align(2, GameState.Month, \"0\")+\".\"+Align(3, GameState.Year, \"0\")+\"</span>\";\n}\n\nfunction MakeObjView(data)\n{\n	var objInfo = document.getElementById(\"object-info\");\n	objInfo.innerHTML = \"\";\n\n	var curSection = objInfo;\n	var curElement = objInfo;\n\n	for(var i = 0; i < Data.length; i++)\n	switch(Data[i].Type)\n	{\n		case \"Ribbon\":\n\n\n			objInfo.appendChild(ribbon);\n			curSection = ribbon;\n			break;\n		case \"Text\":\n			var div = document.createElement('div');\n			var text = document.createTextNode(Data[i].Text);\n			div.className = Data[i].Class;\n			curSection.appendChild(div);\n			curElement = div;\n			break;\n		case \"Icon\":\n			var icon = CreateSymbol(Data[i].Name);\n			curElement.appendChild(icon);\n			break;\n		case \"Link\":\n			var div = CreateTag(Data[i].Obj);\n			curSection.appendChild(div);\n			curElement = div;\n			break;\n		case \"Double Tag\":\n			var div = CreateDoubleTag(Data[i].Label, Data[i].Obj);\n			curSection.appendChild(div);\n			curElement = div;\n			break;\n	}\n\n}\n\nfunction UpdateUI()\n{\n	var objInfo = document.getElementById(\"object-info\");\n	objInfo.innerHTML = \"\";\n\n	var AddUI = function(e){objInfo.appendChild(e);};\n	if(Ui.ShowObject)\n	{\n		var obj = Ui.CurrentObject;\n		// ==========\n		// Characters\n		// ==========\n		if(obj instanceof Character)\n		{\n			var faction = obj.Rank.Faction;\n			if(!faction)\n				faction = obj.Home.Faction;\n\n			var subtitle = [UI.Text(obj.Rank.Name+', '+obj.Age)];\n			if(!obj.IsAlive) subtitle.push(UI.Symbol(\"dead\"));\n			subtitle.push(UI.Symbol(obj.Gender));\n\n			AddUI(UI.Ribbon(faction.Color, UI.Text(obj.Surname+' '+obj.Name), subtitle));\n		}\n		// ======\n		// Cities\n		// ======\n		else if(obj instanceof City)\n		{\n			AddUI(UI.Ribbon(obj.Faction.Color, UI.Text(obj.Name)));\n\n			var misc = [];\n			if(obj.Faction)  misc.push(UI.DoubleTag(\"Controlled by\", UI.Link(obj.Faction)));\n			if(obj.Governor) misc.push(UI.DoubleTag(\"Governor\",      UI.Link(obj.Governor)));\n			AddUI(UI.Div(misc, \"section misc\"));\n			\n			AddUI(UI.LinkList(obj.Population, \"section population\", function(p){ return p.IsAlive && p.isRelevant(); }));\n		}\n		// ========\n		// Factions\n		// ========\n		else if(obj instanceof Faction)\n		{\n			AddUI(UI.Ribbon(obj.Color, UI.Text(obj.Name)));\n\n			var misc = [];\n			if(obj.ParentFaction) misc.push(UI.DoubleTag(\"Controlled by\", UI.Link(obj.ParentFaction)));\n			if(obj.Capital)       misc.push(UI.DoubleTag(\"Capital\",       UI.Link(obj.Capital)));\n			if(obj.Leader)        misc.push(UI.DoubleTag(\"Leader\",        UI.Link(obj.Leader)));\n			AddUI(UI.Div(misc, \"section misc\"));\n\n			AddUI(UI.LinkList(obj.SubFactions, \"section subs\"));\n			AddUI(UI.LinkList(obj.Cities, \"section cities\"));\n			AddUI(UI.LinkList(GameState.Characters, \"section members\", function(p){ return p.IsAlive && person.Rank.Faction == obj; }));\n		}\n\n		// Generic for all: Properties\n		if(obj.Properties)\n		{\n			var div = UI.Div(undefined, \"section properties\");\n			AddUI(div);\n			for (var i = 0; i < obj.Properties.length; i++)\n			{\n				var key = obj.Properties[i];\n				var prop = obj[key];\n				if(prop instanceof AttributeList)\n				{\n					var table = [[], []];\n					for(var attr in prop.Static)\n					{\n						if(prop.Static.hasOwnProperty(attr))\n						{\n							var meta = Data.Attributes[attr];\n							if(meta && meta.Display === \"Icon\")\n							{\n								table[0].push(UI.Symbol(attr));\n								table[1].push(UI.Text(Math.floor(prop.Static[attr])));\n							}\n						}\n					}\n					UI.Append(div, UI.Table(table, \"table \"+key));\n				}\n				else if(prop instanceof TraitList)\n				{\n					var traits = [];\n					prop.Data.forEach(function(o)\n					{\n						var display = [];\n						if(o.Trait.Icon)\n							display.push(UI.Symbol(o.Trait.Icon));\n						if(o.Level && o.Level > 0)\n							display.push(UI.Symbol(\"level-\"+o.Level));\n\n						display.push(o.Trait.Name);\n\n						var tag = UI.Tag(display);\n						SetTooltip(tag, o.Trait.getDescription(o.Level));\n						traits.push(tag);\n					});\n					UI.Append(div, UI.Div(traits, \"list \"+key));\n				}\n				else\n					UI.Append(div, UI.DoubleTag(key, UI.Link(prop)));\n			};\n		}\n\n	}\n	else\n	//\n	// No object displayed, proceed with listing the factions\n	//\n	{\n		AddUI(UI.LinkList(GameState.Factions, \"section factions\"));\n	}\n	UpdateResourceUI();\n}",
+			"file": "interface.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 6509,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "@font-face\n{\n  font-family: 'Lobster';\n  src: url(\"Assets/Lobster.otf\");\n}\n\n/*@font-face\n{\n  font-family: 'Vollkorn';\n  font-weight: 400;\n  src: url(\"Assets/vollkorn-regular.woff\");\n}*/\n\n@font-face\n{\n  font-family: 'Vollkorn';\n  font-weight: 500;\n  src: url(\"Assets/vollkorn-medium.woff\");\n}\n\n@font-face\n{\n  font-family: 'Vollkorn';\n  font-weight: 600;\n  src: url(\"Assets/vollkorn-semibold.woff\");\n}\n\n@font-face\n{\n	font-family: 'Dancing Script';\n	font-weight: 400;\n	src: url(\"Assets/DancingScript-Regular.otf\");\n}\n\n/*@font-face\n{\n  font-family: 'Vollkorn';\n  font-weight: 700;\n  src: url(\"Assets/vollkorn-bold.woff\");\n}*/\n\ndiv, section\n{\n	box-sizing: border-box;\n}\n\nsection, body, #sidebar\n{\n	background: #fee;\n}\n\n#sidebar section\n{\n	width: 395px;\n	padding: 10px;\n  box-shadow: inset 0 10px 50px 25px #bbb, 0 -2px 5px rgba(0,0,0,0.2);\n	background: #777;\n	border-top: 2px solid black;\n}\n\nbody\n{\n	margin: 0;\n	font-family: 'Vollkorn', sans-serif;\n	font-weight: 500;\n\n	-webkit-font-feature-settings: \"lnum\" 1;\n	font-feature-settings: \"lnum\" 1;\n}\n\n#sidebar\n{\n	position: absolute;\n	left:     0px;\n	top:      0px;\n	bottom:   0px;\n	width:    400px;\n	border-right: 5px solid black;\n}\n\n#sidebar #object-info-tab\n{\n	padding: 0px;\n}\n\n#sidebar #object-info\n{\n	overflow-y: auto;\n}\n\n#resource-bar\n{\n	height: 40px;\n	padding: 4px;\n	width: 95px;\n	float: right;\n}\n\n#overview\n{\n	height: 45px;\n}\n\n.resource\n{\n	display: inline-block;\n	min-width: 80px;\n}\n\n.time\n{\n	padding: 2px;\n	margin:  2px;\n	line-height: 24px;\n	font-size: 140%;\n	font-family: 'Dancing Script', cursive;\n}\n\n.time .date\n{\n	font-size: 70%;\n	font-family: 'Vollkorn', sans-serif;\n}\n\n.resource .symbol\n{\n	margin-right: 10px;\n}\n\n.resource .value\n{\n	text-align: right;\n}\n\n.resource .income\n{\n	color: green;\n	text-align: right;\n	font-size: 80%;\n}\n\n#playfield\n{\n	position:   absolute;\n	left :      400px;\n	right:      0px;\n	bottom:     0px;\n	top:        0px;\n	overflow:   auto;\n}\n\n.title\n{\n	font-size: 140%;\n	font-family: 'Lobster', sans-serif;\n}\n\n.subtitle\n{\n	font-family: 'Lobster', sans-serif;\n}\n\n.tag\n{\n	width: 32%;\n	display: inline-block;\n}\n\n.double-tag > span\n{\n	width: 49%;\n	height: 24px;\n	display: inline-block;\n	box-sizing: border-box;\n	margin-left: 2px;\n}\n\n.double-tag > span:first-child\n{\n	border-right: 1px solid black;\n}\n\n.tag, .double-tag, .resource\n{\n	border: 1px solid black;\n	background: url(\"Assets/uibg.jpg\");\n	margin: 2px;\n	color: black;\n	line-height: 20px;\n	padding: 2px;\n	height: 24px;\n	overflow: hidden;\n	white-space: nowrap;\n}\n\n.action\n{\n	background: rgba(0, 0, 0, 0.8);\n	border-radius: 5px;\n	border: 1px solid white;\n	padding: 5px;\n	margin: 2px;\n	color: white;\n	min-width: 155px;\n	max-width: 155px;\n}\n\n.action a\n{\n	font-weight: bold;\n	text-decoration: none;\n	color: white;\n}\n\n.double-tag\n{\n	/*max-width: 325px;*/\n}\n\n.section\n{\n	margin-top: 10px;\n}\n\n.objectLink\n{\n	font-weight: 600;\n}\n\n.objectLink a\n{\n	cursor: pointer;\n}\n\n.objectLink .name\n{\n	margin-left: 5px;\n}\n\n.objectLink.unimportant\n{\n	font-weight: normal;\n	font-style:  italic;\n}\n\n.objectLink.faction\n{\n	text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,\n	             #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;\n}\n\n.objectLink.faction.dark\n{\n	text-shadow: #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px,\n	             #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px;\n}\n\n.section\n{\n	margin-left: auto;\n	margin-right: auto;\n	width: 360px;\n	clear: both;\n}\n\n.section.ribbon\n{\n	box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.5);\n	border: 1px solid black;\n	box-sizing: content-box;\n	margin-bottom: 30px;\n	padding: 10px;\n	padding-left: 20px;\n	color: black;\n	background-color: white;\n	background-image: url(\"Assets/ribbon.png\");\n}\n\n.section.stats\n{\n	min-height: 70px;\n}\n\n.section.stats .tag\n{\n	width: auto;\n}\n\n.table td\n{\n	text-align: center;\n	font-weight: bold;\n	font-size: 20px;\n\n	padding: 0;\n	margin: 0;\n}\n\n#controls\n{\n	display: none;\n}\n\n[data-tooltip]\n{\n	cursor: pointer;\n}\n\n.tooltip\n{\n	background: white;\n	color: black;\n	border: 1px solid black;\n	padding: 2px;\n	margin: 2px;\n	margin-left: 15px;\n	white-space: pre;\n}\n\n.meta\n{\n	color: #640;\n	font-style: italic;\n}",
+			"file": "style.css",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 4128,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "ai-kingdoms.js",
+			"settings":
+			{
+				"buffer_size": 4336,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\"use strict\";\n\nvar Tooltip =\n{\n	Element: null,\n	Initialize: function()\n	{\n		Tooltip.Element = document.createElement('div');\n		Tooltip.Element.className = \"tooltip hidden\";\n		Tooltip.Element.style.visibility = \"hidden\";\n		document.body.appendChild(Tooltip.Element);\n	},\n	MouseEnter: function(e)\n	{\n		if(!Tooltip.Element)\n			Tooltip.Initialize();\n\n		Tooltip.Element.innerHTML = e.target.getAttribute(\"data-tooltip\");\n		Tooltip.Element.className = \"tooltip active\";\n		Tooltip.Element.style.visibility = \"visible\";\n		Tooltip.MouseMove(e);\n	},\n	MouseMove: function(e)\n	{\n		Tooltip.Element.style.zIndex   = 1000;\n		Tooltip.Element.style.position = \"absolute\";\n		Tooltip.Element.style.top      = e.clientY+\"px\";\n		Tooltip.Element.style.left     = e.clientX+\"px\";\n	},\n	MouseLeave: function(e)\n	{\n		Tooltip.Element.className = \"tooltip hidden\";\n		Tooltip.Element.style.visibility = \"hidden\";\n		Tooltip.MouseMove(e);\n	}\n};\n\nfunction SetTooltip(obj, tooltip)\n{\n	obj.setAttribute(\"data-tooltip\", tooltip);\n	obj.addEventListener(\"mouseenter\", Tooltip.MouseEnter);\n	obj.addEventListener(\"mousemove\",  Tooltip.MouseMove);\n	obj.addEventListener(\"mouseleave\", Tooltip.MouseLeave);\n}",
+			"file": "tooltip.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1166,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\nvar UI = {};\n\nUI.Append = function(parent, children)\n{\n	if(Array.isArray(children))\n	{\n		for(var i = 0; i < children.length; i++)\n			UI.Append(parent, children[i]);\n	}\n	else if(typeof children === \"string\")\n		parent.appendChild(UI.Text(children));\n	else if(children instanceof Node)\n		parent.appendChild(children);\n	else if(children === undefined);\n	else\n		parent.appendChild(UI.Link(children));\n};\n\nUI.Text = function(text)\n{\n	return document.createTextNode(text);\n}\n\nUI.Symbol = function(symbol)\n{\n	var span = document.createElement('span');\n	span.className = \"symbol \"+symbol;\n	return span;\n}\n\nUI.Div = function(content, cssClass)\n{\n	var div = document.createElement('div');\n	UI.Append(div, content);\n	div.className = cssClass;\n	return div;\n};\n\nUI.Link = function(obj)\n{\n	var	div = null;\n	var name;\n\n	var isCharacter = obj instanceof Character;\n	var isCity      = obj instanceof City;\n	var isFaction   = obj instanceof Faction;\n\n	div = document.createElement('div');\n	div.className = \"objectLink\";\n\n	name = obj.Name;\n\n	if(isCharacter)\n	{\n		name = obj.Surname+' '+obj.Name;\n		var addPlaceholder = true;\n\n		if(!obj.IsAlive)\n		{\n			div.appendChild(UI.Symbol(\"dead\"));\n			addPlaceholder = false;\n		}\n		if(obj.Rank.Icon)\n		{\n			div.appendChild(UI.Symbol(obj.Rank.Icon));\n			addPlaceholder = false\n		}\n\n		if(addPlaceholder)\n			div.appendChild(UI.Symbol(\"empty\"));\n\n		div.appendChild(UI.Symbol(obj.Gender));\n	}\n\n	if(isFaction)\n	{\n		div.style.color = \"rgb(\"+obj.Color[0]+\", \"+obj.Color[1]+\", \"+obj.Color[2]+\")\";\n		div.className += \" faction\"; \n		if(ColorIsDark(obj.Color))\n			div.className += \" dark\"; \n	}\n\n	if(isCity)\n	{\n		var symb = UI.Symbol(\"solid-color\");\n		symb.style.backgroundColor = \"rgb(\"+obj.Faction.Color[0]+\", \"+obj.Faction.Color[1]+\", \"+obj.Faction.Color[2]+\")\";\n		div.appendChild(symb);\n	}\n\n	var link = document.createElement('a');\n	link.appendChild(document.createTextNode(name));\n	link.className = \"name\";\n	var onClick = DisplayObject.bind(undefined, obj, false);\n	div.addEventListener('click', onClick);\n	div.appendChild(link);\n\n	return div;\n}\n\nUI.Tag = function(content)\n{\n	var div = document.createElement('div');\n	div.className = 'tag';\n	UI.Append(div, content);\n	return div;\n}\n\nUI.DoubleTag = function(label, value)\n{\n	var div = document.createElement('div');\n	div.className = 'double-tag';\n	var spanA = document.createElement('span');\n	var spanB = document.createElement('span');\n	UI.Append(spanA, label);\n	UI.Append(spanB, value);\n	div.appendChild(spanA);\n	div.appendChild(spanB);\n	return div;\n}\n\nUI.Ribbon = function(color, title, subtitle)\n{\n	var ribbon = document.createElement('div');\n	ribbon.style.backgroundColor = \"rgb(\"+color[0]+\", \"+color[1]+\", \"+color[2]+\")\";\n	ribbon.className = \"section ribbon\";\n	if(ColorIsDark(color))\n		ribbon.className += \" dark\";\n\n	if(title)    ribbon.appendChild(UI.Div(title,    \"title\"));\n	if(subtitle) ribbon.appendChild(UI.Div(subtitle, \"subtitle\"));\n\n	return ribbon;\n}\n\nUI.LinkList = function(list, cssClass, filter)\n{\n	var result = [];\n	if(!filter)\n		filter = function(){ return true; };\n\n	var addIf = function(obj)\n	{\n		if(filter(obj))\n			result.push(UI.Tag(UI.Link(obj)));\n	};\n\n	list.forEach(addIf);\n\n	var div = document.createElement('div');\n	UI.Append(div, result);\n	div.className = cssClass;\n	return div;\n}\n\nUI.Table = function(array, cssClass)\n{\n	var table = document.createElement('table');\n	for (var i = 0; i < array.length; i++)\n	{\n		var subarray = array[i];\n		var row = table.insertRow();\n		for(var j = 0; j < subarray.length; j++)\n		{\n			var cell = row.insertCell();\n			UI.Append(cell, subarray[j]);\n		};\n	};\n	table.className = cssClass;\n	return table;\n}",
+			"file": "ui.lib.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 3625,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Data/Skills.xini",
+			"settings":
+			{
+				"buffer_size": 4324,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Data/CityTraits.xini",
+			"settings":
+			{
+				"buffer_size": 3427,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 196.0,
+		"selected_items":
+		[
+			[
+				"Java",
+				"Set Syntax: Java"
+			],
+			[
+				"syntax Java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syntax",
+				"Set Syntax: Java"
+			],
+			[
+				"Syn",
+				"Set Syntax: C"
+			],
+			[
+				"Syntax",
+				"Set Syntax: INI"
+			],
+			[
+				"Set Syntax",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"Set Syn",
+				"Set Syntax: INI"
+			],
+			[
+				"Instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Packag Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Set Syntax Mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"Pretty",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"Pretty Json",
+				"Pretty JSON: JSON query with ./jq"
+			],
+			[
+				"Package Control: Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"hj",
+				"Set Syntax: Hjson"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"Mar",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #include <…>"
+			],
+			[
+				"C++",
+				"Set Syntax: C++"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/GameDev/AI Kingdoms"
+	],
+	"file_history":
+	[
+		"/C/GameDev/AI Kingdoms/start.js",
+		"/C/GameDev/AI Kingdoms/trait.class.js",
+		"/C/GameDev/AI Kingdoms/attributelist.class.js",
+		"/C/GameDev/AI Kingdoms/traitlist.class.js",
+		"/C/GameDev/AI Kingdoms/effect.class.js",
+		"/C/GameDev/AI Kingdoms/character.class.js",
+		"/C/GameDev/AI Kingdoms/city.class.js",
+		"/C/GameDev/AI Kingdoms/chargen.js",
+		"/C/Source/Randomly-generated-Magic-Items/patterns.txt",
+		"/C/Source/Randomly-generated-Magic-Items/concrete_noun.txt",
+		"/C/Source/Randomly-generated-Magic-Items/magic_items.py",
+		"/C/Games/PC/Diablo II/MODS/RoS084b/D2SE_SETUP.ini",
+		"/C/GameDev/AI Kingdoms/skill.class.js",
+		"/C/GameDev/AI Kingdoms/ai-kingdoms.js",
+		"/C/GameDev/AI Kingdoms/style.css",
+		"/C/GameDev/AI Kingdoms/tabs.css",
+		"/C/GameDev/AI Kingdoms/interface.js",
+		"/C/GameDev/AI Kingdoms/functions.js",
+		"/C/GameDev/AI Kingdoms/backend.js",
+		"/C/GameDev/AI Kingdoms/data.js",
+		"/C/GameDev/AI Kingdoms/index.html",
+		"/C/GameDev/AI Kingdoms/Data/Calendar.xini",
+		"/C/GameDev/AI Kingdoms/Brainstorming/Cities.md",
+		"/C/GameDev/AI Kingdoms/Data/CityTraits.xini",
+		"/C/GameDev/AI Kingdoms/Data/_FileList.xini",
+		"/C/GameDev/AI Kingdoms/Data/Traits.xini",
+		"/C/GameDev/AI Kingdoms/Data/Skills.xini",
+		"/C/GameDev/AI Kingdoms/Data/Colors.xini",
+		"/C/Users/Manuel/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Manuel/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Roleplaying/2050/CharakterFragen.md",
+		"/C/Users/Manuel/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Manuel/.gitconfig",
+		"/C/Users/Manuel/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/GameDev/AI Kingdoms/skills.data.js",
+		"/C/GameDev/AI Kingdoms/xini.js",
+		"/C/Projects/XINI/Description.md",
+		"/C/xampp/apache/conf/httpd.conf",
+		"/E/GameDev/AI Kingdoms/Data/Skills.xini",
+		"/E/GameDev/AI Kingdoms/Data/Traits.xini",
+		"/E/GameDev/AI Kingdoms/chargen.js",
+		"/E/GameDev/AI Kingdoms/skills.data.js",
+		"/E/GameDev/AI Kingdoms/xini.js",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/E/GameDev/AI Kingdoms/Brainstorming/Abillities.md",
+		"/E/GameDev/AI Kingdoms/ai-kingdoms.js",
+		"/E/GameDev/AI Kingdoms/worldgen.js",
+		"/E/GameDev/AI Kingdoms/interface.js",
+		"/E/GameDev/AI Kingdoms/index.html",
+		"/E/GameDev/AI Kingdoms/data.js",
+		"/E/GameDev/AI Kingdoms/Data/MapSprites.xini",
+		"/E/GameDev/AI Kingdoms/Data/Names.xini",
+		"/E/GameDev/AI Kingdoms/Data/_FileList.xini",
+		"/E/GameDev/AI Kingdoms/Data/Colors.xini",
+		"/E/GameDev/AI Kingdoms/backend.js",
+		"/E/GameDev/AI Kingdoms/style.css",
+		"/E/GameDev/AI Kingdoms/tabs.css",
+		"/E/GameDev/AI Kingdoms/character.class.js",
+		"/E/GameDev/AI Kingdoms/effect.class.js",
+		"/E/GameDev/AI Kingdoms/skill.class.js",
+		"/E/GameDev/AI Kingdoms/functions.js",
+		"/E/GameDev/AI Kingdoms/symbols.css",
+		"/E/GameDev/AI Kingdoms/Data/Files.xini",
+		"/E/GameDev/AI Kingdoms/hjson.js",
+		"/E/GameDev/AI Kingdoms/Data/Traits.hjson",
+		"/E/GameDev/AI Kingdoms/Data/Skills.hjson",
+		"/E/GameDev/AI Kingdoms/faction.class.js",
+		"/E/GameDev/AI Kingdoms/events.data.js",
+		"/E/GameDev/AI Kingdoms/Brainstorming/TODO.md",
+		"/E/GameDev/AI Kingdoms/Brainstorming/Traits.md",
+		"/E/GameDev/AI Kingdoms/start.js",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/E/GameDev/AI Kingdoms/Data/Skills.json",
+		"/E/Downloads/cddasdl-current/data/mods/No_Difficult_Zombies/modinfo.json",
+		"/E/GameDev/AI Kingdoms/tooltip.js",
+		"/E/GameDev/AI Kingdoms/trait.class.js",
+		"/E/Downloads/cddasdl-current/data/json/monsters.json",
+		"/E/Downloads/cddasdl-current/data/mods/No_Reviving/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/mods/No_Reviving/main.lua",
+		"/E/Downloads/cddasdl-current/data/mods/Mundane_Zombies/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/mods/No_Religious_Books/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/mods/Only_Wildlife/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/mods/EW_Pack/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/mods/Slow_Zombies/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/mods/Slow_Zombies/main.lua",
+		"/E/Downloads/cddasdl-current/data/mods/Medieval_pack/modinfo.json",
+		"/E/Downloads/cddasdl-current/data/recycling/halloween_special.json",
+		"/C/Users/Beast/Desktop/TODO.md",
+		"/E/GameDev/AI Kingdoms/Brainstorming/Actions.md",
+		"/E/GameDev/AI Kingdoms/rank.class.js",
+		"/E/GameDev/AI Kingdoms/README.md",
+		"/E/GameDev/AI Kingdoms/serializer.class.js",
+		"/E/Downloads/cddasdl-current/templates/Tammi.template",
+		"/E/Downloads/cddasdl-current/lua/autoexec.lua",
+		"/E/GameDev/AI Kingdoms/Assets/symbols.png",
+		"/E/Downloads/cddasdl-current/README.md",
+		"/E/Texte/Weapons.md",
+		"/E/RPG/Crystals/Ausrüstung.md",
+		"/E/Projects/VisualNovelFW/Script.h",
+		"/E/Projects/VisualNovelFW/Script.cpp",
+		"/E/Projects/VisualNovelFW/main.cpp",
+		"/E/Scripts/testgame.py",
+		"/E/Stuff/fobar.md",
+		"/E/GameDev/AI Kingdoms/Assets/ui.jpg",
+		"/C/Users/Beast/Desktop/AOT.ahk",
+		"/E/Downloads/Gulbrandsen2014Fresnel-artist-friendly-fresnel.cpp",
+		"/E/GameDev/AI Kingdoms/city.class.js",
+		"/E/GameDev/AI Kingdoms/AI-Kingdoms.sublime-project",
+		"/E/Local Workdump/dampf/php/config.php",
+		"/E/Local Workdump/dampf/template/style.html",
+		"/E/Local Workdump/dampf/template/script.html",
+		"/E/Local Workdump/dampf/site.css",
+		"/E/Local Workdump/dampf/index.php",
+		"/E/GameDev/AI Kingdoms/cycle.js",
+		"/E/GameDev/AI Kingdoms/home.class.js",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/js-foreach.sublime-snippet",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/E/GameDev/AI Kingdoms/gh-fork-ribbon.css",
+		"/E/GameDev/AI Kingdoms/Ui/_styles.css",
+		"/E/Downloads/Atlas_14/Tracked by hongfire.com.nfo",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/xstruct.sublime-snippet",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/test_abc.cpp",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/wtfpl.sublime-snippet",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/snip-pragma-once.sublime-snippet",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/using.sublime-snippet",
+		"/C/Users/Beast/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/E/Tools/Sublime Text 3/Packages/C++.sublime-package"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"skill",
+			"this",
+			"trait",
+			"Trait",
+			"trait",
+			"CityTraits",
+			"Attributes",
+			"obj[key]",
+			"Ui.L",
+			"UI.L",
+			"Ui.L",
+			"UI",
+			"Ui",
+			"UI",
+			"Ui",
+			"CreateTag",
+			"titleNode",
+			"UISymbol",
+			"CreateSymbol",
+			"CreateLinkFor",
+			"TraitArray",
+			"Skill",
+			"hasTrait",
+			"trait",
+			"Max Population",
+			"skill",
+			"array",
+			"new Skill",
+			"Skill",
+			"isStatic",
+			"type",
+			"attr",
+			"i",
+			"person",
+			"Skill",
+			"Defense",
+			"Army Size",
+			"Combat-Strength",
+			"definitions",
+			"Population Support",
+			"Military Index",
+			"Economic Index",
+			"Economic Growth",
+			"windwos",
+			"line",
+			"end of line",
+			"eol",
+			"line",
+			"1",
+			"3x",
+			"30",
+			"0",
+			"29",
+			"key",
+			"oper",
+			"str",
+			"t",
+			"str",
+			"token",
+			"t",
+			"key",
+			"replace",
+			"lastToken",
+			"p",
+			"i",
+			"new Token(",
+			"cur()",
+			"definitions",
+			"Type = Forest",
+			"Type = Mountain",
+			"Type",
+			"\"",
+			"it",
+			"lastComma",
+			"closedArray",
+			"i",
+			"getDes",
+			"skill.get",
+			"Description = \n",
+			"Description = ",
+			"Assets",
+			"TextToLoad",
+			"ImagesToLoad",
+			"result",
+			"containsNatVal",
+			"intend",
+			"Things",
+			"last()",
+			"cur()",
+			"cur",
+			"orgI",
+			"\"",
+			"\n",
+			"enclosed",
+			"unfinalizedEntry",
+			"\n",
+			"add",
+			"n",
+			"\"Tags\"",
+			"\"AttrMult\"",
+			"\"Description\"",
+			"\"Attributes\"",
+			"\"\n",
+			"\"Effects\"",
+			"\"Icon\"",
+			"\"Weight\"",
+			"\"Exclusive\"",
+			"\"Name\"",
+			",\n      }",
+			"\"AddTag\": [],",
+			"\"AttrMult\": [],",
+			"\"Exclusive\": [],",
+			"\"Attributes\": [],",
+			"\"Likes\": [],",
+			"\"Dislikes\": []",
+			"\"Condition\": [],",
+			"        \"LevelFactor\": [\n          0,\n          1,\n          2,\n          4,\n          6,\n          10\n        ],",
+			"\"Weight\": 1,",
+			"\"IsTrait\": true,",
+			"    \"PreReq\": {\n      \"Attributes\": [],\n      \"Skills\": [],\n      \"Traits\": []\n    },",
+			"    Tags: [\n      \"Fighter\"\n    ]",
+			"\"AttrMult\"",
+			"      }\n    ],",
+			"      }\n    ]",
+			"[\n      {",
+			"    [\n      {",
+			"\"Traits\"",
+			"[Tactican]"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Tactics",
+			"calcScore",
+			".IsAlive",
+			"objectLink",
+			"className"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "citygen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15,
+								15
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "functions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5484,
+								5484
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3915.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Data/Attributes.xini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								106
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Attributes",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "xini.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2308,
+								2308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 945.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "data.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3639,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2195,
+								2195
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Data/_FileList.xini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								183,
+								183
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1926,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								483,
+								483
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Data/Traits.xini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3083,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2875,
+								2875
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2610.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "interface.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6509,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6089,
+								6089
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3069.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3778,
+								3778
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "ai-kingdoms.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1523,
+								1523
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2520.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "tooltip.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "ui.lib.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3625,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								349,
+								349
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "Data/Skills.xini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								921,
+								908
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "Data/CityTraits.xini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3427,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								215,
+								228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2430.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "AI-Kingdoms.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

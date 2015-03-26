@@ -17,9 +17,9 @@ var GameState =
 
 var GameInit = function()
 {
-	Backend.LoadImage("Assets/background.jpg", "BG");
-	Backend.LoadImage("Assets/playerStructures.png", "Cities");
-	Backend.LoadImage("Assets/mapElements.png", "Terrain");
+	Backend.LoadImage("World/Assets/background.jpg", "BG");
+	Backend.LoadImage("World/Assets/playerStructures.png", "Cities");
+	Backend.LoadImage("World/Assets/mapElements.png", "Terrain");
 
 	RequestData();
 

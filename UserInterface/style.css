@@ -1,0 +1,324 @@
+@font-face
+{
+  font-family: 'Lobster';
+  src: url("Assets/Lobster.otf");
+}
+
+/*@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 400;
+  src: url("Assets/vollkorn-regular.woff");
+}*/
+
+@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 500;
+  src: url("Assets/vollkorn-medium.woff");
+}
+
+@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 600;
+  src: url("Assets/vollkorn-semibold.woff");
+}
+
+@font-face
+{
+	font-family: 'Dancing Script';
+	font-weight: 400;
+	src: url("Assets/DancingScript-Regular.otf");
+}
+
+/*@font-face
+{
+  font-family: 'Vollkorn';
+  font-weight: 700;
+  src: url("Assets/vollkorn-bold.woff");
+}*/
+
+div, section
+{
+	box-sizing: border-box;
+}
+
+section, body, #sidebar
+{
+	background: #fee;
+}
+
+#sidebar section
+{
+	width: 395px;
+	padding: 10px;
+  box-shadow: inset 0 10px 50px 25px #bbb, 0 -2px 5px rgba(0,0,0,0.2);
+	background: #777;
+	border-top: 2px solid black;
+}
+
+body
+{
+	margin: 0;
+	font-family: 'Vollkorn', sans-serif;
+	font-weight: 500;
+
+	-webkit-font-feature-settings: "lnum" 1;
+	font-feature-settings: "lnum" 1;
+}
+
+#sidebar
+{
+	position: absolute;
+	left:     0px;
+	top:      0px;
+	bottom:   0px;
+	width:    400px;
+	border-right: 5px solid black;
+}
+
+#sidebar #object-info-tab
+{
+	padding: 0px;
+}
+
+#sidebar #object-info
+{
+	overflow-y: auto;
+}
+
+#resource-bar
+{
+	height: 40px;
+	padding: 4px;
+	width: 95px;
+	float: right;
+}
+
+#overview
+{
+	height: 45px;
+}
+
+.resource
+{
+	display: inline-block;
+	min-width: 80px;
+}
+
+.time
+{
+	padding: 2px;
+	margin:  2px;
+	line-height: 24px;
+	font-size: 140%;
+	font-family: 'Dancing Script', cursive;
+}
+
+.time .date
+{
+	font-size: 70%;
+	font-family: 'Vollkorn', sans-serif;
+}
+
+.resource .symbol
+{
+	margin-right: 10px;
+}
+
+.resource .value
+{
+	text-align: right;
+}
+
+.resource .income
+{
+	color: green;
+	text-align: right;
+	font-size: 80%;
+}
+
+#playfield
+{
+	position:   absolute;
+	left :      400px;
+	right:      0px;
+	bottom:     0px;
+	top:        0px;
+	overflow:   auto;
+}
+
+.title
+{
+	font-size: 140%;
+	font-family: 'Lobster', sans-serif;
+}
+
+.subtitle
+{
+	font-family: 'Lobster', sans-serif;
+}
+
+.tag
+{
+	width: 32%;
+	display: inline-block;
+}
+
+.double-tag > span
+{
+	width: 49%;
+	height: 24px;
+	display: inline-block;
+	box-sizing: border-box;
+	margin-left: 2px;
+}
+
+.double-tag > span:first-child
+{
+	border-right: 1px solid black;
+}
+
+.tag, .double-tag, .resource
+{
+	border: 1px solid black;
+	background: url("Assets/uibg.jpg");
+	margin: 2px;
+	color: black;
+	line-height: 20px;
+	padding: 2px;
+	height: 24px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.action
+{
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 5px;
+	border: 1px solid white;
+	padding: 5px;
+	margin: 2px;
+	color: white;
+	min-width: 155px;
+	max-width: 155px;
+}
+
+.action a
+{
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+}
+
+.double-tag
+{
+	/*max-width: 325px;*/
+}
+
+.section
+{
+	margin-top: 10px;
+}
+
+.objectLink
+{
+	font-weight: 600;
+}
+
+.objectLink a
+{
+	cursor: pointer;
+}
+
+.objectLink .name
+{
+	margin-left: 5px;
+}
+
+.objectLink.unimportant
+{
+	font-weight: normal;
+	font-style:  italic;
+}
+
+.objectLink.faction
+{
+	text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,
+	             #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
+}
+
+.objectLink.faction.dark
+{
+	text-shadow: #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px,
+	             #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px;
+}
+
+.section
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 360px;
+	clear: both;
+}
+
+.section.ribbon
+{
+	box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.5);
+	border: 1px solid black;
+	box-sizing: content-box;
+	margin-bottom: 30px;
+	padding: 10px;
+	padding-left: 20px;
+	color: black;
+	background-color: white;
+	background-image: url("Assets/ribbon.png");
+}
+
+.section.stats
+{
+	min-height: 70px;
+}
+
+.section.stats .tag
+{
+	width: auto;
+}
+
+.table td
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+
+	padding: 0;
+	margin: 0;
+}
+
+#controls
+{
+	display: none;
+}
+
+[data-tooltip]
+{
+	cursor: pointer;
+}
+
+.tooltip
+{
+	background: white;
+	color: black;
+	border: 1px solid black;
+	padding: 2px;
+	margin: 2px;
+	margin-left: 15px;
+	white-space: pre;
+}
+
+.meta
+{
+	color: #640;
+	font-style: italic;
+}
