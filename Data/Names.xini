@@ -1,0 +1,5 @@
+CityNamePrefixes = [Tai, Nan, Xiann, Gan, Xiam, Chu, Zhang, Jang, Jingx, Gying, Sheng, Hang, Shuang, Quan, Zaozhou, Xian, Ling, Chan, Taian, Bin, Fang, Shan, Jiang, Put, Chu, Ye, Hui, Liao]
+CityNameSuffixes = [hou, yi, jinh, ai, shai, gou, gao, lang, mati, kou]
+FactionNames = [Guang, Fujian, Anhui, Jiangsu, Shang, Hubei, Hunan, Yunnan, Qing, Xinji, Pan, Ganbold, Batbayar, Tanar, Chujang, Tushoa, Kanshao, Pintau, Xiangsu, Donbai, Lendai, Langtau, Iowei, Zenwei, Veras, Tindea]
+MaleNames = [Ao, Bang, Buwei, Chao, Fuling, Gao, Guang, He, Hai, Ershi, Jizi, Ju, Kang, Long, Lun, Mang, Qi, Qian, Qing, She, Sheng, Si, Tian, Wan, Xian, Xie, Xin, Xing, Yang, Ying, Yu, Yuan, Yun, Zhao, Zheng, Zhua]
+FemaleNames = [Hou, Ji, Lihua, Na, Zhi, Ai, An, Bo, Chun, Fang, Fen, He, Huan, Jiao, Lei, Xiu, Yin, Zhen]

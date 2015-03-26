@@ -1,0 +1,65 @@
+[Mountain]
+X = 158
+Y = 166
+W = 200
+H = 140
+
+[Mountain]
+X = 31
+Y = 306
+W = 200
+H = 170
+
+[Mountain]
+X = 27
+Y = 313
+W = 200
+H = 165
+
+[Mountain]
+X = 414
+Y = 290
+W = 125
+H = 193
+
+[Mountain]
+X = 230
+Y = 310
+W = 183
+H = 155
+
+[Mountain]
+X = 41
+Y = 502
+W = 170
+H = 160
+
+[Mountain]
+X = 282
+Y = 683
+W = 290
+H = 85
+
+[Forest]
+X = 579
+Y = 631
+W = 100
+H = 100
+
+[Forest]
+X = 682
+Y = 631
+W = 100
+H = 100
+
+[Forest]
+X = 784
+Y = 631
+W = 100
+H = 100
+
+[Forest]
+X = 883
+Y = 631
+W = 100
+H = 100
