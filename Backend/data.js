@@ -60,7 +60,7 @@ function RequestData()
 		Backend.LoadTextFiles("Data/", fileList, parseDefinition);
 	};
 
-	Backend.LoadTextFiles("Data/", ["_FileList.xini"], onFileListLoaded);
+	Backend.LoadTextFiles("Data/", ["AFileList.xini"], onFileListLoaded);
 }
 
 function LoadData()

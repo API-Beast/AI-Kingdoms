@@ -1,0 +1,2 @@
+# Javascript doesn't know what files are in a folder, so we have to specifiy it manually.
+Files = ["Skills.xini", "Traits.xini", "Calendar.xini", "CityTraits.xini", "Attributes.xini"]
