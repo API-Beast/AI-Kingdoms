@@ -4,8 +4,9 @@
 CityTraits
 {
 	Name = Warrior-Tribe
-	Tags = [CityType]
+	Tags = [CityType, TribeType]
 	Weight = 0.5
+	Icon = T1Fortress
 
 	[Effects]
 	Attributes = ["Max. Population", +1000, "Army-Size", +0.55, "Economy", +1, "Army-Strength", +4, "Fortification", +2]
@@ -14,8 +15,9 @@ CityTraits
 CityTraits
 {
 	Name = Craftsmen-Tribe
-	Tags = [CityType]
+	Tags = [CityType, TribeType]
 	Weight = 0.5
+	Icon = T1City
 
 	[Effects]
 	Attributes = ["Max. Population", +1000, "Army-Size", +0.30, "Economy", +4, "Army-Strength", +2]
@@ -24,8 +26,9 @@ CityTraits
 CityTraits
 {
 	Name = Gatherer-Tribe
-	Tags = [CityType]
+	Tags = [CityType, TribeType]
 	Weight = 0.5
+	Icon = T1City
 
 	[Effects]
 	Attributes = ["Max. Population", +2000, "Army-Size", +0.30, "Economy", +2, "Army-Strength", +2]
@@ -37,8 +40,9 @@ CityTraits
 CityTraits
 {
 	Name = Castle
-	Tags = [CityType]
+	Tags = [CityType, AdvancedCityType]
 	Weight = 0.5
+	Icon = T2Fortress
 
 	[Effects]
 	Attributes = ["Max. Population", +5000, "Army-Size", +0.40, "Army-Strength", +2, "Fortification", +4]
@@ -47,7 +51,8 @@ CityTraits
 CityTraits
 {
 	Name = Town
-	Tags = [CityType]
+	Tags = [CityType, AdvancedCityType]
+	Icon = T2City
 
 	[Effects]
 	Attributes = ["Max. Population", +8000, "Army-Size", +0.20, "Economy", +2, "Fortification", +2]
@@ -56,8 +61,9 @@ CityTraits
 CityTraits
 {
 	Name = Mercantile City
-	Tags = [CityType]
+	Tags = [CityType, AdvancedCityType]
 	Weight = 0.5
+	Icon = T2City
 
 	[Effects]
 	Attributes = ["Max. Population", +8000, "Army-Size", +0.15, "Economy", +4, "Fortification", +2]
@@ -69,8 +75,9 @@ CityTraits
 CityTraits
 {
 	Name = Fortress
-	Tags = [CityType]
+	Tags = [CityType, AdvancedCityType]
 	Weight = 0.2
+	Icon = T3Fortress
 
 	[Effects]
 	Attributes = ["Max. Population", +8000, "Army-Size", +0.40, "Army-Strength", +2, "Fortification", +8]
@@ -79,8 +86,9 @@ CityTraits
 CityTraits
 {
 	Name = Megalopolis
-	Tags = [CityType]
+	Tags = [CityType, AdvancedCityType]
 	Weight = 0.2
+	Icon = T3City
 
 	[Effects]
 	Attributes = ["Max. Population", +16000, "Army-Size", +0.20, "Economy", +3, "Fortification", +4]
@@ -94,6 +102,7 @@ CityTraits
 {
 	Name = Mountains
 	Tags = [Landscape]
+	Icon = Mountains
 
 	[Effects]
 	Attributes = ["Fortification", +2, "Army-Strength", +1]
@@ -104,6 +113,7 @@ CityTraits
 {
 	Name = Plains
 	Tags = [Landscape]
+	Icon = Plains
 
 	[Effects]
 	Attributes = ["Army-Size", -0.1]
@@ -118,6 +128,7 @@ CityTraits
 {
 	Name = Training Grounds
 	Tags = [Structure]
+	Icon = FortressUpgrade
 
 	[Effects]
 	Attributes = ["Army-Strength", +1, "Army-Size", +0.1]
@@ -129,6 +140,7 @@ CityTraits
 	Name = Military Academy
 	Tags = [Structure]
 	Weight = 0.5
+	Icon = FortressUpgrade
 
 	[Effects]
 	Attributes = ["Army-Strength", +2]
@@ -144,6 +156,7 @@ CityTraits
 	Name = Metal Workshop
 	Tags = [Structure]
 	PreReq.Tags = ["Iron"]
+	Icon = FortressUpgrade
 
 	[Effects]
 	Attributes = ["Army-Strength", +2]
@@ -157,6 +170,7 @@ CityTraits
 	Name = Iron Mines
 	Tags = [Structure]
 	PreReq.Traits = ["Mountains"]
+	Icon = MountainsUpgrade
 
 	[Effects]
 	Attributes = ["Economy", +2]
@@ -171,6 +185,7 @@ CityTraits
 	Name = Gold Mines
 	Tags = [Structure]
 	PreReq.Traits = ["Mountains"]
+	Icon = MountainsUpgrade
 
 	[Effects]
 	Attributes = ["Economy", +4]

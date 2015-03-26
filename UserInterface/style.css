@@ -166,6 +166,17 @@ body
 	display: inline-block;
 }
 
+.list
+{
+	margin-bottom: 10px;
+}
+
+.list .tag
+{
+	width: auto;
+	min-width: 16%;
+}
+
 .double-tag > span
 {
 	width: 49%;
@@ -191,6 +202,7 @@ body
 	height: 24px;
 	overflow: hidden;
 	white-space: nowrap;
+	vertical-align: top;
 }
 
 .action
@@ -289,13 +301,14 @@ body
 table.Attributes
 {
 	float: left;
+	width: 80px;
 }
 
 table td
 {
 	text-align: center;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 18px;
 
 	padding: 0;
 	margin: 0;

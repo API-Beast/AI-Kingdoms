@@ -388,3 +388,12 @@ function Align(length, string, spacer)
 
 	return padding+string;
 }
+
+function OuterWidth(el)
+{
+  var width = el.offsetWidth;
+  var style = getComputedStyle(el);
+
+  width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+  return width;
+}

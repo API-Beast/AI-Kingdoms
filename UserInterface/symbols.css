@@ -19,12 +19,35 @@
 	box-sizing: border-box;
 }
 
+/*--------*
+ * Cities *
+ *--------*/
 .symbol.Population         { background: url("Assets/cityicons.png")   0px 0px; width: 20px; height: 18px; }
 .symbol.Soldier-Population { background: url("Assets/cityicons.png") -20px 0px; width: 20px; height: 18px; }
 .symbol.Economy            { background: url("Assets/cityicons.png") -40px 0px; width: 20px; height: 18px; }
 .symbol.Army-Strength      { background: url("Assets/cityicons.png") -60px 0px; width: 20px; height: 18px; }
 .symbol.Fortification      { background: url("Assets/cityicons.png") -80px 0px; width: 20px; height: 18px; }
 
+.symbol.Plains          { background: url("Assets/cityicons.png")   0px -20px; width: 20px; height: 20px;}
+.symbol.Hills           { background: url("Assets/cityicons.png") -20px -20px; width: 20px; height: 20px;}
+.symbol.Mountains       { background: url("Assets/cityicons.png") -40px -20px; width: 20px; height: 20px;}
+.symbol.PlainsUpgrade   { background: url("Assets/cityicons.png")   0px -40px; width: 20px; height: 20px;}
+.symbol.HillsUpgrade    { background: url("Assets/cityicons.png") -20px -40px; width: 20px; height: 20px;}
+.symbol.MountainsUpgrade{ background: url("Assets/cityicons.png") -40px -40px; width: 20px; height: 20px;}
+
+.symbol.T1City     { background: url("Assets/cityicons.png")   0px -60px; width: 20px; height: 20px;}
+.symbol.T2City     { background: url("Assets/cityicons.png") -20px -60px; width: 20px; height: 20px;}
+.symbol.T3City     { background: url("Assets/cityicons.png") -40px -60px; width: 20px; height: 20px;}
+.symbol.CityUpgrade{ background: url("Assets/cityicons.png") -60px -60px; width: 20px; height: 20px;}
+
+.symbol.T1Fortress     { background: url("Assets/cityicons.png")   0px -80px; width: 20px; height: 20px;}
+.symbol.T2Fortress     { background: url("Assets/cityicons.png") -20px -80px; width: 20px; height: 20px;}
+.symbol.T3Fortress     { background: url("Assets/cityicons.png") -40px -80px; width: 20px; height: 20px;}
+.symbol.FortressUpgrade{ background: url("Assets/cityicons.png") -60px -80px; width: 20px; height: 20px;}
+
+/*------------*
+ * Characters *
+ *------------*/
 .symbol.female{ background: url("Assets/symbols.png")   0px   0px; }
 .symbol.male  { background: url("Assets/symbols.png") -16px   0px; }
 .symbol.dead  { background: url("Assets/symbols.png") -32px   0px; }

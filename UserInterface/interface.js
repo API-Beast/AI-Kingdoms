@@ -260,5 +260,18 @@ function UpdateUI()
 	{
 		AddUI(UI.LinkList(GameState.Factions, "section factions"));
 	}
+
+	// Make sure all list items are semi-aligned into a grid.
+	var listItems = document.querySelectorAll(".list div");
+	var gridSize = 25;
+	for(var i = 0; i < listItems.length; i++)
+	{
+		var item = listItems[i];
+		var style = getComputedStyle(item);
+		var margin = parseInt(style.marginLeft) + parseInt(style.marginRight);
+		var width  = ((Math.floor((item.offsetWidth-1)/gridSize)+1)*gridSize - margin);
+		item.style.width = width+"px";
+	}
+
 	UpdateResourceUI();
 }

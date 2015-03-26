@@ -16,8 +16,17 @@ function DevelopCity(city)
 			city.Traits.add(traits.pop());
 	};
 
-	giveTraitsByTag("CityType", 1);
 	giveTraitsByTag("Landscape", 1);
-	giveTraitsByTag("Structure", RandInt(1, 3));
+	if(city.Type === "capital")
+	{
+		giveTraitsByTag("AdvancedCityType", 1);
+		giveTraitsByTag("Structure", RandInt(2, 3));
+	}
+	else
+	{
+		giveTraitsByTag("CityType", 1);
+		giveTraitsByTag("Structure", RandInt(1, 2));
+	}
+	
 	city.calcAttributes();
 }
