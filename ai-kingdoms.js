@@ -137,13 +137,13 @@ function GameLoop()
 		if(struct.hasOwnProperty("Faction")) 
 		{
 			faction = struct.Faction;
-			while(Ui.MapMode == "realms" && faction.ParentFaction)
+			while(Interface.MapMode == "realms" && faction.ParentFaction)
 				faction = faction.ParentFaction;
 		}
 		else
 		{
 			faction = struct.ParentCity.Faction;
-			while(Ui.MapMode == "realms" && faction.ParentFaction)
+			while(Interface.MapMode == "realms" && faction.ParentFaction)
 				faction = faction.ParentFaction;
 		}
 

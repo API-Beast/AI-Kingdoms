@@ -16,6 +16,7 @@ var City = function()
 	this.Tags           = ShallowCopy(this.BaseTags);
 
 	this.Properties = [["Attributes"], ["Traits"]];
+	this.Searchable = ["Name", "Traits"];
 };
 
 City.prototype.calcAttributes = function()

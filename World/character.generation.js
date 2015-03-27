@@ -112,6 +112,7 @@ function DevelopCharacter(person, minState, maxState)
 				person.Traits.add(Data.Traits[trait.Name]);
 			}
 		}
+		person.calcAttributes();
 	};
 
 	var advanceCareer = function()

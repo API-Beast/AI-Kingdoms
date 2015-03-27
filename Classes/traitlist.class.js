@@ -31,6 +31,19 @@ TraitList.prototype.get = function(name, level)
 	return null;
 };
 
+// Search for a trait which starts with "name". Case insensitive.
+// Needed for the Search Functionality from AI-Kingdoms.
+TraitList.prototype.search = function(name)
+{
+	name = name.toLowerCase();
+	for(var i = 0; i < this.Data.length; i++)
+	{
+		if(this.Data[i].Trait.Name.toLowerCase().indexOf(name) === 0 || this.Data[i].Trait === name)
+		return this.Data[i];
+	};
+	return null;
+};
+
 TraitList.prototype.applyEffects = function(permanence, attrList, tags)
 {
 	var mult = {};

@@ -10,9 +10,8 @@ var Character = function()
 	this.MotherFamily = null;
 	this.Age          = 0;
 	this.Development  = 0;
-	this.Health       = RandBellCurve(40, 80);
 	this.IsAlive      = true;
-	this.Stats        = [0, 0, 0, 0, 0];
+	this.Health       = 50;
 
 	// Attributes = BaseAttributes + Modification through static traits and skills
 	this.Attributes = new AttributeList();
@@ -38,6 +37,7 @@ var Character = function()
 	this.MinorRelations = [];
 
 	this.Properties = [["Attributes"], ["Home"], ["Skills"], ["Traits"]];
+	this.Searchable = ["Name", "Gender", "Surname", "Skills", "Traits", "Rank"];
 
 	this.Home = null;
 };

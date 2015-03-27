@@ -171,4 +171,5 @@ function AssignHome()
 function FinishWorldGeneration()
 {
 	GameState.Map.Cities.forEach(DevelopCity);
+	GameState.Characters = GameState.Characters.filter(function(c){return c.IsAlive;});
 }

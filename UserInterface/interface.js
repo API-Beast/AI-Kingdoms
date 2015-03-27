@@ -1,10 +1,11 @@
 "use strict";
 
-var Ui = {
+var Interface = {
 	ShowObject   : false,
 	CurrentObject: null,
 	MapMode      : "realms",
-	TimeSpeed    : 1
+	TimeSpeed    : 1,
+	SearchBar    : null
 };
 
 function UpdateSize()
@@ -18,8 +19,8 @@ function UpdateSize()
 
 function DisplayObject(obj, noScroll)
 {
-	Ui.ShowObject = true;
-	Ui.CurrentObject = obj;
+	Interface.ShowObject = true;
+	Interface.CurrentObject = obj;
 	SetActiveTab(document.getElementById("object-info-tab"));
 	UpdateUI();
 	
@@ -36,7 +37,7 @@ function DisplayObject(obj, noScroll)
 
 	try
 	{
-		history.pushState(Ui, null);
+		history.pushState(Interface, null);
 	}
 	catch(e)
 	{
@@ -45,20 +46,20 @@ function DisplayObject(obj, noScroll)
 
 function SetMapMode(mode)
 {
-	Ui.MapMode = mode;
-	history.pushState(Ui, null);
+	Interface.MapMode = mode;
+	history.pushState(Interface, null);
 	GameRedraw();
 }
 
 function OnBack(e)
 {
 	if(e.state)
-		Ui = e.state;
+		Interface = e.state;
 	else
 	{
-		Ui.ShowObject = false;
-		Ui.CurrentObject = null;
-		Ui.MapMode = 'realms';
+		Interface.ShowObject = false;
+		Interface.CurrentObject = null;
+		Interface.MapMode = 'realms';
 	}
 	UpdateUI();
 	window.requestAnimationFrame(GameLoop);
@@ -97,6 +98,61 @@ function InitUI()
 
 	var map = document.getElementById("map");
 	map.addEventListener("click", OnClick);
+
+	var search = document.getElementById("object-searchbar");
+	search.addEventListener('input', function() { OnSearchInput(this.value); });
+	/*Interface.SearchBar = completely(search, {});
+	Interface.SearchBar.onChange = OnSearchInput;
+	Interface.SearchBar.options  = ["Talented", "Warrior"];*/
+}
+
+function OnSearchInput(text)
+{
+	var sep = ' ';
+	if(text.lastIndexOf(',') != -1) sep = ',';
+
+	/*Interface.SearchBar.startFrom = text.lastIndexOf(sep)+1;
+	Interface.SearchBar.repaint();*/
+
+	var words = text.split(sep);
+	var results = [];
+	var objMatch = ObjectMatchesSearch.bind(undefined, words);
+	results = GameState.Characters.filter(objMatch);
+	results = results.concat(GameState.Map.Cities.filter(objMatch));
+
+	var div = document.getElementById("object-search-results");
+	div.innerHTML = "";
+	for (var i = 0; i < results.length; i++)
+		div.appendChild(UI.Tag(UI.Link(results[i])));
+}
+
+function ObjectMatchesSearch(search, obj)
+{
+	for(var i = 0; i < search.length; i++)
+	{
+		var word  = search[i];
+		var found = false;
+		for(var j = 0; j < obj.Searchable.length; j++)
+		{
+			var prop = obj[obj.Searchable[j]];
+			if(PropertyMatchesWord(word, prop))
+			{
+				found = true;
+				break;
+			}
+		};
+		// A word was not found... exit.
+		if(!found) return false;
+	};
+	return true;
+}
+
+function PropertyMatchesWord(word, prop)
+{
+	word = word.toLowerCase();
+	if(prop instanceof TraitList) return prop.search(word)       !== null;
+	if(prop instanceof Rank)      return prop.Name.toLowerCase().indexOf(word) === 0;
+	return prop.toLowerCase().indexOf(word) === 0;
 }
 
 function UpdateResourceUI()
@@ -105,57 +161,15 @@ function UpdateResourceUI()
 	div.innerHTML = Data.Months[GameState.Month-1] + " <span class='date'>" + Align(2, GameState.Day, "0")+"."+Align(2, GameState.Month, "0")+"."+Align(3, GameState.Year, "0")+"</span>";
 }
 
-function MakeObjView(data)
-{
-	var objInfo = document.getElementById("object-info");
-	objInfo.innerHTML = "";
-
-	var curSection = objInfo;
-	var curElement = objInfo;
-
-	for(var i = 0; i < Data.length; i++)
-	switch(Data[i].Type)
-	{
-		case "Ribbon":
-
-
-			objInfo.appendChild(ribbon);
-			curSection = ribbon;
-			break;
-		case "Text":
-			var div = document.createElement('div');
-			var text = document.createTextNode(Data[i].Text);
-			div.className = Data[i].Class;
-			curSection.appendChild(div);
-			curElement = div;
-			break;
-		case "Icon":
-			var icon = CreateSymbol(Data[i].Name);
-			curElement.appendChild(icon);
-			break;
-		case "Link":
-			var div = CreateTag(Data[i].Obj);
-			curSection.appendChild(div);
-			curElement = div;
-			break;
-		case "Double Tag":
-			var div = CreateDoubleTag(Data[i].Label, Data[i].Obj);
-			curSection.appendChild(div);
-			curElement = div;
-			break;
-	}
-
-}
-
 function UpdateUI()
 {
 	var objInfo = document.getElementById("object-info");
 	objInfo.innerHTML = "";
 
 	var AddUI = function(e){objInfo.appendChild(e);};
-	if(Ui.ShowObject)
+	if(Interface.ShowObject)
 	{
-		var obj = Ui.CurrentObject;
+		var obj = Interface.CurrentObject;
 		// ==========
 		// Characters
 		// ==========

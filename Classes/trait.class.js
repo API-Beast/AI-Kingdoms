@@ -37,14 +37,14 @@ Trait.prototype.preReqFulfilled = function(entity)
 		if(entity[key] instanceof AttributeList)
 		for(var i = 0; i < this.PreReq[key].length; i+=2)
 		{
-			var attrib   = this.PreReq.Attributes[i];
-			var minLevel = this.PreReq.Attributes[i+1];
+			var attrib   = this.PreReq[key][i];
+			var minLevel = this.PreReq[key][i+1];
 			if(entity[key].get(attrib) < minLevel)
 				return false;
 		}
 
 		if(entity[key] instanceof TraitList)
-		for(var i = 0; i < this.PreReq[key].length; i+=2)
+		for(var i = 0; i < this.PreReq[key].length; i++)
 		{
 			var temp     = this.PreReq[key][i];
 			var skill    = temp;
