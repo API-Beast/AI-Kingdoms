@@ -96,6 +96,9 @@ function InitUI()
 	for (var i = 0; i < elements.length; i++)
 		elements[i].addEventListener("click", SetActiveTab.bind(undefined, elements[i].parentNode.parentNode));
 
+	var generateMap = document.getElementById("new-world-button");
+	generateMap.addEventListener("click", GenerateWorld);
+
 	var map = document.getElementById("map");
 	map.addEventListener("click", OnClick);
 

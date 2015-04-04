@@ -68,6 +68,13 @@ body
 	font-feature-settings: "lnum" 1;
 }
 
+a
+{
+	color: white;
+	text-shadow: 1px 1px black, 1px -1px black, 2px 0px black;
+	text-decoration: none;
+}
+
 #sidebar
 {
 	position: absolute;
@@ -213,8 +220,7 @@ body
 	padding: 5px;
 	margin: 2px;
 	color: white;
-	min-width: 155px;
-	max-width: 155px;
+	display: table;
 }
 
 .action a
@@ -242,6 +248,9 @@ body
 .objectLink a
 {
 	cursor: pointer;
+	text-decoration: none;
+	color: black;
+	text-shadow: none;
 }
 
 .objectLink .name

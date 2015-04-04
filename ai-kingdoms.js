@@ -2,17 +2,6 @@
 
 var GameState =
 	{ 
-		MapSizeX: 2000, MapSizeY: 1500,
-		Player: {Character: null},
-		Characters: [],
-		SecondaryCharacters: [],
-		Map: { Terrain: [], Cities: [], Villages: [] },
-		Factions: [],
-	  Families: [],
-	  Year: 112,
-	  Month: 4,
-	  Day: 17,
-	  Timeline: {}
 	};
 
 var GameInit = function()
@@ -30,39 +19,14 @@ var GameInit = function()
 
 var GameLoaded = function()
 {
+  GenerateWorld();
+
 	var canvas = document.getElementById("map");
 	canvas.width  = GameState.MapSizeX;
 	canvas.height = GameState.MapSizeY;
 
 	UpdateSize();
 	window.onresize = UpdateSize;
-
-  GenerateWorld();
-
-  var genGeneration = function(oldGen)
-  {
-  	var newGen = GenerateOffspring(oldGen);
-  	GameState.Characters = GameState.Characters.concat(newGen);
-	  newGen.forEach(function(person, index)
-		{
-			DevelopCharacter(person, 0, 3);
-		});
-  	DistributeRanks();
- 	  newGen.forEach(function(person, index)
-		{
-			DevelopCharacter(person);
-		});
-  	return newGen;
-  };
-
-	var gen1 = GenerateBaseGeneration(100);
-	GameState.Characters = gen1;
-	GeneratePoliticalLandscape();
-	AssignHome();
-  var gen2 = genGeneration(gen1);
-  var gen3 = genGeneration(gen2);
-  var gen4 = genGeneration(gen3);
-  FinishWorldGeneration();
 
 	InitUI();
 	UpdateUI();

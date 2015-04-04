@@ -1,7 +1,5 @@
 "use strict";
 
-GameState.Families = [];
-
 var FamilyNames = ["Li","Wang","Zhang","Liu","Chen","Yang","Zhao","Huang",
                "Zhou","Wu","Xu","Sun","Hu","Zhu","Gao","Lin","He","Guo",
                "Ma","Luo","Liang","Song","Zheng","Xie","Han","Tang",
@@ -13,17 +11,23 @@ var FamilyNames = ["Li","Wang","Zhang","Liu","Chen","Yang","Zhao","Huang",
                "Kang","Mao","Qiu","Qin","Jiang","Shi","Gu","Hou","Shao","Meng",
                "Long","Wan","Duan","Zhang","Qian","Tang","Yin","Li","Yi","Chang",
                "Wu","Qiao","He","Lai","Gong","Wen"];
-for (var i = 40; i >= 0; i--)
-{
-	GameState.Families.push({
-		Name: FamilyNames.popRandom(),
-		Traits: [],
-		Stats: [RandInt(-1, 3), RandInt(-1, 3), RandInt(-1, 3), RandInt(-1, 3), RandInt(-1, 3)],
-		Faction: null});
-}
 
 function GenerateBaseGeneration(numPeople)
 {
+	if(!GameState.Families || GameState.Families.length === 0)
+	{
+		GameState.Families = [];
+		var familyNames = FamilyNames.shuffle();
+		for (var i = 40; i >= 0; i--)
+		{
+			GameState.Families.push({
+				Name: familyNames[i],
+				Traits: [],
+				Stats: [RandInt(-1, 3), RandInt(-1, 3), RandInt(-1, 3), RandInt(-1, 3), RandInt(-1, 3)],
+				Faction: null});
+		}
+	}
+
 	var result = [];
 	for (var i = 0; i < numPeople; i++)
 	{

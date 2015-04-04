@@ -28,6 +28,51 @@ function GeneratePlace()
 
 function GenerateWorld()
 {
+	GameState =
+	{ 
+		MapSizeX: 2000, MapSizeY: 1500,
+		Player: {Character: null},
+		Characters: [],
+		SecondaryCharacters: [],
+		Map: { Terrain: [], Cities: [], Villages: [] },
+		Factions: [],
+	  Families: [],
+	  Year: 112,
+	  Month: 4,
+	  Day: 17,
+	  Timeline: {}
+	};
+
+	GenerateTerrain();
+
+  var genGeneration = function(oldGen)
+  {
+  	var newGen = GenerateOffspring(oldGen);
+  	GameState.Characters = GameState.Characters.concat(newGen);
+	  newGen.forEach(function(person, index)
+		{
+			DevelopCharacter(person, 0, 3);
+		});
+  	DistributeRanks();
+ 	  newGen.forEach(function(person, index)
+		{
+			DevelopCharacter(person);
+		});
+  	return newGen;
+  };
+
+	var gen1 = GenerateBaseGeneration(100);
+	GameState.Characters = gen1;
+	GeneratePoliticalLandscape();
+	AssignHome();
+  var gen2 = genGeneration(gen1);
+  var gen3 = genGeneration(gen2);
+  var gen4 = genGeneration(gen3);
+  FinishWorldGeneration();
+}
+
+function GenerateTerrain()
+{
 	// -------
 	// Terrain
 	// -------
@@ -76,18 +121,22 @@ function GenerateWorld()
 
 function GeneratePoliticalLandscape()
 {
-	var families = GameState.Families.slice();
-	var cities   = GameState.Map.Cities.slice();
-
 	var numFactions = 6;
 	var numBigFactions = 6;
+
+	var families           = GameState.Families.shuffle();
+	var cities             = GameState.Map.Cities.shuffle();
+	var factionNames       = Data.Faction.Names.shuffle();
+	var factionColors      = Data.Faction.MinorColors.shuffle();
+	var factionMajorColors = Data.Faction.MajorColors.shuffle();
 
 	// Generate Factions
 	for(var i = numFactions; i > 0; i--)
 	{
-		var city = cities.popRandom();
+		var city = cities[i];
 		var faction = new Faction();
-		faction.Name = Data.Faction.Names.popRandom();
+		faction.Name = factionNames[i];
+		faction.Color = factionColors[i];
 		faction.Capital = city;
 		city.setFaction(faction);
 		city.Type = "capital";
@@ -111,7 +160,7 @@ function GeneratePoliticalLandscape()
 	var smallFactions = sortedFactions.slice(numBigFactions);
 	// Give the big factions more dominant colors.
 	bigFactions.forEach(function(faction){
-		faction.Color = Data.Faction.MajorColors.popRandom();
+		faction.Color = factionMajorColors.pop();
 	});
 	// Assign the small faction to the big factions.
 	smallFactions.forEach(function(smallFaction)

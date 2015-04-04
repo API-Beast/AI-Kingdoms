@@ -3,7 +3,7 @@
 var Faction = function()
 {
 	this.Name    = "???";
-	this.Color   = Data.Faction.MinorColors.popRandom();
+	this.Color   = [255, 255, 255];
 	this.Armies  = [];
 	this.Capital = null;
 	this.TownTexture = null;

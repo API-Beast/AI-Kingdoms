@@ -15,7 +15,7 @@
 	position: absolute;
 	top: -24px;
 	left: 4px;
-	width: 100px;
+	width: 80px;
 	height: 24px;
 	background: #aaa;
 	margin: 0;
@@ -39,20 +39,20 @@
 	font-weight: normal;
 	text-decoration: none;
 	text-align: center;
-	width: 90px;
+	width: 70px;
 	display: inline-block;
 	cursor: pointer;
 }
 
 .tabbed section:nth-child(2) h2
 {
-  left: 108px;
+  left: 88px;
   z-index: 9;
 }
 
 .tabbed section:nth-child(3) h2
 {
-  left: 214px;
+  left: 174px;
   z-index: 8;
 }
 
