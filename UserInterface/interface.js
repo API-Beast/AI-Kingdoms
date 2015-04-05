@@ -97,7 +97,13 @@ function InitUI()
 		elements[i].addEventListener("click", SetActiveTab.bind(undefined, elements[i].parentNode.parentNode));
 
 	var generateMap = document.getElementById("new-world-button");
-	generateMap.addEventListener("click", GenerateWorld);
+	var regenerateWorld = function()
+	{
+		GenerateWorld();
+		UpdateUI();
+		GameRedraw();
+	};
+	generateMap.addEventListener("click", regenerateWorld);
 
 	var map = document.getElementById("map");
 	map.addEventListener("click", OnClick);
@@ -217,7 +223,7 @@ function UpdateUI()
 
 			AddUI(UI.LinkList(obj.SubFactions, "section subs"));
 			AddUI(UI.LinkList(obj.Cities, "section cities"));
-			AddUI(UI.LinkList(GameState.Characters, "section members", function(p){ return p.IsAlive && person.Rank.Faction == obj; }));
+			AddUI(UI.LinkList(GameState.Characters, "section members", function(p){ return p.IsAlive && p.Rank.Faction == obj; }));
 		}
 
 		// Generic for all: Properties
@@ -276,6 +282,18 @@ function UpdateUI()
 	//
 	{
 		AddUI(UI.LinkList(GameState.Factions, "section factions"));
+	}
+
+
+	//
+	// Update game info
+	//
+	var gameInfo = document.getElementById("game-info");
+	gameInfo.innerHTML = "";
+	if(GameState.Player)
+	{
+		gameInfo.appendChild(UI.DoubleTag("Our majesty", GameState.Player));
+		gameInfo.appendChild(UI.DoubleTag("Our faction", GameState.Player.Rank.Faction));
 	}
 
 	// Make sure all list items are semi-aligned into a grid.

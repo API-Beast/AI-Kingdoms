@@ -31,7 +31,7 @@ function GenerateWorld()
 	GameState =
 	{ 
 		MapSizeX: 2000, MapSizeY: 1500,
-		Player: {Character: null},
+		Player: null,
 		Characters: [],
 		SecondaryCharacters: [],
 		Map: { Terrain: [], Cities: [], Villages: [] },
@@ -69,6 +69,9 @@ function GenerateWorld()
   var gen3 = genGeneration(gen2);
   var gen4 = genGeneration(gen3);
   FinishWorldGeneration();
+
+  var playerFaction = GameState.Factions.randomElement();
+	GameState.Player = playerFaction.Ranks["Leader"].Assigned[0];
 }
 
 function GenerateTerrain()
@@ -185,10 +188,11 @@ function DistributeRanks()
 	function(faction)
 	{
 		if(faction.ParentFaction != null) return;
-		faction.Ranks.forEach(
-		function(rank)
+		for(var key in faction.Ranks)
 		{
-			//rank.cleanUp();
+			if(!faction.Ranks.hasOwnProperty(key)) continue;
+
+			var rank = faction.Ranks[key];
 			var i = rank.Openings - rank.Assigned.length;
 			if(i < 1)
 				return;
@@ -199,7 +203,7 @@ function DistributeRanks()
 			population = population.sort(function(a, b){ return a._rscore - b._rscore; });
 			population.length = i;
 			rank.assignTo(population);
-		})
+		}
 	});
 }
 

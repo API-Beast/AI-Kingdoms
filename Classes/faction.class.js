@@ -11,14 +11,14 @@ var Faction = function()
 	this.SubFactions = [];
 	this.ParentFaction = null;
 	this.Ranks = [];
-	this.Ranks.push(new Rank("Leader", this, {
+	this.Ranks["Leader"] = new Rank("Leader", this, {
 		Icon: "Leader",
 		Openings: 1,
 		Scoring: { Prestige: 1, Relations: 1, Heritage: 2 },
 		SkillMod: [["Inspiration", +5]],
 		Score: 12
-	}));
-	this.Ranks.push(new Rank("General", this, {
+	});
+	this.Ranks["General"] = new Rank("General", this, {
 		Icon: "General",
 		Openings: 2,
 		Scoring: { Strength: 0.25, Tactics: 2, Prestige: 2, Relations: 0.2, Heritage: 0.2 },
@@ -26,23 +26,23 @@ var Faction = function()
 		TraitMod: [["Pacifist", -25]],
 		Score:  6,
 		PreviousRank: "Commander"
-	}));
-	this.Ranks.push(new Rank("Commander", this, {
+	});
+	this.Ranks["Commander"] = new Rank("Commander", this, {
 		Icon: "Commander",
 		Openings: 6,
 		Scoring: { Strength: 0.25, Tactics: 1, Prestige: 1, Relations: 0.2, Heritage: 0.2 },
 		TraitMod: [["Pacifist", -25]],
 		Score:  2,
 		PreviousRank: "Soldier"
-	}));
-	this.Ranks.push(new Rank("Chancellor", this, {
+	});
+	this.Ranks["Chancellor"] = new Rank("Chancellor", this, {
 		Icon: "Chancellor",
 		Openings: 2,
 		Scoring: { Intrigue: 1, Charisma: 1, Prestige: 1.0, Relations: 2.0, Heritage: 0.5 },
 		SkillMod: [["Shemer", +5], ["Socializer", +3], ["Scholar", +3]],
 		TraitMod: [["Pacifist", -10]],
 		Score: 6
-	}));
+	});
 };
 
 Faction.prototype.setParentFaction = function(faction)

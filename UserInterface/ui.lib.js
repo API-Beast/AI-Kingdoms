@@ -85,14 +85,6 @@ UI.Link = function(obj)
 		div.appendChild(UI.Symbol(obj.Gender));
 	}
 
-	if(isFaction)
-	{
-		div.style.color = "rgb("+obj.Color[0]+", "+obj.Color[1]+", "+obj.Color[2]+")";
-		div.className += " faction"; 
-		if(ColorIsDark(obj.Color))
-			div.className += " dark"; 
-	}
-
 	if(isCity)
 	{
 		var symb = UI.Symbol("solid-color");
@@ -106,6 +98,14 @@ UI.Link = function(obj)
 	var onClick = DisplayObject.bind(undefined, obj, false);
 	div.addEventListener('click', onClick);
 	div.appendChild(link);
+
+	if(isFaction)
+	{
+		link.style.color = "rgb("+obj.Color[0]+", "+obj.Color[1]+", "+obj.Color[2]+")";
+		div.className += " faction"; 
+		if(ColorIsDark(obj.Color))
+			div.className += " dark"; 
+	}
 
 	return div;
 }

@@ -264,13 +264,13 @@ a
 	font-style:  italic;
 }
 
-.objectLink.faction
+.objectLink.faction a
 {
 	text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,
 	             #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
 }
 
-.objectLink.faction.dark
+.objectLink.faction.dark a
 {
 	text-shadow: #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px,
 	             #fff 0px 0px 2px,   #fff 0px 0px 2px,   #fff 0px 0px 2px;
